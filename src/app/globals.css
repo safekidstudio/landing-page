@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  /* Design System Tokens */
+  --canvas: #090909;
+  --surface-1: #141414;
+  --surface-2: #1c1c1c;
+  --hairline: #262626;
+  --hairline-soft: #1a1a1a;
+  --primary: #ffffff;
+  --on-primary: #000000;
+  --accent-blue: #0099ff;
+  --ink: #ffffff;
+  --ink-muted: #999999;
+  
+  --gradient-magenta: #d44df0;
+  --gradient-violet: #6a4cf5;
+  --gradient-orange: #ff7a3d;
+  --gradient-coral: #ff5577;
+
+  /* Shadcn variables mapped to Kibal tokens */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface-1);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--ink);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--surface-1);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-1);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--surface-2);
+  --accent-foreground: var(--ink);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--accent-blue);
+}
+
+/* Light mode overrides */
+.light {
+  --canvas: #fafafa;
+  --surface-1: #ffffff;
+  --surface-2: #f4f4f5;
+  --hairline: #e4e4e7;
+  --hairline-soft: #f4f4f5;
+  --primary: #090909;
+  --on-primary: #ffffff;
+  --accent-blue: #0077e6;
+  --ink: #090909;
+  --ink-muted: #666666;
+}
+
+/* Dark mode (explicit class for next-themes) */
+.dark {
+  --canvas: #090909;
+  --surface-1: #141414;
+  --surface-2: #1c1c1c;
+  --hairline: #262626;
+  --hairline-soft: #1a1a1a;
+  --primary: #ffffff;
+  --on-primary: #000000;
+  --accent-blue: #0099ff;
+  --ink: #ffffff;
+  --ink-muted: #999999;
+}
+
+@theme {
+  /* Shadcn Tailwind v4 mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Kibal specific theme mapping */
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-accent-blue: var(--accent-blue);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  
+  --color-gradient-magenta: var(--gradient-magenta);
+  --color-gradient-violet: var(--gradient-violet);
+  --color-gradient-orange: var(--gradient-orange);
+  --color-gradient-coral: var(--gradient-coral);
+  
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
+  --radius-xxl: 30px;
+  --radius-pill: 100px;
+}
+
+@layer base {
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Custom utility for aggressive negative tracking display fonts */
+.display-xxl {
+  font-size: clamp(3rem, 7vw, 110px);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+
+.display-xl {
+  font-size: clamp(2.5rem, 6vw, 85px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.display-lg {
+  font-size: clamp(2rem, 5vw, 62px);
+  font-weight: 500;
+  line-height: 1.00;
+  letter-spacing: -0.05em;
+}
+
+.display-md {
+  font-size: clamp(1.5rem, 3vw, 32px);
+  font-weight: 500;
+  line-height: 1.13;
+  letter-spacing: -0.03em;
+}
+
+.headline {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.20;
+  letter-spacing: -0.036em;
+}
+
+.subhead {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: -0.0004em;
+}
+
+.body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: -0.01em;
+}
+
+.body-default {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: -0.01em;
+}
+
+.body-sm {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.40;
+  letter-spacing: -0.01em;
+}
+
+.caption {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+}
+
+.micro {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+}
+
+/* Custom Scrollbar for premium dark feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hairline);
+}
