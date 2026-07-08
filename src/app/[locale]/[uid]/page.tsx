@@ -1,11 +1,26 @@
 import { SliceZone } from "@prismicio/react";
-import { createClient } from "@/prismicio";
+import { createClient, LOCALE_MAP } from "@/prismicio";
 import { components } from "@/slices";
+import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 
-export default async function Page({ params }: PageProps<"/[uid]">) {
-	const { uid } = await params;
-	const client = createClient();
-	const page = await client.getByUID("page", uid);
+type Props = {
+  params: Promise<{ locale: string; uid: string }>;
+};
 
-	return <SliceZone slices={page.data.slices} components={components} />;
+export default async function Page({ params }: Props) {
+  const { locale, uid } = await params;
+  setRequestLocale(locale);
+
+  const client = createClient();
+  const prismicLocale = LOCALE_MAP[locale] || "en-us";
+
+  try {
+    const page = await client.getByUID("page", uid, {
+      lang: prismicLocale,
+    });
+    return <SliceZone slices={page.data.slices} components={components} />;
+  } catch (error) {
+    notFound();
+  }
 }

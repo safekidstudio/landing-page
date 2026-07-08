@@ -1,0 +1,10 @@
+{
+  "id": "app_settings",
+  "label": "App Settings",
+  "repeatable": false,
+  "json": {
+    "Main": {}
+  },
+  "status": true,
+  "format": "custom"
+}
