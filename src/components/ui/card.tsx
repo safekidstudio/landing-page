@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import type * as React from "react";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "charcoal" | "violet" | "magenta" | "orange" | "coral";
@@ -72,11 +72,7 @@ export function Card({
   `;
 
   return (
-    <div
-      onMouseMove={handleMouseMove}
-      className={combinedClassName}
-      {...props}
-    >
+    <div onMouseMove={handleMouseMove} className={combinedClassName} {...props}>
       {hoverEffect && (
         <motion.div
           className={`pointer-events-none absolute -inset-px ${radii[variant]} opacity-0 transition duration-300 group-hover:opacity-100 mix-blend-screen`}

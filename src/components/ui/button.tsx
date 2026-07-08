@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "framer-motion";
+import * as React from "react";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,7 +17,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const variants = {
       primary:
         "bg-primary text-primary-foreground hover:opacity-90 active:scale-98 shadow-[0_1px_2px_rgba(0,0,0,0.1)]",
-      secondary: "bg-surface-1 text-ink border border-hairline hover:bg-surface-2",
+      secondary:
+        "bg-surface-1 text-ink border border-hairline hover:bg-surface-2",
       translucent:
         "bg-surface-2/60 backdrop-blur-md text-ink hover:bg-surface-2 border border-hairline-soft",
       icon: "bg-surface-1 text-ink hover:bg-surface-2 border border-hairline rounded-full",
@@ -40,7 +41,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...(props as any)}
       />
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

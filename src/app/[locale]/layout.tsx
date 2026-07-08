@@ -3,8 +3,6 @@ import { Geist } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "@/providers/theme_provider";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -49,9 +47,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             enableSystem={false}
             disableTransitionOnChange
           >
-            <Navbar />
             <main className="flex flex-col flex-1">{children}</main>
-            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

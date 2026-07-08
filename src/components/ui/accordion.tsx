@@ -1,13 +1,13 @@
 "use client";
 
-import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import * as React from "react";
 
 interface AccordionItemProps {
   id: string;
   title: string;
-  content: string;
+  content: React.ReactNode;
   isOpen: boolean;
   onToggle: () => void;
 }
@@ -57,7 +57,7 @@ interface AccordionProps {
   items: {
     id: string;
     title: string;
-    content: string;
+    content: React.ReactNode;
   }[];
   className?: string;
 }

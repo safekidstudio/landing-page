@@ -10,6 +10,9 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@prismicio/client": "^7.21.8",
+    "@prismicio/next": "^2.3.0",
+    "@prismicio/react": "^3.4.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.17.0",
