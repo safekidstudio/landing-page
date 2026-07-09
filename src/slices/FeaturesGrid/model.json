@@ -1,0 +1,70 @@
+{
+  "id": "features_grid",
+  "type": "SharedSlice",
+  "name": "FeaturesGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Everything You Need to Raise Tech-Healthy Kids",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "From smart blocks to instant messaging alerts...",
+            "single": "paragraph"
+          }
+        }
+      },
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "DAILY SCREEN TIME LIMITS"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Set flexible daily limits or specific downtime windows...",
+            "single": "paragraph"
+          }
+        },
+        "icon": {
+          "type": "Select",
+          "config": {
+            "label": "Icon",
+            "default_value": "shield",
+            "options": [
+              "box",
+              "bolt",
+              "cpu",
+              "clock",
+              "key",
+              "shield",
+              "smartphone",
+              "lock",
+              "activity",
+              "share"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "description": "A responsive grid displaying product features with customizable icons, titles, and descriptions."
+}

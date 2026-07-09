@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice
 
 /**
  * Content for Home Page documents
@@ -491,6 +491,90 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
+
+/**
+ * Primary content in *FeaturesGrid → Default → Primary*
+ */
+export interface FeaturesGridSliceDefaultPrimary {
+	/**
+	 * Heading field in *FeaturesGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Everything You Need to Raise Tech-Healthy Kids
+	 * - **API ID Path**: features_grid.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *FeaturesGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: From smart blocks to instant messaging alerts...
+	 * - **API ID Path**: features_grid.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *FeaturesGrid → Items*
+ */
+export interface FeaturesGridSliceDefaultItem {
+	/**
+	 * Title field in *FeaturesGrid → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: DAILY SCREEN TIME LIMITS
+	 * - **API ID Path**: features_grid.items[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Description field in *FeaturesGrid → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Set flexible daily limits or specific downtime windows...
+	 * - **API ID Path**: features_grid.items[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Icon field in *FeaturesGrid → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: shield
+	 * - **API ID Path**: features_grid.items[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"box" | "bolt" | "cpu" | "clock" | "key" | "shield" | "smartphone" | "lock" | "activity" | "share", "filled">;
+}
+
+/**
+ * Default variation for FeaturesGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeaturesGridSliceDefault = prismic.SharedSliceVariation<"default", Simplify<FeaturesGridSliceDefaultPrimary>, Simplify<FeaturesGridSliceDefaultItem>>;
+
+/**
+ * Slice variation for *FeaturesGrid*
+ */
+type FeaturesGridSliceVariation = FeaturesGridSliceDefault
+
+/**
+ * FeaturesGrid Shared Slice
+ *
+ * - **API ID**: `features_grid`
+ * - **Description**: A responsive grid displaying product features with customizable icons, titles, and descriptions.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeaturesGridSlice = prismic.SharedSlice<"features_grid", FeaturesGridSliceVariation>;
 
 /**
  * Item in *Hero → Default → Primary → Stats List*
@@ -695,6 +779,11 @@ declare module "@prismicio/client" {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			FeaturesGridSlice,
+			FeaturesGridSliceDefaultPrimary,
+			FeaturesGridSliceDefaultItem,
+			FeaturesGridSliceVariation,
+			FeaturesGridSliceDefault,
 			HeroSlice,
 			HeroSliceDefaultPrimaryStatsListItem,
 			HeroSliceDefaultPrimary,
