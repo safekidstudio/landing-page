@@ -850,16 +850,6 @@ export interface TestimonialsSliceDefaultPrimaryReviewsItem {
 	quote: prismic.RichTextField;
 	
 	/**
-	 * Link Label field in *Testimonials → Default → Primary → Reviews*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Read more
-	 * - **API ID Path**: testimonials.default.primary.reviews[].link_label
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	link_label: prismic.KeyTextField;
-	
-	/**
 	 * Link field in *Testimonials → Default → Primary → Reviews*
 	 *
 	 * - **Field Type**: Link

@@ -7,7 +7,7 @@
       "id": "default",
       "name": "Default",
       "description": "Default variation",
-      "imageUrl": "",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/testimonials/default/3cea335ef7810746956d1f782fe8e11a11a578e5.png?auto=compress%2Cformat",
       "docURL": "",
       "version": "initial",
       "primary": {
@@ -82,13 +82,6 @@
                   "label": "Quote",
                   "placeholder": "I've been testing the Kibal beta...",
                   "single": "paragraph"
-                }
-              },
-              "link_label": {
-                "type": "Text",
-                "config": {
-                  "label": "Link Label",
-                  "placeholder": "Read more"
                 }
               },
               "link": {
