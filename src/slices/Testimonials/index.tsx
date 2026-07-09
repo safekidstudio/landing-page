@@ -8,7 +8,8 @@ export type TestimonialsProps = {
 };
 
 export default function Testimonials({ slice }: TestimonialsProps) {
-  const { primary, items } = slice;
+  const { primary } = slice;
+  const reviewsList = primary.reviews;
 
   // Icon resolver mapping for reviews cards
   const getAuthorIcon = (iconName: string) => {
@@ -71,9 +72,9 @@ export default function Testimonials({ slice }: TestimonialsProps) {
         )}
 
         {/* Testimonials Cards Grid */}
-        {items && items.length > 0 && (
+        {reviewsList && reviewsList.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-            {items.map((item, index) => (
+            {reviewsList.map((item, index) => (
               <div
                 key={index}
                 className="flex flex-col bg-card border border-border/70 rounded-2xl p-6 justify-between hover:shadow-lg transition-all duration-300"

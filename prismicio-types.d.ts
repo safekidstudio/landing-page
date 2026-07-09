@@ -816,6 +816,61 @@ export interface TestimonialsSliceDefaultPrimaryStatsListItem {
 }
 
 /**
+ * Item in *Testimonials → Default → Primary → Reviews*
+ */
+export interface TestimonialsSliceDefaultPrimaryReviewsItem {
+	/**
+	 * Icon field in *Testimonials → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.default.primary.reviews[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"pencil" | "file-text" | "user" | "globe" | "quote">;
+	
+	/**
+	 * Author field in *Testimonials → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: u/selfhosted
+	 * - **API ID Path**: testimonials.default.primary.reviews[].author
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	author: prismic.KeyTextField;
+	
+	/**
+	 * Quote field in *Testimonials → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: I've been testing the Kibal beta...
+	 * - **API ID Path**: testimonials.default.primary.reviews[].quote
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	quote: prismic.RichTextField;
+	
+	/**
+	 * Link Label field in *Testimonials → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Read more
+	 * - **API ID Path**: testimonials.default.primary.reviews[].link_label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	link_label: prismic.KeyTextField;
+	
+	/**
+	 * Link field in *Testimonials → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.default.primary.reviews[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Primary content in *Testimonials → Default → Primary*
  */
 export interface TestimonialsSliceDefaultPrimary {
@@ -848,62 +903,16 @@ export interface TestimonialsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
 	stats_list: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryStatsListItem>>;
-}
-
-/**
- * Primary content in *Testimonials → Items*
- */
-export interface TestimonialsSliceDefaultItem {
+	
 	/**
-	 * Icon field in *Testimonials → Items*
+	 * Reviews field in *Testimonials → Default → Primary*
 	 *
-	 * - **Field Type**: Select
+	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **Default Value**: user
-	 * - **API ID Path**: testimonials.items[].icon
-	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 * - **API ID Path**: testimonials.default.primary.reviews[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	icon: prismic.SelectField<"pencil" | "file-text" | "user" | "globe" | "quote", "filled">;
-	
-	/**
-	 * Author field in *Testimonials → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: u/selfhosted
-	 * - **API ID Path**: testimonials.items[].author
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	author: prismic.KeyTextField;
-	
-	/**
-	 * Quote field in *Testimonials → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: I've been testing the Kibal beta...
-	 * - **API ID Path**: testimonials.items[].quote
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	quote: prismic.RichTextField;
-	
-	/**
-	 * Link Label field in *Testimonials → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Read more
-	 * - **API ID Path**: testimonials.items[].link_label
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	link_label: prismic.KeyTextField;
-	
-	/**
-	 * Link field in *Testimonials → Items*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: testimonials.items[].link
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	reviews: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryReviewsItem>>;
 }
 
 /**
@@ -913,7 +922,7 @@ export interface TestimonialsSliceDefaultItem {
  * - **Description**: Default variation
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type TestimonialsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<TestimonialsSliceDefaultPrimary>, Simplify<TestimonialsSliceDefaultItem>>;
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<TestimonialsSliceDefaultPrimary>, never>;
 
 /**
  * Slice variation for *Testimonials*
@@ -977,8 +986,8 @@ declare module "@prismicio/client" {
 			HeroSliceDefault,
 			TestimonialsSlice,
 			TestimonialsSliceDefaultPrimaryStatsListItem,
+			TestimonialsSliceDefaultPrimaryReviewsItem,
 			TestimonialsSliceDefaultPrimary,
-			TestimonialsSliceDefaultItem,
 			TestimonialsSliceVariation,
 			TestimonialsSliceDefault
 		}

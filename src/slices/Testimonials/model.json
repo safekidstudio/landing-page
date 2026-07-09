@@ -48,54 +48,62 @@
               }
             }
           }
+        },
+        "reviews": {
+          "type": "Group",
+          "config": {
+            "label": "Reviews",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "pencil",
+                    "file-text",
+                    "user",
+                    "globe",
+                    "quote"
+                  ]
+                }
+              },
+              "author": {
+                "type": "Text",
+                "config": {
+                  "label": "Author",
+                  "placeholder": "u/selfhosted"
+                }
+              },
+              "quote": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Quote",
+                  "placeholder": "I've been testing the Kibal beta...",
+                  "single": "paragraph"
+                }
+              },
+              "link_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Label",
+                  "placeholder": "Read more"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
         }
       },
-      "items": {
-        "icon": {
-          "type": "Select",
-          "config": {
-            "label": "Icon",
-            "default_value": "user",
-            "options": [
-              "pencil",
-              "file-text",
-              "user",
-              "globe",
-              "quote"
-            ]
-          }
-        },
-        "author": {
-          "type": "Text",
-          "config": {
-            "label": "Author",
-            "placeholder": "u/selfhosted"
-          }
-        },
-        "quote": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Quote",
-            "placeholder": "I've been testing the Kibal beta...",
-            "single": "paragraph"
-          }
-        },
-        "link_label": {
-          "type": "Text",
-          "config": {
-            "label": "Link Label",
-            "placeholder": "Read more"
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Link",
-            "placeholder": "",
-            "allowTargetBlank": true
-          }
-        }
-      }
+      "items": {}
     }
   ],
   "description": "Reviews and Testimonials section with numerical stats and detailed cards representing user opinions."
