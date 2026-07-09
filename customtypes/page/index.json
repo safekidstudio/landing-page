@@ -29,6 +29,9 @@
             },
             "call_to_action": {
               "type": "SharedSlice"
+            },
+            "blog_showcase": {
+              "type": "SharedSlice"
             }
           }
         }

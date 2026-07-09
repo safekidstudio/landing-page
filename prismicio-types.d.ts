@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice
 
 /**
  * Content for Page documents
@@ -491,6 +491,64 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
+
+/**
+ * Primary content in *BlogShowcase → Default → Primary*
+ */
+export interface BlogShowcaseSliceDefaultPrimary {
+	/**
+	 * Heading field in *BlogShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Latest from Our Blog
+	 * - **API ID Path**: blog_showcase.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *BlogShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Stay updated with our latest insights and announcements
+	 * - **API ID Path**: blog_showcase.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * View All field in *BlogShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog_showcase.default.primary.view_all
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	view_all: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for BlogShowcase Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogShowcaseSliceDefault = prismic.SharedSliceVariation<"default", Simplify<BlogShowcaseSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *BlogShowcase*
+ */
+type BlogShowcaseSliceVariation = BlogShowcaseSliceDefault
+
+/**
+ * BlogShowcase Shared Slice
+ *
+ * - **API ID**: `blog_showcase`
+ * - **Description**: A dynamic blog section displaying the latest 3 blog post documents.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogShowcaseSlice = prismic.SharedSlice<"blog_showcase", BlogShowcaseSliceVariation>;
 
 /**
  * Item in *CallToAction → Default → Primary → Benefits checklist*
@@ -1193,6 +1251,10 @@ declare module "@prismicio/client" {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			BlogShowcaseSlice,
+			BlogShowcaseSliceDefaultPrimary,
+			BlogShowcaseSliceVariation,
+			BlogShowcaseSliceDefault,
 			CallToActionSlice,
 			CallToActionSliceDefaultPrimaryBenefitsItem,
 			CallToActionSliceDefaultPrimary,
