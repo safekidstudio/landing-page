@@ -493,70 +493,70 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
 
 /**
- * Item in *FeatureShowcase → Default → Primary → Dark Cards (Top)*
+ * Item in *FeatureShowcase → Default → Primary → Core Features (Top)*
  */
-export interface FeatureShowcaseSliceDefaultPrimaryDarkCardsItem {
+export interface FeatureShowcaseSliceDefaultPrimaryCoreFeaturesItem {
 	/**
-	 * Icon field in *FeatureShowcase → Default → Primary → Dark Cards (Top)*
+	 * Icon field in *FeatureShowcase → Default → Primary → Core Features (Top)*
 	 *
 	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: feature_showcase.default.primary.dark_cards[].icon
+	 * - **API ID Path**: feature_showcase.default.primary.core_features[].icon
 	 * - **Documentation**: https://prismic.io/docs/fields/select
 	 */
 	icon: prismic.SelectField<"star" | "shield" | "share" | "lock" | "activity" | "clock" | "key">;
 	
 	/**
-	 * Title field in *FeatureShowcase → Default → Primary → Dark Cards (Top)*
+	 * Title field in *FeatureShowcase → Default → Primary → Core Features (Top)*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: Intelligent Web & App Filter
-	 * - **API ID Path**: feature_showcase.default.primary.dark_cards[].title
+	 * - **API ID Path**: feature_showcase.default.primary.core_features[].title
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	title: prismic.KeyTextField;
 	
 	/**
-	 * Checklist Items field in *FeatureShowcase → Default → Primary → Dark Cards (Top)*
+	 * Checklist Items field in *FeatureShowcase → Default → Primary → Core Features (Top)*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: Add bullet points for checklist...
-	 * - **API ID Path**: feature_showcase.default.primary.dark_cards[].checklist
+	 * - **API ID Path**: feature_showcase.default.primary.core_features[].checklist
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	checklist: prismic.RichTextField;
 }
 
 /**
- * Item in *FeatureShowcase → Default → Primary → Light Cards (Bottom)*
+ * Item in *FeatureShowcase → Default → Primary → Highlight Features (Bottom)*
  */
-export interface FeatureShowcaseSliceDefaultPrimaryLightCardsItem {
+export interface FeatureShowcaseSliceDefaultPrimaryHighlightFeaturesItem {
 	/**
-	 * Icon field in *FeatureShowcase → Default → Primary → Light Cards (Bottom)*
+	 * Icon field in *FeatureShowcase → Default → Primary → Highlight Features (Bottom)*
 	 *
 	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: feature_showcase.default.primary.light_cards[].icon
+	 * - **API ID Path**: feature_showcase.default.primary.highlight_features[].icon
 	 * - **Documentation**: https://prismic.io/docs/fields/select
 	 */
 	icon: prismic.SelectField<"lock" | "activity" | "grid" | "zap" | "user" | "file" | "smartphone" | "shield">;
 	
 	/**
-	 * Title field in *FeatureShowcase → Default → Primary → Light Cards (Bottom)*
+	 * Title field in *FeatureShowcase → Default → Primary → Highlight Features (Bottom)*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: 100% ON-DEVICE AI
-	 * - **API ID Path**: feature_showcase.default.primary.light_cards[].title
+	 * - **API ID Path**: feature_showcase.default.primary.highlight_features[].title
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	title: prismic.KeyTextField;
 	
 	/**
-	 * Description field in *FeatureShowcase → Default → Primary → Light Cards (Bottom)*
+	 * Description field in *FeatureShowcase → Default → Primary → Highlight Features (Bottom)*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: All analysis happens on your child's phone...
-	 * - **API ID Path**: feature_showcase.default.primary.light_cards[].description
+	 * - **API ID Path**: feature_showcase.default.primary.highlight_features[].description
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	description: prismic.RichTextField;
@@ -597,24 +597,24 @@ export interface FeatureShowcaseSliceDefaultPrimary {
 	description: prismic.RichTextField;
 	
 	/**
-	 * Dark Cards (Top) field in *FeatureShowcase → Default → Primary*
+	 * Core Features (Top) field in *FeatureShowcase → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: feature_showcase.default.primary.dark_cards[]
+	 * - **API ID Path**: feature_showcase.default.primary.core_features[]
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	dark_cards: prismic.GroupField<Simplify<FeatureShowcaseSliceDefaultPrimaryDarkCardsItem>>;
+	core_features: prismic.GroupField<Simplify<FeatureShowcaseSliceDefaultPrimaryCoreFeaturesItem>>;
 	
 	/**
-	 * Light Cards (Bottom) field in *FeatureShowcase → Default → Primary*
+	 * Highlight Features (Bottom) field in *FeatureShowcase → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: feature_showcase.default.primary.light_cards[]
+	 * - **API ID Path**: feature_showcase.default.primary.highlight_features[]
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	light_cards: prismic.GroupField<Simplify<FeatureShowcaseSliceDefaultPrimaryLightCardsItem>>;
+	highlight_features: prismic.GroupField<Simplify<FeatureShowcaseSliceDefaultPrimaryHighlightFeaturesItem>>;
 }
 
 /**
@@ -635,7 +635,7 @@ type FeatureShowcaseSliceVariation = FeatureShowcaseSliceDefault
  * FeatureShowcase Shared Slice
  *
  * - **API ID**: `feature_showcase`
- * - **Description**: Premium feature showcase containing 3 top dark cards with checklists and 6 bottom light cards.
+ * - **Description**: Premium feature showcase containing 3 top core features and 6 bottom highlight features.
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type FeatureShowcaseSlice = prismic.SharedSlice<"feature_showcase", FeatureShowcaseSliceVariation>;
@@ -1111,8 +1111,8 @@ declare module "@prismicio/client" {
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			FeatureShowcaseSlice,
-			FeatureShowcaseSliceDefaultPrimaryDarkCardsItem,
-			FeatureShowcaseSliceDefaultPrimaryLightCardsItem,
+			FeatureShowcaseSliceDefaultPrimaryCoreFeaturesItem,
+			FeatureShowcaseSliceDefaultPrimaryHighlightFeaturesItem,
 			FeatureShowcaseSliceDefaultPrimary,
 			FeatureShowcaseSliceVariation,
 			FeatureShowcaseSliceDefault,

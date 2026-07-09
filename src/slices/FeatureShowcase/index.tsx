@@ -22,11 +22,11 @@ export type FeatureShowcaseProps = {
 
 export default function FeatureShowcase({ slice }: FeatureShowcaseProps) {
   const { primary } = slice;
-  const darkCards = primary.dark_cards;
-  const lightCards = primary.light_cards;
+  const coreFeatures = primary.core_features;
+  const highlightFeatures = primary.highlight_features;
 
-  // Icon resolver for dark cards (top)
-  const getDarkCardIcon = (iconName: string) => {
+  // Icon resolver for core features (top)
+  const getCoreFeatureIcon = (iconName: string) => {
     const iconClass = "h-6 w-6 text-brand";
     switch (iconName) {
       case "star":
@@ -48,8 +48,8 @@ export default function FeatureShowcase({ slice }: FeatureShowcaseProps) {
     }
   };
 
-  // Icon resolver for light cards (bottom)
-  const getLightCardIcon = (iconName: string) => {
+  // Icon resolver for highlight features (bottom)
+  const getHighlightFeatureIcon = (iconName: string) => {
     const iconClass = "h-6 w-6 text-brand";
     switch (iconName) {
       case "lock":
@@ -108,17 +108,17 @@ export default function FeatureShowcase({ slice }: FeatureShowcaseProps) {
           </div>
         )}
 
-        {/* Upper Grid: 3 Dark Cards */}
-        {darkCards && darkCards.length > 0 && (
+        {/* Upper Grid: 3 Core Features (Dark Cards) */}
+        {coreFeatures && coreFeatures.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 w-full mb-16">
-            {darkCards.map((card, idx) => (
+            {coreFeatures.map((card, idx) => (
               <div
                 key={idx}
                 className="flex flex-col bg-[#18181B] text-white rounded-3xl p-8 border border-neutral-800 hover:border-neutral-700 transition-all duration-300"
               >
                 {/* Icon Box */}
                 <div className="p-3 bg-brand/10 border border-brand/20 rounded-2xl w-fit mb-6 flex items-center justify-center">
-                  {getDarkCardIcon(card.icon || "shield")}
+                  {getCoreFeatureIcon(card.icon || "shield")}
                 </div>
 
                 {/* Title */}
@@ -154,17 +154,17 @@ export default function FeatureShowcase({ slice }: FeatureShowcaseProps) {
           </div>
         )}
 
-        {/* Lower Grid: 6 Light Cards */}
-        {lightCards && lightCards.length > 0 && (
+        {/* Lower Grid: 6 Highlight Features (Light Cards) */}
+        {highlightFeatures && highlightFeatures.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-8">
-            {lightCards.map((card, idx) => (
+            {highlightFeatures.map((card, idx) => (
               <div
                 key={idx}
                 className="flex flex-col bg-[#F3F4F6] dark:bg-neutral-900 border border-neutral-200/50 dark:border-neutral-800/80 rounded-2xl p-8 hover:shadow-md transition-all duration-300"
               >
                 {/* Icon wrapper */}
                 <div className="mb-4 text-brand flex items-center justify-start">
-                  {getLightCardIcon(card.icon || "lock")}
+                  {getHighlightFeatureIcon(card.icon || "lock")}
                 </div>
 
                 {/* Title */}

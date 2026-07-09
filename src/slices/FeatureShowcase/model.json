@@ -34,10 +34,10 @@
             "single": "paragraph"
           }
         },
-        "dark_cards": {
+        "core_features": {
           "type": "Group",
           "config": {
-            "label": "Dark Cards (Top)",
+            "label": "Core Features (Top)",
             "repeat": true,
             "fields": {
               "icon": {
@@ -75,10 +75,10 @@
             }
           }
         },
-        "light_cards": {
+        "highlight_features": {
           "type": "Group",
           "config": {
-            "label": "Light Cards (Bottom)",
+            "label": "Highlight Features (Bottom)",
             "repeat": true,
             "fields": {
               "icon": {
@@ -121,5 +121,5 @@
       "items": {}
     }
   ],
-  "description": "Premium feature showcase containing 3 top dark cards with checklists and 6 bottom light cards."
+  "description": "Premium feature showcase containing 3 top core features and 6 bottom highlight features."
 }

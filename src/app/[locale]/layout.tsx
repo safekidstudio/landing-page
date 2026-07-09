@@ -13,11 +13,9 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Kibal - Cân bằng cuộc sống số cho con yêu của bạn",
-  description:
-    "Kibal là nền tảng quản lý thời gian sử dụng thiết bị thông minh và bảo vệ trẻ em trước những nội dung độc hại.",
-};
+import { defaultMetadata } from "@/config/metadata";
+
+export const metadata: Metadata = defaultMetadata;
 
 type LayoutProps = {
   children: React.ReactNode;
