@@ -17,6 +17,9 @@
             },
             "testimonials": {
               "type": "SharedSlice"
+            },
+            "feature_showcase": {
+              "type": "SharedSlice"
             }
           }
         }

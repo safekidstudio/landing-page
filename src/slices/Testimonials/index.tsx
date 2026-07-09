@@ -34,21 +34,28 @@ export default function Testimonials({ slice }: TestimonialsProps) {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full bg-[#FAF8F5] py-20 md:py-28 border-b border-border/40"
+      className="w-full bg-[#F3F4F6] py-20 border-b border-border/40"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Badge Text */}
         {isFilled.keyText(primary.badge_text) && (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand/10 text-brand border border-brand/20 mb-6">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand/5 text-brand border border-brand/20 mb-6">
             {primary.badge_text}
           </span>
         )}
 
         {/* Heading */}
         {isFilled.richText(primary.heading) && (
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground text-center max-w-3xl leading-tight mb-12">
-            <PrismicRichText field={primary.heading} />
-          </h2>
+          <PrismicRichText
+            field={primary.heading}
+            components={{
+              heading2: ({ children }) => (
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-foreground text-center max-w-3xl leading-tight mb-12">
+                  {children}
+                </h2>
+              ),
+            }}
+          />
         )}
 
         {/* Numeric Stats Row */}
@@ -57,12 +64,12 @@ export default function Testimonials({ slice }: TestimonialsProps) {
             {primary.stats_list.map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center">
                 {isFilled.keyText(stat.number) && (
-                  <span className="text-3xl sm:text-4xl font-black text-brand tracking-tight">
+                  <span className="text-3xl sm:text-4xl font-bold text-brand tracking-tight">
                     {stat.number}
                   </span>
                 )}
                 {isFilled.keyText(stat.label) && (
-                  <span className="text-[10px] sm:text-xs font-bold tracking-widest text-muted-foreground/80 mt-1 uppercase">
+                  <span className="text-[10px] sm:text-xs font-medium tracking-widest text-muted-foreground/80 mt-1 uppercase">
                     {stat.label}
                   </span>
                 )}
@@ -86,7 +93,7 @@ export default function Testimonials({ slice }: TestimonialsProps) {
                       {getAuthorIcon(item.icon || "user")}
                     </div>
                     {isFilled.keyText(item.author) && (
-                      <span className="text-sm font-bold text-foreground">
+                      <span className="font-bold text-foreground">
                         {item.author}
                       </span>
                     )}
@@ -94,19 +101,19 @@ export default function Testimonials({ slice }: TestimonialsProps) {
 
                   {/* Quote Text */}
                   {isFilled.richText(item.quote) && (
-                    <div className="text-sm text-muted-foreground/90 leading-relaxed italic mb-6">
+                    <div className="text-muted-foreground/90 leading-relaxed italic mb-6">
                       <PrismicRichText field={item.quote} />
                     </div>
                   )}
                 </div>
 
                 {/* Read More Link */}
-                {isFilled.link(item.link) && (
+                {isFilled.keyText(item.link.text) && (
                   <PrismicNextLink
                     field={item.link}
                     className="text-xs font-bold text-brand hover:underline inline-flex items-center gap-1 mt-auto"
                   >
-                    <span>{item.link_label || "Read more"}</span>
+                    <span>{item.link.text || "Read more"}</span>
                     <span>&rarr;</span>
                   </PrismicNextLink>
                 )}

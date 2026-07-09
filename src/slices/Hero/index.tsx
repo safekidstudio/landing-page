@@ -105,7 +105,7 @@ export default function Hero({ slice }: HeroProps) {
                 className={cn(buttonVariants({
                   variant: 'secondary',
                   size: 'lg',
-                }), "")}
+                }), "rounded-full px-8 py-3.5 h-auto text-base font-medium")}
               >
                 {primary.secondary_button.text}
               </PrismicNextLink>
@@ -126,11 +126,11 @@ export default function Hero({ slice }: HeroProps) {
 
         {/* Key Benefits row */}
         {items && items.length > 0 && (
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mt-12 text-xs md:text-sm font-semibold tracking-wider text-muted-foreground/80 uppercase">
+          <div className="flex flex-wrap items-center justify-center border-y border-border gap-x-8 gap-y-4 mt-12 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase">
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 bg-white/40 px-3 py-1.5 rounded-lg border border-[#F3F4F6]"
+                className="flex items-center gap-2 px-3 py-4"
               >
                 {getBenefitIcon(item.feature_icon || "shield")}
                 <span>{item.feature_text}</span>

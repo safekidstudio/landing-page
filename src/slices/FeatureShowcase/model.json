@@ -1,0 +1,125 @@
+{
+  "id": "feature_showcase",
+  "type": "SharedSlice",
+  "name": "FeatureShowcase",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "badge_text": {
+          "type": "Text",
+          "config": {
+            "label": "Badge Text",
+            "placeholder": "OPEN SOURCE & PRIVACY-FIRST"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Take Control of Your Family's Digital Well-being",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "AI-Powered Meeting Transcriptions - 100% Private, 100% Local, Open Source",
+            "single": "paragraph"
+          }
+        },
+        "dark_cards": {
+          "type": "Group",
+          "config": {
+            "label": "Dark Cards (Top)",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "star",
+                    "shield",
+                    "share",
+                    "lock",
+                    "activity",
+                    "clock",
+                    "key"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Intelligent Web & App Filter"
+                }
+              },
+              "checklist": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Checklist Items",
+                  "placeholder": "Add bullet points for checklist...",
+                  "multi": "paragraph,em,strong,list-item",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
+        },
+        "light_cards": {
+          "type": "Group",
+          "config": {
+            "label": "Light Cards (Bottom)",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "lock",
+                    "activity",
+                    "grid",
+                    "zap",
+                    "user",
+                    "file",
+                    "smartphone",
+                    "shield"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "100% ON-DEVICE AI"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "All analysis happens on your child's phone...",
+                  "multi": "paragraph,em,strong",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Premium feature showcase containing 3 top dark cards with checklists and 6 bottom light cards."
+}
