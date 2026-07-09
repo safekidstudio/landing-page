@@ -1,0 +1,94 @@
+{
+  "id": "principles",
+  "type": "SharedSlice",
+  "name": "Principles",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/principles/default/ed917dc3c59d8c59ad49b7e95b1922793bda2d37.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "What We Stand For",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "The principles that guide everything we build",
+            "single": "paragraph"
+          }
+        },
+        "primary_button": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "secondary_button": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "principles_list": {
+          "type": "Group",
+          "config": {
+            "label": "Principles List",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "shield",
+                    "users",
+                    "globe",
+                    "heart",
+                    "star",
+                    "lock"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Absolute Privacy"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "We believe family data should remain strictly confidential...",
+                  "single": "paragraph"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Section representing the core company principles or values with a grid of cards and CTA action buttons."
+}

@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
 
 /**
  * Content for Page documents
@@ -1153,6 +1153,119 @@ type HeroSliceVariation = HeroSliceDefault
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Principles → Default → Primary → Principles List*
+ */
+export interface PrinciplesSliceDefaultPrimaryPrinciplesListItem {
+	/**
+	 * Icon field in *Principles → Default → Primary → Principles List*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: principles.default.primary.principles_list[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"shield" | "users" | "globe" | "heart" | "star" | "lock">;
+	
+	/**
+	 * Title field in *Principles → Default → Primary → Principles List*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Absolute Privacy
+	 * - **API ID Path**: principles.default.primary.principles_list[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Description field in *Principles → Default → Primary → Principles List*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: We believe family data should remain strictly confidential...
+	 * - **API ID Path**: principles.default.primary.principles_list[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Principles → Default → Primary*
+ */
+export interface PrinciplesSliceDefaultPrimary {
+	/**
+	 * Heading field in *Principles → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: What We Stand For
+	 * - **API ID Path**: principles.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *Principles → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: The principles that guide everything we build
+	 * - **API ID Path**: principles.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Primary Button field in *Principles → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: principles.default.primary.primary_button
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	primary_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Secondary Button field in *Principles → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: principles.default.primary.secondary_button
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	secondary_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Principles List field in *Principles → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: principles.default.primary.principles_list[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	principles_list: prismic.GroupField<Simplify<PrinciplesSliceDefaultPrimaryPrinciplesListItem>>;
+}
+
+/**
+ * Default variation for Principles Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSliceDefault = prismic.SharedSliceVariation<"default", Simplify<PrinciplesSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Principles*
+ */
+type PrinciplesSliceVariation = PrinciplesSliceDefault
+
+/**
+ * Principles Shared Slice
+ *
+ * - **API ID**: `principles`
+ * - **Description**: Section representing the core company principles or values with a grid of cards and CTA action buttons.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSlice = prismic.SharedSlice<"principles", PrinciplesSliceVariation>;
+
+/**
  * Item in *Testimonials → Default → Primary → Stats List*
  */
 export interface TestimonialsSliceDefaultPrimaryStatsListItem {
@@ -1356,6 +1469,11 @@ declare module "@prismicio/client" {
 			HeroSliceDefaultItem,
 			HeroSliceVariation,
 			HeroSliceDefault,
+			PrinciplesSlice,
+			PrinciplesSliceDefaultPrimaryPrinciplesListItem,
+			PrinciplesSliceDefaultPrimary,
+			PrinciplesSliceVariation,
+			PrinciplesSliceDefault,
 			TestimonialsSlice,
 			TestimonialsSliceDefaultPrimaryStatsListItem,
 			TestimonialsSliceDefaultPrimaryReviewsItem,
