@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { type Content, isFilled } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import {
   CheckCircle,
@@ -10,9 +10,10 @@ import {
   MapPin,
   MessageSquare,
   Shield,
-  Smartphone
+  Smartphone,
 } from "lucide-react";
 import { MediaEmbed } from "./MediaEmbed";
+import { AnimatedComponent } from "@/components/animated";
 
 export type HeroProps = {
   slice: Content.HeroSlice;
@@ -20,7 +21,6 @@ export type HeroProps = {
 
 export default function Hero({ slice }: HeroProps) {
   const { primary, items } = slice;
-
   // Icon resolver for key benefits row
   const getBenefitIcon = (iconName: string) => {
     switch (iconName) {
@@ -41,107 +41,152 @@ export default function Hero({ slice }: HeroProps) {
   };
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-[#FAF8F5] overflow-hidden text-center px-4 md:px-6">
+    <section className="relative w-full py-16 md:py-24 bg-[#FAF8F5] overflow-hidden text-center px-4 md:px-6 flex flex-col items-center">
       {/* Subtle background warm radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-emerald-50/40 to-transparent rounded-full blur-3xl -z-10" />
 
-      <div className="mx-auto flex flex-col items-center">
-        {/* Pill Badge */}
-        {isFilled.keyText(primary.badge_text) && (
+      {/* 1. Pill Badge - Fade In */}
+      {isFilled.keyText(primary.badge_text) && (
+        <AnimatedComponent
+          type="fade"
+          duration={0.5}
+          delay={0.1}
+          className="inline-flex justify-center"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-semibold uppercase tracking-wider mb-6">
             <CheckCircle className="h-3.5 w-3.5 fill-brand text-brand/10" />
-            {primary.badge_text ? (
-              <span>
-                {primary.badge_text}
-              </span>
-            ) : (
-              <span>{primary.badge_text}</span>
-            )}
+            <span>{primary.badge_text}</span>
           </div>
-        )}
+        </AnimatedComponent>
+      )}
 
-        {/* Heading */}
-        <PrismicRichText
-          field={primary.heading}
-          components={{
-            heading1: ({ children }) => (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[#1F2937] leading-[1.12]">
-                {children}
-              </h1>
-            ),
-          }}
-        />
-
-        {/* Subheading / Description */}
-        <PrismicRichText
-          field={primary.description}
-          components={{
-            paragraph: ({ children }) => (
-              <p className="text-base md:text-lg text-muted-foreground/80 max-w-2xl mt-5 leading-relaxed">
-                {children}
-              </p>
-            ),
-          }}
-        />
-
-        {/* Action Buttons Row */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-9">
-          {/* Primary Button */}
-          {isFilled.keyText(primary.primary_button.text) &&
-            (
-              <PrismicNextLink
-                field={primary.primary_button}
-                className={cn(buttonVariants({ variant: "brand" }), "rounded-full px-8 py-3.5 h-auto text-base font-medium")}
-              >
-                {primary.primary_button.text}
-              </PrismicNextLink>
-            )}
-
-          {/* Secondary Button */}
-          {isFilled.keyText(primary.secondary_button.text) &&
-            (
-              <PrismicNextLink
-                field={primary.secondary_button}
-                className={cn(buttonVariants({
-                  variant: 'secondary',
-                  size: 'lg',
-                }), "rounded-full px-8 py-3.5 h-auto text-base font-medium")}
-              >
-                {primary.secondary_button.text}
-              </PrismicNextLink>
-            )}
-
-          {/* Tertiary Button */}
-          {isFilled.keyText(primary.tertiary_button.text) &&
-            (
-              <PrismicNextLink
-                field={primary.tertiary_button}
-                className="inline-flex items-center gap-2 text-[#374151] hover:text-brand font-semibold px-4 py-3.5 transition-colors duration-200"
-              >
-                <MessageSquare className="h-4.5 w-4.5" />
-                {primary.tertiary_button.text}
-              </PrismicNextLink>
-            )}
+      {/* 2. Heading - Slide Up */}
+      <AnimatedComponent
+        type="slide"
+        direction="up"
+        duration={0.6}
+        delay={0.2}
+        className="w-full flex justify-center"
+      >
+        <div className="max-w-4xl">
+          <PrismicRichText
+            field={primary.heading}
+            components={{
+              heading1: ({ children }) => (
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[#1F2937] leading-[1.12]">
+                  {children}
+                </h1>
+              ),
+            }}
+          />
         </div>
+      </AnimatedComponent>
 
-        {/* Key Benefits row */}
-        {items && items.length > 0 && (
-          <div className="flex flex-wrap items-center justify-center border-y border-border gap-x-8 gap-y-4 mt-12 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase">
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-3 py-4"
-              >
-                {getBenefitIcon(item.feature_icon || "shield")}
-                <span>{item.feature_text}</span>
+      {/* 3. Subheading / Description - Slide Up */}
+      <AnimatedComponent
+        type="slide"
+        direction="up"
+        duration={0.6}
+        delay={0.35}
+        className="w-full flex justify-center mt-5"
+      >
+        <div className="max-w-2xl">
+          <PrismicRichText
+            field={primary.description}
+            components={{
+              paragraph: ({ children }) => (
+                <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed">
+                  {children}
+                </p>
+              ),
+            }}
+          />
+        </div>
+      </AnimatedComponent>
+
+      {/* 4. Action Buttons Row - Slide Up */}
+      {(isFilled.link(primary.primary_button) ||
+        isFilled.link(primary.secondary_button) ||
+        isFilled.link(primary.tertiary_button)) && (
+          <AnimatedComponent
+            type="slide"
+            direction="up"
+            duration={0.6}
+            delay={0.5}
+            className="w-full flex justify-center mt-9"
+          >
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {/* Primary Button */}
+              {isFilled.keyText(primary.primary_button.text) && (
+                <PrismicNextLink
+                  field={primary.primary_button}
+                  className={cn(
+                    buttonVariants({ variant: "brand" }),
+                    "rounded-full px-8 py-3.5 h-auto text-base font-medium",
+                  )}
+                >
+                  {primary.primary_button.text}
+                </PrismicNextLink>
+              )}
+
+              {/* Secondary Button */}
+              {isFilled.keyText(primary.secondary_button.text) && (
+                <PrismicNextLink
+                  field={primary.secondary_button}
+                  className={cn(
+                    buttonVariants({
+                      variant: "secondary",
+                      size: "lg",
+                    }),
+                    "rounded-full px-8 py-3.5 h-auto text-base font-medium",
+                  )}
+                >
+                  {primary.secondary_button.text}
+                </PrismicNextLink>
+              )}
+
+              {/* Tertiary Button */}
+              {isFilled.keyText(primary.tertiary_button.text) && (
+                <PrismicNextLink
+                  field={primary.tertiary_button}
+                  className="inline-flex items-center gap-2 text-[#374151] hover:text-brand font-semibold px-4 py-3.5 transition-colors duration-200"
+                >
+                  <MessageSquare className="h-4.5 w-4.5" />
+                  {primary.tertiary_button.text}
+                </PrismicNextLink>
+              )}
+            </div>
+          </AnimatedComponent>)}
+
+      {/* 5. Key Benefits row - Fade In */}
+      {isFilled.group(primary.stats_list) && (
+        <AnimatedComponent
+          type="fade"
+          duration={0.7}
+          delay={0.65}
+          className="w-full flex justify-center mt-12"
+        >
+          <div className="flex flex-wrap items-center justify-center border-y border-border gap-x-8 gap-y-4 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase">
+            {primary.stats_list.map((item, index) => (
+              <div key={index} className="flex items-center gap-2 px-3 py-4">
+                {getBenefitIcon(item.icon || "shield")}
+                <span>{item.label}</span>
               </div>
             ))}
           </div>
-        )}
+        </AnimatedComponent>
+      )}
 
-        {/* Media Asset Showcase Container with Glow */}
-        {isFilled.embed(primary.media) && (
-          <div className="relative w-full max-w-5xl mt-16 group">
+      {/* 6. Media Asset Showcase Container - Zoom In */}
+      {isFilled.embed(primary.media) && (
+        <AnimatedComponent
+          type="slide"
+          direction="up"
+          duration={0.8}
+          delay={0.8}
+          className="w-full flex justify-center mt-16"
+        >
+          <div className="relative w-full max-w-5xl group">
             {/* Green glowing backdrops */}
             <div className="absolute inset-0 bg-brand/25 blur-3xl -z-10 rounded-2xl scale-95 group-hover:scale-100 transition-transform duration-500" />
 
@@ -155,8 +200,8 @@ export default function Hero({ slice }: HeroProps) {
               </p>
             )}
           </div>
-        )}
-      </div>
+        </AnimatedComponent>
+      )}
     </section>
   );
 }

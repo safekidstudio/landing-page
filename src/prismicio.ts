@@ -1,8 +1,14 @@
 import {
   createClient as baseCreateClient,
   type ClientConfig,
+  type LinkResolverFunction,
 } from "@prismicio/client";
-import { enableAutoPreviews } from "@prismicio/next";
+import {
+  enableAutoPreviews,
+  PrismicNextLink as BasePrismicNextLink,
+  type PrismicNextLinkProps,
+} from "@prismicio/next";
+import React from "react";
 import prismicConfig from "../prismic.config.json";
 
 /**
@@ -11,6 +17,27 @@ import prismicConfig from "../prismic.config.json";
 export const LOCALE_MAP: Record<string, string> = {
   en: "en-us",
   vi: "vi-vn",
+};
+
+/**
+ * Custom Link Resolver to resolve Prismic documents to short locale URLs.
+ */
+export const linkResolver: LinkResolverFunction = (doc) => {
+  const langCode = doc.lang ? doc.lang.split("-")[0] : "en";
+
+  if (doc.type === "home_page") {
+    return `/${langCode}`;
+  }
+  if (doc.type === "blog_page") {
+    return `/${langCode}/blog`;
+  }
+  if (doc.type === "blog_post") {
+    return `/${langCode}/blog/${doc.uid}`;
+  }
+  if (doc.type === "page") {
+    return `/${langCode}/${doc.uid}`;
+  }
+  return "/";
 };
 
 /**
@@ -44,4 +71,14 @@ export const createClient = (config: ClientConfig = {}) => {
  */
 export function getBlogLink(locale: string, uid: string) {
   return `/${locale}/blog/${uid}`;
+}
+
+/**
+ * Custom PrismicNextLink that automatically applies the custom linkResolver.
+ */
+export function PrismicNextLink(props: PrismicNextLinkProps) {
+  return React.createElement(BasePrismicNextLink, {
+    linkResolver,
+    ...props,
+  });
 }

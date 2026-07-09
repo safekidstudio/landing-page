@@ -31,7 +31,8 @@
           "config": {
             "label": "Description",
             "placeholder": "Kibal helps parents set healthy screen time limits...",
-            "single": "paragraph"
+            "single": "paragraph,strong,em",
+            "allowTargetBlank": true
           }
         },
         "primary_button": {
@@ -77,11 +78,12 @@
                   "label": "Icon",
                   "placeholder": "",
                   "options": [
-                    "security",
+                    "shield",
                     "phone",
-                    "filter",
-                    "timer",
-                    "location"
+                    "lock",
+                    "clock",
+                    "map-pin",
+                    "check"
                   ]
                 }
               },
@@ -110,30 +112,7 @@
           }
         }
       },
-      "items": {
-        "feature_text": {
-          "type": "Text",
-          "config": {
-            "label": "Feature Text",
-            "placeholder": "PRIVACY-FIRST CORE"
-          }
-        },
-        "feature_icon": {
-          "type": "Select",
-          "config": {
-            "label": "Feature Icon",
-            "default_value": "shield",
-            "options": [
-              "shield",
-              "phone",
-              "lock",
-              "clock",
-              "map-pin",
-              "check"
-            ]
-          }
-        }
-      }
+      "items": {}
     }
   ],
   "description": "Hero section with top badge, title, subtitle, CTA actions, feature benefits, and media player mockup."

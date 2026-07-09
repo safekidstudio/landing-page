@@ -60,13 +60,7 @@
                 "config": {
                   "label": "Icon",
                   "placeholder": "",
-                  "options": [
-                    "pencil",
-                    "file-text",
-                    "user",
-                    "globe",
-                    "quote"
-                  ]
+                  "options": ["pencil", "file-text", "user", "globe", "quote"]
                 }
               },
               "author": {

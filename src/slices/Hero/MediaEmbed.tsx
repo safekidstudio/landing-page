@@ -13,22 +13,62 @@ interface MediaEmbedProps {
   } | null;
 }
 
-function getYouTubeThumbnail(url: string | null): string | null {
+// Helper to extract YouTube video ID
+function getYouTubeId(url: string | null): string | null {
   if (!url) return null;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);
-  const id = (match && match[2].length === 11) ? match[2] : null;
-  return id ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : null;
+  return match && match[2].length === 11 ? match[2] : null;
 }
 
 export function MediaEmbed({ media }: MediaEmbedProps) {
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [thumbnailUrl, setThumbnailUrl] = React.useState<string>(
+    "/images/video_thumbnail.png",
+  );
+
+  React.useEffect(() => {
+    // 1. If Prismic has a custom thumbnail configured, prioritize it
+    if (media?.thumbnail_url) {
+      setThumbnailUrl(media.thumbnail_url);
+      return;
+    }
+
+    // 2. If it is a YouTube video, try to fetch the highest quality thumbnail available
+    const videoId = media?.embed_url ? getYouTubeId(media.embed_url) : null;
+    if (videoId) {
+      const maxResUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      const sdUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      const hqUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+      const img = new Image();
+      img.src = maxResUrl;
+      img.onload = () => {
+        // YouTube returns a 120x90 placeholder image if maxresdefault is not available
+        if (img.width === 120 && img.height === 90) {
+          const imgSd = new Image();
+          imgSd.src = sdUrl;
+          imgSd.onload = () => {
+            if (imgSd.width === 120 && imgSd.height === 90) {
+              setThumbnailUrl(hqUrl); // Fallback to high quality (always available)
+            } else {
+              setThumbnailUrl(sdUrl); // Standard definition
+            }
+          };
+          imgSd.onerror = () => setThumbnailUrl(hqUrl);
+        } else {
+          setThumbnailUrl(maxResUrl); // Maximum resolution (1080p/720p)
+        }
+      };
+      img.onerror = () => setThumbnailUrl(sdUrl);
+    } else {
+      // 3. Fallback to our custom generated local video thumbnail
+      setThumbnailUrl("/images/video_thumbnail.png");
+    }
+  }, [media]);
 
   if (!media || !media.html) return null;
-
-  const thumbnailUrl =
-    media.thumbnail_url ||
-    (media.embed_url ? getYouTubeThumbnail(media.embed_url) : null);
 
   // Append autoplay parameters when playing
   let embedHtml = media.html;
@@ -43,7 +83,7 @@ export function MediaEmbed({ media }: MediaEmbedProps) {
     <div
       className={cn(
         "relative rounded-2xl overflow-hidden shadow-2xl shadow-brand/30 border border-black/5 bg-[#F9FAFB] aspect-video w-full",
-        !isPlaying && "cursor-pointer"
+        !isPlaying && "cursor-pointer",
       )}
       onClick={() => {
         if (!isPlaying) {

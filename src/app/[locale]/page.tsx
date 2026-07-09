@@ -51,7 +51,13 @@ export default async function HomePage({ params }: Props) {
     const page = await client.getSingle("home_page", {
       lang: prismicLocale,
     });
-    return <SliceZone slices={page.data.slices} components={components} context={{ locale }} />;
+    return (
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={{ locale }}
+      />
+    );
   } catch (error) {
     notFound();
   }

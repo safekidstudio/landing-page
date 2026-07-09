@@ -51,7 +51,13 @@ export default async function Page({ params }: Props) {
     const page = await client.getByUID("page", uid, {
       lang: prismicLocale,
     });
-    return <SliceZone slices={page.data.slices} components={components} context={{ locale }} />;
+    return (
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={{ locale }}
+      />
+    );
   } catch (error) {
     notFound();
   }
