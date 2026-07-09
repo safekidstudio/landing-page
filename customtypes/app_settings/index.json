@@ -130,24 +130,17 @@
           }
         }
       },
-      "copyright_text": {
-        "type": "Text",
-        "config": {
-          "label": "Copyright Text",
-          "placeholder": "© 2026 Kibal. All rights reserved. Privacy-first family protection."
-        }
-      },
-      "bottom_texts": {
+      "copy_right_texts": {
         "type": "Group",
         "config": {
-          "label": "Bottom Texts (e.g. Terms of Service)",
+          "label": "Copy Right Texts",
           "repeat": true,
           "fields": {
             "label": {
               "type": "Text",
               "config": {
                 "label": "Label",
-                "placeholder": "Privacy Policy"
+                "placeholder": ""
               }
             }
           }

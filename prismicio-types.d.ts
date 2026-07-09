@@ -123,15 +123,15 @@ export interface AppSettingsDocumentDataFooterNavigationLinksItem {
 }
 
 /**
- * Item in *App Settings → Bottom Texts (e.g. Terms of Service)*
+ * Item in *App Settings → Copy Right Texts*
  */
-export interface AppSettingsDocumentDataBottomTextsItem {
+export interface AppSettingsDocumentDataCopyRightTextsItem {
 	/**
-	 * Label field in *App Settings → Bottom Texts (e.g. Terms of Service)*
+	 * Label field in *App Settings → Copy Right Texts*
 	 *
 	 * - **Field Type**: Text
-	 * - **Placeholder**: Privacy Policy
-	 * - **API ID Path**: app_settings.bottom_texts[].label
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: app_settings.copy_right_texts[].label
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	label: prismic.KeyTextField;
@@ -228,26 +228,15 @@ interface AppSettingsDocumentData {
 	footer_navigation_links: prismic.GroupField<Simplify<AppSettingsDocumentDataFooterNavigationLinksItem>>;
 	
 	/**
-	 * Copyright Text field in *App Settings*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: © 2026 Kibal. All rights reserved. Privacy-first family protection.
-	 * - **API ID Path**: app_settings.copyright_text
-	 * - **Tab**: Footer
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	copyright_text: prismic.KeyTextField;
-	
-	/**
-	 * Bottom Texts (e.g. Terms of Service) field in *App Settings*
+	 * Copy Right Texts field in *App Settings*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.bottom_texts[]
+	 * - **API ID Path**: app_settings.copy_right_texts[]
 	 * - **Tab**: Footer
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	bottom_texts: prismic.GroupField<Simplify<AppSettingsDocumentDataBottomTextsItem>>;
+	copy_right_texts: prismic.GroupField<Simplify<AppSettingsDocumentDataCopyRightTextsItem>>;
 }
 
 /**
@@ -692,7 +681,7 @@ declare module "@prismicio/client" {
 			AppSettingsDocumentDataNavigationItemsItem,
 			AppSettingsDocumentDataSocialLinksItem,
 			AppSettingsDocumentDataFooterNavigationLinksItem,
-			AppSettingsDocumentDataBottomTextsItem,
+			AppSettingsDocumentDataCopyRightTextsItem,
 			BlogPageDocument,
 			BlogPageDocumentData,
 			BlogPageDocumentDataSlicesSlice,
