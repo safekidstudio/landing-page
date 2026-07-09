@@ -37,17 +37,15 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang={locale} suppressHydrationWarning className="h-full">
-      <body
-        className={`${geistSans.variable} font-sans min-h-full flex flex-col antialiased`}
-      >
+      <body className={`${geistSans.variable} font-sans antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
             disableTransitionOnChange
           >
-            <main className="flex flex-col flex-1">{children}</main>
+            {children}
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

@@ -2,16 +2,12 @@
   "repositoryName": "kibal",
   "routes": [
     {
-      "type": "blog_home",
+      "type": "blog_page",
       "path": "/:lang/blog"
     },
     {
-      "type": "blog_page",
-      "path": "/:lang/blog/:uid"
-    },
-    {
       "type": "blog_post",
-      "path": "/blog-post/:uid"
+      "path": "/:lang/blog/:uid"
     },
     {
       "type": "home_page",

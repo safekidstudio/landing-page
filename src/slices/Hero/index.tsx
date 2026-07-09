@@ -1,5 +1,7 @@
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { type Content, isFilled } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import {
   CheckCircle,
@@ -23,18 +25,18 @@ export default function Hero({ slice }: HeroProps) {
   const getBenefitIcon = (iconName: string) => {
     switch (iconName) {
       case "shield":
-        return <Shield className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <Shield className="h-4.5 w-4.5 text-brand" />;
       case "phone":
-        return <Smartphone className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <Smartphone className="h-4.5 w-4.5 text-brand" />;
       case "lock":
-        return <Lock className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <Lock className="h-4.5 w-4.5 text-brand" />;
       case "clock":
-        return <Clock className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <Clock className="h-4.5 w-4.5 text-brand" />;
       case "map-pin":
-        return <MapPin className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <MapPin className="h-4.5 w-4.5 text-brand" />;
       case "check":
       default:
-        return <CheckCircle className="h-4.5 w-4.5 text-[#006B3F]" />;
+        return <CheckCircle className="h-4.5 w-4.5 text-brand" />;
     }
   };
 
@@ -43,18 +45,15 @@ export default function Hero({ slice }: HeroProps) {
       {/* Subtle background warm radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-emerald-50/40 to-transparent rounded-full blur-3xl -z-10" />
 
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+      <div className="mx-auto flex flex-col items-center">
         {/* Pill Badge */}
         {isFilled.keyText(primary.badge_text) && (
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F5EE] border border-[#CDECE0] text-[#006B3F] text-xs font-semibold uppercase tracking-wider mb-6">
-            <CheckCircle className="h-3.5 w-3.5 fill-[#006B3F] text-[#E6F5EE]" />
-            {primary.badge_link && isFilled.link(primary.badge_link) ? (
-              <PrismicNextLink
-                field={primary.badge_link}
-                className="hover:underline"
-              >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-semibold uppercase tracking-wider mb-6">
+            <CheckCircle className="h-3.5 w-3.5 fill-brand text-brand/10" />
+            {primary.badge_text ? (
+              <span>
                 {primary.badge_text}
-              </PrismicNextLink>
+              </span>
             ) : (
               <span>{primary.badge_text}</span>
             )}
@@ -66,7 +65,7 @@ export default function Hero({ slice }: HeroProps) {
           field={primary.heading}
           components={{
             heading1: ({ children }) => (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[#1F2937] max-w-4xl leading-[1.12]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[#1F2937] leading-[1.12]">
                 {children}
               </h1>
             ),
@@ -88,36 +87,39 @@ export default function Hero({ slice }: HeroProps) {
         {/* Action Buttons Row */}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-9">
           {/* Primary Button */}
-          {isFilled.keyText(primary.primary_button_label) &&
-            isFilled.link(primary.primary_button_link) && (
+          {isFilled.keyText(primary.primary_button.text) &&
+            (
               <PrismicNextLink
-                field={primary.primary_button_link}
-                className="inline-flex items-center justify-center bg-[#006B3F] hover:bg-[#005732] text-white px-8 py-3.5 rounded-full font-medium transition-all duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+                field={primary.primary_button}
+                className={cn(buttonVariants({ variant: "brand" }), "rounded-full px-8 py-3.5 h-auto text-base font-medium")}
               >
-                {primary.primary_button_label}
+                {primary.primary_button.text}
               </PrismicNextLink>
             )}
 
           {/* Secondary Button */}
-          {isFilled.keyText(primary.secondary_button_label) &&
-            isFilled.link(primary.secondary_button_link) && (
+          {isFilled.keyText(primary.secondary_button.text) &&
+            (
               <PrismicNextLink
-                field={primary.secondary_button_link}
-                className="inline-flex items-center justify-center bg-white border border-[#E5E7EB] hover:border-[#D1D5DB] hover:bg-[#F9FAFB] text-[#374151] px-8 py-3.5 rounded-full font-medium transition-all duration-200 shadow-sm"
+                field={primary.secondary_button}
+                className={cn(buttonVariants({
+                  variant: 'secondary',
+                  size: 'lg',
+                }), "")}
               >
-                {primary.secondary_button_label}
+                {primary.secondary_button.text}
               </PrismicNextLink>
             )}
 
           {/* Tertiary Button */}
-          {isFilled.keyText(primary.tertiary_button_label) &&
-            isFilled.link(primary.tertiary_button_link) && (
+          {isFilled.keyText(primary.tertiary_button.text) &&
+            (
               <PrismicNextLink
-                field={primary.tertiary_button_link}
-                className="inline-flex items-center gap-2 text-[#374151] hover:text-[#006B3F] font-semibold px-4 py-3.5 transition-colors duration-200"
+                field={primary.tertiary_button}
+                className="inline-flex items-center gap-2 text-[#374151] hover:text-brand font-semibold px-4 py-3.5 transition-colors duration-200"
               >
                 <MessageSquare className="h-4.5 w-4.5" />
-                {primary.tertiary_button_label}
+                {primary.tertiary_button.text}
               </PrismicNextLink>
             )}
         </div>
@@ -138,36 +140,20 @@ export default function Hero({ slice }: HeroProps) {
         )}
 
         {/* Media Asset Showcase Container with Glow */}
-        {isFilled.image(primary.media_image) && (
+        {isFilled.embed(primary.media) && (
           <div className="relative w-full max-w-5xl mt-16 group">
             {/* Green glowing backdrops */}
-            <div className="absolute inset-0 bg-[#10B981]/25 blur-3xl -z-10 rounded-2xl scale-95 group-hover:scale-100 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-brand/25 blur-3xl -z-10 rounded-2xl scale-95 group-hover:scale-100 transition-transform duration-500" />
 
             {/* Main Mockup Frame */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-black/5 bg-[#F9FAFB] aspect-video">
-              <PrismicNextImage
-                field={primary.media_image}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 1024px"
-                priority
-              />
+
 
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover:bg-black/20 transition-all duration-300">
-                {primary.video_link && isFilled.link(primary.video_link) ? (
-                  <PrismicNextLink
-                    field={primary.video_link}
-                    className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg text-[#006B3F] hover:scale-110 transition-transform duration-200 transform scale-100"
-                    aria-label="Play Demo Video"
-                  >
-                    <Play className="h-6 w-6 fill-current ml-1" />
-                  </PrismicNextLink>
-                ) : (
-                  <div className="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-lg text-[#006B3F] group-hover:scale-110 transition-transform duration-200">
-                    <Play className="h-6 w-6 fill-current ml-1" />
-                  </div>
-                )}
+                <div className="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-lg text-brand group-hover:scale-110 transition-transform duration-200">
+                  <Play className="h-6 w-6 fill-current ml-1" />
+                </div>
               </div>
             </div>
 

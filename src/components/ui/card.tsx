@@ -33,34 +33,34 @@ export function Card({
 
   const radii = {
     charcoal: "rounded-xl",
-    violet: "rounded-xxl",
-    magenta: "rounded-xxl",
-    orange: "rounded-xxl",
-    coral: "rounded-xxl",
+    violet: "rounded-2xl",
+    magenta: "rounded-2xl",
+    orange: "rounded-2xl",
+    coral: "rounded-2xl",
   };
 
   const variants = {
     charcoal:
-      "bg-surface-1 border-hairline text-ink hover:border-hairline/60 shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
+      "bg-card border-border text-card-foreground hover:border-border/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
     violet:
-      "bg-gradient-to-br from-surface-2 to-gradient-violet/20 border-gradient-violet/30 text-ink shadow-[0_8px_30px_rgba(106,76,245,0.15)]",
+      "bg-gradient-to-br from-card to-violet-500/10 border-violet-500/20 text-card-foreground shadow-[0_8px_30px_rgba(139,92,246,0.08)]",
     magenta:
-      "bg-gradient-to-br from-surface-2 to-gradient-magenta/20 border-gradient-magenta/30 text-ink shadow-[0_8px_30px_rgba(212,77,240,0.15)]",
+      "bg-gradient-to-br from-card to-fuchsia-500/10 border-fuchsia-500/20 text-card-foreground shadow-[0_8px_30px_rgba(217,70,239,0.08)]",
     orange:
-      "bg-gradient-to-br from-surface-2 to-gradient-orange/20 border-gradient-orange/30 text-ink shadow-[0_8px_30px_rgba(255,122,61,0.15)]",
+      "bg-gradient-to-br from-card to-orange-500/10 border-orange-500/20 text-card-foreground shadow-[0_8px_30px_rgba(249,115,22,0.08)]",
     coral:
-      "bg-gradient-to-br from-surface-2 to-gradient-coral/20 border-gradient-coral/30 text-ink shadow-[0_8px_30px_rgba(255,85,119,0.15)]",
+      "bg-gradient-to-br from-card to-rose-500/10 border-rose-500/20 text-card-foreground shadow-[0_8px_30px_rgba(244,63,94,0.08)]",
   };
 
   const combinedClassName = `${baseStyles} ${radii[variant]} ${variants[variant]} ${className}`;
 
   // Glow color for interactive spotlight
   const glowColors = {
-    charcoal: "rgba(255, 255, 255, 0.05)",
-    violet: "rgba(106, 76, 245, 0.25)",
-    magenta: "rgba(212, 77, 240, 0.25)",
-    orange: "rgba(255, 122, 61, 0.25)",
-    coral: "rgba(255, 85, 119, 0.25)",
+    charcoal: "rgba(120, 120, 120, 0.05)",
+    violet: "rgba(139, 92, 246, 0.15)",
+    magenta: "rgba(217, 70, 239, 0.15)",
+    orange: "rgba(249, 115, 22, 0.15)",
+    coral: "rgba(244, 63, 94, 0.15)",
   };
 
   const backgroundGlow = useMotionTemplate`
