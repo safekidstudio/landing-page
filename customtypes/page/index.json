@@ -20,6 +20,9 @@
             },
             "features_grid": {
               "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
             }
           }
         }

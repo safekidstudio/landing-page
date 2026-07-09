@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice
 
 /**
  * Content for Page documents
@@ -790,6 +790,145 @@ type HeroSliceVariation = HeroSliceDefault
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *Testimonials → Default → Primary → Stats List*
+ */
+export interface TestimonialsSliceDefaultPrimaryStatsListItem {
+	/**
+	 * Number field in *Testimonials → Default → Primary → Stats List*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 2,500+
+	 * - **API ID Path**: testimonials.default.primary.stats_list[].number
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	number: prismic.KeyTextField;
+	
+	/**
+	 * Label field in *Testimonials → Default → Primary → Stats List*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: BETA USERS
+	 * - **API ID Path**: testimonials.default.primary.stats_list[].label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	label: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Testimonials → Default → Primary*
+ */
+export interface TestimonialsSliceDefaultPrimary {
+	/**
+	 * Badge Text field in *Testimonials → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Loved by early testers
+	 * - **API ID Path**: testimonials.default.primary.badge_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	badge_text: prismic.KeyTextField;
+	
+	/**
+	 * Heading field in *Testimonials → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: What Our Beta Testers & Tech Reviewers Are Saying
+	 * - **API ID Path**: testimonials.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Stats List field in *Testimonials → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.default.primary.stats_list[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	stats_list: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryStatsListItem>>;
+}
+
+/**
+ * Primary content in *Testimonials → Items*
+ */
+export interface TestimonialsSliceDefaultItem {
+	/**
+	 * Icon field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: user
+	 * - **API ID Path**: testimonials.items[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"pencil" | "file-text" | "user" | "globe" | "quote", "filled">;
+	
+	/**
+	 * Author field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: u/selfhosted
+	 * - **API ID Path**: testimonials.items[].author
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	author: prismic.KeyTextField;
+	
+	/**
+	 * Quote field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: I've been testing the Kibal beta...
+	 * - **API ID Path**: testimonials.items[].quote
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	quote: prismic.RichTextField;
+	
+	/**
+	 * Link Label field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Read more
+	 * - **API ID Path**: testimonials.items[].link_label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	link_label: prismic.KeyTextField;
+	
+	/**
+	 * Link field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.items[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Testimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<TestimonialsSliceDefaultPrimary>, Simplify<TestimonialsSliceDefaultItem>>;
+
+/**
+ * Slice variation for *Testimonials*
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault
+
+/**
+ * Testimonials Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: Reviews and Testimonials section with numerical stats and detailed cards representing user opinions.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialsSlice = prismic.SharedSlice<"testimonials", TestimonialsSliceVariation>;
+
 declare module "@prismicio/client" {
 	interface CreateClient {
 		(repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -835,7 +974,13 @@ declare module "@prismicio/client" {
 			HeroSliceDefaultPrimary,
 			HeroSliceDefaultItem,
 			HeroSliceVariation,
-			HeroSliceDefault
+			HeroSliceDefault,
+			TestimonialsSlice,
+			TestimonialsSliceDefaultPrimaryStatsListItem,
+			TestimonialsSliceDefaultPrimary,
+			TestimonialsSliceDefaultItem,
+			TestimonialsSliceVariation,
+			TestimonialsSliceDefault
 		}
 	}
 }

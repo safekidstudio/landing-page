@@ -18,7 +18,8 @@ export type FeaturesGridProps = {
 };
 
 export default function FeaturesGrid({ slice }: FeaturesGridProps) {
-  const { primary, items } = slice;
+  const { primary } = slice;
+  const itemsList = primary.items;
 
   // Icon resolver mapping
   const getFeatureIcon = (iconName: string) => {
@@ -71,9 +72,9 @@ export default function FeaturesGrid({ slice }: FeaturesGridProps) {
         </div>
 
         {/* Features Grid */}
-        {items && items.length > 0 && (
+        {itemsList && itemsList.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full mt-16">
-            {items.map((item, index) => (
+            {itemsList.map((item, index) => (
               <div
                 key={index}
                 className="flex flex-col items-start bg-card border border-border/70 rounded-2xl p-8 hover:shadow-md hover:border-border transition-all duration-300"
@@ -91,9 +92,9 @@ export default function FeaturesGrid({ slice }: FeaturesGridProps) {
                 )}
 
                 {/* Description */}
-                {isFilled.richText(item.description) && (
+                {isFilled.richText(item.descriptioin) && (
                   <div className="text-sm text-muted-foreground/90 leading-relaxed">
-                    <PrismicRichText field={item.description} />
+                    <PrismicRichText field={item.descriptioin} />
                   </div>
                 )}
               </div>
