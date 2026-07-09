@@ -3,6 +3,9 @@ import { Geist } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "@/providers/theme_provider";
+import { createClient, LOCALE_MAP } from "@/prismicio";
+import SiteHeader from "@/components/layouts/header";
+import SiteFooter from "@/components/layouts/footer";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -35,6 +38,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   // Load locale messages
   const messages = await getMessages();
 
+  // Fetch App Settings
+  const client = createClient();
+  const prismicLocale = LOCALE_MAP[locale] || "en-us";
+  const settings = await client
+    .getSingle("app_settings", { lang: prismicLocale })
+    .catch(() => null);
+
   return (
     <html lang={locale} suppressHydrationWarning className="h-full">
       <body className={`${geistSans.variable} font-sans antialiased`}>
@@ -45,7 +55,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             enableSystem={false}
             disableTransitionOnChange
           >
-            {children}
+            <div className="flex flex-col min-h-screen">
+              <SiteHeader settings={settings} />
+              <main className="flex-1">{children}</main>
+              <SiteFooter settings={settings} />
+            </div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

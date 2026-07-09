@@ -9,10 +9,10 @@ import {
   Lock,
   MapPin,
   MessageSquare,
-  Play,
   Shield,
   Smartphone
 } from "lucide-react";
+import { MediaEmbed } from "./MediaEmbed";
 
 export type HeroProps = {
   slice: Content.HeroSlice;
@@ -146,16 +146,7 @@ export default function Hero({ slice }: HeroProps) {
             <div className="absolute inset-0 bg-brand/25 blur-3xl -z-10 rounded-2xl scale-95 group-hover:scale-100 transition-transform duration-500" />
 
             {/* Main Mockup Frame */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-black/5 bg-[#F9FAFB] aspect-video">
-
-
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover:bg-black/20 transition-all duration-300">
-                <div className="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-lg text-brand group-hover:scale-110 transition-transform duration-200">
-                  <Play className="h-6 w-6 fill-current ml-1" />
-                </div>
-              </div>
-            </div>
+            <MediaEmbed media={primary.media} />
 
             {/* Media Caption */}
             {isFilled.keyText(primary.media_caption) && (
