@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice
 
 /**
  * Content for Page documents
@@ -491,6 +491,89 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
+
+/**
+ * Item in *CallToAction → Default → Primary → Benefits checklist*
+ */
+export interface CallToActionSliceDefaultPrimaryBenefitsItem {
+	/**
+	 * Text field in *CallToAction → Default → Primary → Benefits checklist*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 14-day free trial
+	 * - **API ID Path**: call_to_action.default.primary.benefits[].text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CallToAction → Default → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+	/**
+	 * Heading field in *CallToAction → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Ready to build a safer internet for your children?
+	 * - **API ID Path**: call_to_action.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *CallToAction → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Free 30-day trial for all waitlist members upon official App Store release.
+	 * - **API ID Path**: call_to_action.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Button field in *CallToAction → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.default.primary.button
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Benefits checklist field in *CallToAction → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.default.primary.benefits[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	benefits: prismic.GroupField<Simplify<CallToActionSliceDefaultPrimaryBenefitsItem>>;
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<"default", Simplify<CallToActionSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation = CallToActionSliceDefault
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: Call to action section with heading, description, CTA button, and benefit checklist items.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CallToActionSlice = prismic.SharedSlice<"call_to_action", CallToActionSliceVariation>;
 
 /**
  * Item in *FeatureShowcase → Default → Primary → Core Features (Top)*
@@ -1110,6 +1193,11 @@ declare module "@prismicio/client" {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			CallToActionSlice,
+			CallToActionSliceDefaultPrimaryBenefitsItem,
+			CallToActionSliceDefaultPrimary,
+			CallToActionSliceVariation,
+			CallToActionSliceDefault,
 			FeatureShowcaseSlice,
 			FeatureShowcaseSliceDefaultPrimaryCoreFeaturesItem,
 			FeatureShowcaseSliceDefaultPrimaryHighlightFeaturesItem,

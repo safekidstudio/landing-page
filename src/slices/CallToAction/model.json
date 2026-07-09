@@ -1,0 +1,61 @@
+{
+  "id": "call_to_action",
+  "type": "SharedSlice",
+  "name": "CallToAction",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/call_to_action/default/54193d6ca681b2feb361705fa1c2a9ce253b7c8b.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Ready to build a safer internet for your children?",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Free 30-day trial for all waitlist members upon official App Store release.",
+            "single": "paragraph"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "benefits": {
+          "type": "Group",
+          "config": {
+            "label": "Benefits checklist",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "14-day free trial"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Call to action section with heading, description, CTA button, and benefit checklist items."
+}
