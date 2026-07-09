@@ -2,17 +2,8 @@
   "id": "app_settings",
   "label": "App Settings",
   "repeatable": false,
-  "status": true,
-  "format": "custom",
   "json": {
     "Header": {
-      "logo_text": {
-        "type": "Text",
-        "config": {
-          "label": "Logo Text",
-          "placeholder": "Kibal"
-        }
-      },
       "logo_image": {
         "type": "Image",
         "config": {
@@ -40,52 +31,32 @@
                 "label": "Link",
                 "allowTargetBlank": true
               }
-            },
-            "badge_text": {
-              "type": "Text",
-              "config": {
-                "label": "Badge Text (Optional)",
-                "placeholder": "New"
-              }
             }
           }
         }
       },
-      "login_button_label": {
-        "type": "Text",
-        "config": {
-          "label": "Login Button Label",
-          "placeholder": "Login"
-        }
-      },
-      "login_button_link": {
+      "login_button": {
         "type": "Link",
         "config": {
-          "label": "Login Button Link"
+          "label": "Login Button",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
         }
       },
-      "cta_button_label": {
-        "type": "Text",
-        "config": {
-          "label": "CTA Button Label",
-          "placeholder": "Get Started"
-        }
-      },
-      "cta_button_link": {
+      "cta_button": {
         "type": "Link",
         "config": {
-          "label": "CTA Button Link"
+          "label": "CTA Button",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
         }
       }
     },
     "Footer": {
-      "footer_logo_text": {
-        "type": "Text",
-        "config": {
-          "label": "Footer Logo Text",
-          "placeholder": "Kibal"
-        }
-      },
       "footer_logo_image": {
         "type": "Image",
         "config": {
@@ -98,8 +69,8 @@
         "type": "StructuredText",
         "config": {
           "label": "Footer Description",
-          "single": "paragraph",
-          "placeholder": "Privacy-first parental control application powered by on-device AI. Protect your children's digital world while keeping family data 100% private, secure, and under your control."
+          "placeholder": "Privacy-first parental control application powered by on-device AI. Protect your children's digital world while keeping family data 100% private, secure, and under your control.",
+          "single": "paragraph"
         }
       },
       "social_links": {
@@ -112,6 +83,7 @@
               "type": "Select",
               "config": {
                 "label": "Platform",
+                "default_value": "facebook",
                 "options": [
                   "facebook",
                   "twitter",
@@ -120,8 +92,7 @@
                   "github",
                   "briefcase",
                   "instagram"
-                ],
-                "default_value": "facebook"
+                ]
               }
             },
             "link": {
@@ -146,17 +117,14 @@
                 "placeholder": "PRODUCT"
               }
             },
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Link Label",
-                "placeholder": "Download"
-              }
-            },
-            "link": {
+            "links": {
               "type": "Link",
               "config": {
-                "label": "Link"
+                "label": "Links",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
               }
             }
           }
@@ -169,10 +137,10 @@
           "placeholder": "© 2026 Kibal. All rights reserved. Privacy-first family protection."
         }
       },
-      "bottom_links": {
+      "bottom_texts": {
         "type": "Group",
         "config": {
-          "label": "Bottom Links (e.g. Terms of Service)",
+          "label": "Bottom Texts (e.g. Terms of Service)",
           "repeat": true,
           "fields": {
             "label": {
@@ -181,16 +149,12 @@
                 "label": "Label",
                 "placeholder": "Privacy Policy"
               }
-            },
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link"
-              }
             }
           }
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

@@ -47,11 +47,11 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
- * Item in *App Settings → Header → Navigation Items*
+ * Item in *App Settings → Navigation Items*
  */
 export interface AppSettingsDocumentDataNavigationItemsItem {
 	/**
-	 * Label field in *App Settings → Header → Navigation Items*
+	 * Label field in *App Settings → Navigation Items*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: Features
@@ -59,9 +59,9 @@ export interface AppSettingsDocumentDataNavigationItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	label: prismic.KeyTextField;
-
+	
 	/**
-	 * Link field in *App Settings → Header → Navigation Items*
+	 * Link field in *App Settings → Navigation Items*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
@@ -69,34 +69,25 @@ export interface AppSettingsDocumentDataNavigationItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
 	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-	/**
-	 * Badge Text field in *App Settings → Header → Navigation Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: New
-	 * - **API ID Path**: app_settings.navigation_items[].badge_text
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	badge_text: prismic.KeyTextField;
 }
 
 /**
- * Item in *App Settings → Footer → Social Links*
+ * Item in *App Settings → Social Links*
  */
 export interface AppSettingsDocumentDataSocialLinksItem {
 	/**
-	 * Platform field in *App Settings → Footer → Social Links*
+	 * Platform field in *App Settings → Social Links*
 	 *
 	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
+	 * - **Default Value**: facebook
 	 * - **API ID Path**: app_settings.social_links[].platform
 	 * - **Documentation**: https://prismic.io/docs/fields/select
 	 */
-	platform: prismic.SelectField<"facebook" | "twitter" | "linkedin" | "youtube" | "github" | "briefcase" | "instagram">;
-
+	platform: prismic.SelectField<"facebook" | "twitter" | "linkedin" | "youtube" | "github" | "briefcase" | "instagram", "filled">;
+	
 	/**
-	 * Link field in *App Settings → Footer → Social Links*
+	 * Link field in *App Settings → Social Links*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
@@ -107,11 +98,11 @@ export interface AppSettingsDocumentDataSocialLinksItem {
 }
 
 /**
- * Item in *App Settings → Footer → Footer Navigation Links*
+ * Item in *App Settings → Footer Navigation Links*
  */
 export interface AppSettingsDocumentDataFooterNavigationLinksItem {
 	/**
-	 * Column Title field in *App Settings → Footer → Footer Navigation Links*
+	 * Column Title (e.g. PRODUCT) field in *App Settings → Footer Navigation Links*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: PRODUCT
@@ -119,67 +110,39 @@ export interface AppSettingsDocumentDataFooterNavigationLinksItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	column_title: prismic.KeyTextField;
-
+	
 	/**
-	 * Link Label field in *App Settings → Footer → Footer Navigation Links*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Download
-	 * - **API ID Path**: app_settings.footer_navigation_links[].label
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	label: prismic.KeyTextField;
-
-	/**
-	 * Link field in *App Settings → Footer → Footer Navigation Links*
+	 * Links field in *App Settings → Footer Navigation Links*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.footer_navigation_links[].link
+	 * - **API ID Path**: app_settings.footer_navigation_links[].links
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
-	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	links: prismic.Repeatable<prismic.LinkField<string, string, unknown, prismic.FieldState, never>>;
 }
 
 /**
- * Item in *App Settings → Footer → Bottom Links*
+ * Item in *App Settings → Bottom Texts (e.g. Terms of Service)*
  */
-export interface AppSettingsDocumentDataBottomLinksItem {
+export interface AppSettingsDocumentDataBottomTextsItem {
 	/**
-	 * Label field in *App Settings → Footer → Bottom Links*
+	 * Label field in *App Settings → Bottom Texts (e.g. Terms of Service)*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: Privacy Policy
-	 * - **API ID Path**: app_settings.bottom_links[].label
+	 * - **API ID Path**: app_settings.bottom_texts[].label
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	label: prismic.KeyTextField;
-
-	/**
-	 * Link field in *App Settings → Footer → Bottom Links*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.bottom_links[].link
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
+/**
+ * Content for App Settings documents
+ */
 interface AppSettingsDocumentData {
 	/**
-	 * Logo Text field in *App Settings → Header*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Kibal
-	 * - **API ID Path**: app_settings.logo_text
-	 * - **Tab**: Header
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	logo_text: prismic.KeyTextField;
-
-	/**
-	 * Logo Image field in *App Settings → Header*
+	 * Logo Image field in *App Settings*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -188,9 +151,9 @@ interface AppSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	logo_image: prismic.ImageField<never>;
-
+	
 	/**
-	 * Navigation Items field in *App Settings → Header*
+	 * Navigation Items field in *App Settings*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -199,64 +162,29 @@ interface AppSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
 	navigation_items: prismic.GroupField<Simplify<AppSettingsDocumentDataNavigationItemsItem>>;
-
+	
 	/**
-	 * Login Button Label field in *App Settings → Header*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Login
-	 * - **API ID Path**: app_settings.login_button_label
-	 * - **Tab**: Header
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	login_button_label: prismic.KeyTextField;
-
-	/**
-	 * Login Button Link field in *App Settings → Header*
+	 * Login Button field in *App Settings*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.login_button_link
+	 * - **API ID Path**: app_settings.login_button
 	 * - **Tab**: Header
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
-	login_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
+	login_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
 	/**
-	 * CTA Button Label field in *App Settings → Header*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Get Started
-	 * - **API ID Path**: app_settings.cta_button_label
-	 * - **Tab**: Header
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	cta_button_label: prismic.KeyTextField;
-
-	/**
-	 * CTA Button Link field in *App Settings → Header*
+	 * CTA Button field in *App Settings*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.cta_button_link
+	 * - **API ID Path**: app_settings.cta_button
 	 * - **Tab**: Header
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
-	cta_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-	/**
-	 * Footer Logo Text field in *App Settings → Footer*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: Kibal
-	 * - **API ID Path**: app_settings.footer_logo_text
-	 * - **Tab**: Footer
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	footer_logo_text: prismic.KeyTextField;
-
-	/**
-	 * Footer Logo Image field in *App Settings → Footer*
+	cta_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;/**
+	 * Footer Logo Image field in *App Settings*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -265,20 +193,20 @@ interface AppSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	footer_logo_image: prismic.ImageField<never>;
-
+	
 	/**
-	 * Footer Description field in *App Settings → Footer*
+	 * Footer Description field in *App Settings*
 	 *
 	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Privacy-first parental control application...
+	 * - **Placeholder**: Privacy-first parental control application powered by on-device AI. Protect your children's digital world while keeping family data 100% private, secure, and under your control.
 	 * - **API ID Path**: app_settings.footer_description
 	 * - **Tab**: Footer
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	footer_description: prismic.RichTextField;
-
+	
 	/**
-	 * Social Links field in *App Settings → Footer*
+	 * Social Links field in *App Settings*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -287,9 +215,9 @@ interface AppSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
 	social_links: prismic.GroupField<Simplify<AppSettingsDocumentDataSocialLinksItem>>;
-
+	
 	/**
-	 * Footer Navigation Links field in *App Settings → Footer*
+	 * Footer Navigation Links field in *App Settings*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -298,28 +226,28 @@ interface AppSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
 	footer_navigation_links: prismic.GroupField<Simplify<AppSettingsDocumentDataFooterNavigationLinksItem>>;
-
+	
 	/**
-	 * Copyright Text field in *App Settings → Footer*
+	 * Copyright Text field in *App Settings*
 	 *
 	 * - **Field Type**: Text
-	 * - **Placeholder**: © 2026 Kibal. All rights reserved.
+	 * - **Placeholder**: © 2026 Kibal. All rights reserved. Privacy-first family protection.
 	 * - **API ID Path**: app_settings.copyright_text
 	 * - **Tab**: Footer
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	copyright_text: prismic.KeyTextField;
-
+	
 	/**
-	 * Bottom Links field in *App Settings → Footer*
+	 * Bottom Texts (e.g. Terms of Service) field in *App Settings*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: app_settings.bottom_links[]
+	 * - **API ID Path**: app_settings.bottom_texts[]
 	 * - **Tab**: Footer
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	bottom_links: prismic.GroupField<Simplify<AppSettingsDocumentDataBottomLinksItem>>;
+	bottom_texts: prismic.GroupField<Simplify<AppSettingsDocumentDataBottomTextsItem>>;
 }
 
 /**
@@ -761,6 +689,10 @@ declare module "@prismicio/client" {
 		export type {
 			AppSettingsDocument,
 			AppSettingsDocumentData,
+			AppSettingsDocumentDataNavigationItemsItem,
+			AppSettingsDocumentDataSocialLinksItem,
+			AppSettingsDocumentDataFooterNavigationLinksItem,
+			AppSettingsDocumentDataBottomTextsItem,
 			BlogPageDocument,
 			BlogPageDocumentData,
 			BlogPageDocumentDataSlicesSlice,
