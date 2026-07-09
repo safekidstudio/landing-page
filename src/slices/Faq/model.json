@@ -1,0 +1,51 @@
+{
+  "id": "faq",
+  "type": "SharedSlice",
+  "name": "Faq",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/faq/default/77d57d7ac9ae03c492ff0aa4e026dec2c6fffe44.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Frequently Asked Questions",
+            "single": "heading2"
+          }
+        },
+        "faq_list": {
+          "type": "Group",
+          "config": {
+            "label": "FAQ List",
+            "repeat": true,
+            "fields": {
+              "question": {
+                "type": "Text",
+                "config": {
+                  "label": "Question",
+                  "placeholder": "Is Kibal currently available for download?"
+                }
+              },
+              "answer": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Answer",
+                  "placeholder": "Yes, Kibal is available on both Android and iOS...",
+                  "multi": "paragraph,em,strong,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Frequently Asked Questions section using an interactive accordion display."
+}

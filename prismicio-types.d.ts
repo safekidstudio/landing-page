@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice
+type HomePageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice
 
 /**
  * Content for Page documents
@@ -632,6 +632,79 @@ type CallToActionSliceVariation = CallToActionSliceDefault
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type CallToActionSlice = prismic.SharedSlice<"call_to_action", CallToActionSliceVariation>;
+
+/**
+ * Item in *Faq → Default → Primary → FAQ List*
+ */
+export interface FaqSliceDefaultPrimaryFaqListItem {
+	/**
+	 * Question field in *Faq → Default → Primary → FAQ List*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Is Kibal currently available for download?
+	 * - **API ID Path**: faq.default.primary.faq_list[].question
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	question: prismic.KeyTextField;
+	
+	/**
+	 * Answer field in *Faq → Default → Primary → FAQ List*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Yes, Kibal is available on both Android and iOS...
+	 * - **API ID Path**: faq.default.primary.faq_list[].answer
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	answer: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Faq → Default → Primary*
+ */
+export interface FaqSliceDefaultPrimary {
+	/**
+	 * Heading field in *Faq → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Frequently Asked Questions
+	 * - **API ID Path**: faq.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * FAQ List field in *Faq → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: faq.default.primary.faq_list[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	faq_list: prismic.GroupField<Simplify<FaqSliceDefaultPrimaryFaqListItem>>;
+}
+
+/**
+ * Default variation for Faq Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FaqSliceDefault = prismic.SharedSliceVariation<"default", Simplify<FaqSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Faq*
+ */
+type FaqSliceVariation = FaqSliceDefault
+
+/**
+ * Faq Shared Slice
+ *
+ * - **API ID**: `faq`
+ * - **Description**: Frequently Asked Questions section using an interactive accordion display.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
 
 /**
  * Item in *FeatureShowcase → Default → Primary → Core Features (Top)*
@@ -1260,6 +1333,11 @@ declare module "@prismicio/client" {
 			CallToActionSliceDefaultPrimary,
 			CallToActionSliceVariation,
 			CallToActionSliceDefault,
+			FaqSlice,
+			FaqSliceDefaultPrimaryFaqListItem,
+			FaqSliceDefaultPrimary,
+			FaqSliceVariation,
+			FaqSliceDefault,
 			FeatureShowcaseSlice,
 			FeatureShowcaseSliceDefaultPrimaryCoreFeaturesItem,
 			FeatureShowcaseSliceDefaultPrimaryHighlightFeaturesItem,
