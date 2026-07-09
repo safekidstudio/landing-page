@@ -26,6 +26,50 @@
             "placeholder": "From smart blocks to instant messaging alerts...",
             "single": "paragraph"
           }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "box",
+                    "bolt",
+                    "cpu",
+                    "clock",
+                    "key",
+                    "shield",
+                    "smartphone",
+                    "lock",
+                    "activity",
+                    "share"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "descriptioin": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Descriptioin",
+                  "placeholder": "",
+                  "multi": "paragraph,em,strong,list-item,o-list-item",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
         }
       },
       "items": {

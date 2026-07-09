@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = HeroSlice
+type PageDocumentDataSlicesSlice = HeroSlice | FeaturesGridSlice
 
 /**
  * Content for Page documents
@@ -493,6 +493,41 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
 
 /**
+ * Item in *FeaturesGrid → Default → Primary → Items*
+ */
+export interface FeaturesGridSliceDefaultPrimaryItemsItem {
+	/**
+	 * Icon field in *FeaturesGrid → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: features_grid.default.primary.items[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"box" | "bolt" | "cpu" | "clock" | "key" | "shield" | "smartphone" | "lock" | "activity" | "share">;
+	
+	/**
+	 * Title field in *FeaturesGrid → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: features_grid.default.primary.items[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Descriptioin field in *FeaturesGrid → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: features_grid.default.primary.items[].descriptioin
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	descriptioin: prismic.RichTextField;
+}
+
+/**
  * Primary content in *FeaturesGrid → Default → Primary*
  */
 export interface FeaturesGridSliceDefaultPrimary {
@@ -515,6 +550,16 @@ export interface FeaturesGridSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	description: prismic.RichTextField;
+	
+	/**
+	 * Items field in *FeaturesGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: features_grid.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	items: prismic.GroupField<Simplify<FeaturesGridSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -780,6 +825,7 @@ declare module "@prismicio/client" {
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			FeaturesGridSlice,
+			FeaturesGridSliceDefaultPrimaryItemsItem,
 			FeaturesGridSliceDefaultPrimary,
 			FeaturesGridSliceDefaultItem,
 			FeaturesGridSliceVariation,
