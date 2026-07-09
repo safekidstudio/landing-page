@@ -17,6 +17,9 @@
           "choices": {
             "hero": {
               "type": "SharedSlice"
+            },
+            "features_grid": {
+              "type": "SharedSlice"
             }
           }
         }
