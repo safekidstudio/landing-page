@@ -110,6 +110,56 @@ export default async function Hero({ slice, context }: HeroProps) {
       </section>
     );
   }
+  if (slice.variation === "simple") {
+    const simplePrimary = slice.primary as any;
+
+    return (
+      <section
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className="w-full bg-[#FAF8F5]/30 pt-24 pb-12 md:pt-32 md:pb-16 text-left"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedComponent
+            type="slide"
+            direction="up"
+            className="w-full flex flex-col items-start"
+          >
+            {/* 1. Badge Pill */}
+            {isFilled.keyText(simplePrimary.badge_text) && (
+              <span className="inline-flex items-center rounded-full bg-brand/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand mb-8">
+                {simplePrimary.badge_text}
+              </span>
+            )}
+
+            {/* 2. Heading */}
+            {isFilled.richText(slice.primary.heading) && (
+              <PrismicRichText
+                field={slice.primary.heading}
+                components={{
+                  heading1: ({ children }) => (
+                    <Heading
+                      as="h1"
+                      className="text-left text-4xl sm:text-5xl lg:text-[56px] text-foreground font-serif font-medium tracking-tight mb-6 leading-tight max-w-3xl"
+                    >
+                      {children}
+                    </Heading>
+                  ),
+                }}
+              />
+            )}
+
+            {/* 3. Description */}
+            {isFilled.richText(slice.primary.description) && (
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-3xl">
+                <PrismicRichText field={slice.primary.description} />
+              </div>
+            )}
+          </AnimatedComponent>
+        </div>
+      </section>
+    );
+  }
 
   const primary = slice.primary as any;
   const items = slice.items as any;
