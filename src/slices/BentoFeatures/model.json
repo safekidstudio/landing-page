@@ -1,0 +1,115 @@
+{
+  "id": "bento_features",
+  "type": "SharedSlice",
+  "name": "BentoFeatures",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation showing bento-grid styled cards",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/bento_features/default/dc268636ee48e32b12b0ae0036bb500f884f8bea.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Advanced Features",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "single": "paragraph"
+          }
+        },
+        "features": {
+          "type": "Group",
+          "config": {
+            "label": "Features",
+            "repeat": true,
+            "fields": {
+              "card_style": {
+                "type": "Select",
+                "config": {
+                  "label": "Card Style",
+                  "default_value": "wide-light",
+                  "options": [
+                    "wide-light",
+                    "narrow-dark",
+                    "narrow-green",
+                    "wide-progress"
+                  ]
+                }
+              },
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "default_value": "activity",
+                  "options": [
+                    "activity",
+                    "bell",
+                    "shield",
+                    "map-pin"
+                  ]
+                }
+              },
+              "subtitle": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtitle / Tagline",
+                  "placeholder": "Weekly Insights"
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Visual Activity Reports"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Get detailed weekly insights into your child's digital habits..."
+                }
+              },
+              "tags": {
+                "type": "Text",
+                "config": {
+                  "label": "Tags (Comma-separated)",
+                  "placeholder": "Screen Time Charts, App Categories, Weekly Summary"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              },
+              "link_text": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": "Learn more"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "BentoFeatures slice displaying product features in an asymmetric Bento grid layout."
+}

@@ -53,6 +53,9 @@
             },
             "setup_steps": {
               "type": "SharedSlice"
+            },
+            "bento_features": {
+              "type": "SharedSlice"
             }
           }
         }

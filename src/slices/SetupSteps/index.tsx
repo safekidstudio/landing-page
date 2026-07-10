@@ -70,7 +70,7 @@ export default function SetupSteps({ slice }: SetupStepsProps) {
                 {isFilled.keyText(item.title) && (
                   <Heading
                     as="h3"
-                    className="text-xl font-serif font-medium text-center mt-6 mb-2"
+                    className="text-xl lg:text-2xl font-serif font-medium text-center mt-6 mb-2"
                   >
                     {item.title}
                   </Heading>

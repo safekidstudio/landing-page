@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice
+type HomePageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice | BentoFeaturesSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice
+type PageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice | BentoFeaturesSlice
 
 /**
  * Content for Page documents
@@ -491,6 +491,151 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = AppSettingsDocument | BlogPageDocument | BlogPostDocument | HomePageDocument | PageDocument;
+
+/**
+ * Item in *BentoFeatures → Default → Primary → Features*
+ */
+export interface BentoFeaturesSliceDefaultPrimaryFeaturesItem {
+	/**
+	 * Card Style field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: wide-light
+	 * - **API ID Path**: bento_features.default.primary.features[].card_style
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	card_style: prismic.SelectField<"wide-light" | "narrow-dark" | "narrow-green" | "wide-progress", "filled">;
+	
+	/**
+	 * Icon field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: activity
+	 * - **API ID Path**: bento_features.default.primary.features[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"activity" | "bell" | "shield" | "map-pin", "filled">;
+	
+	/**
+	 * Subtitle / Tagline field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Weekly Insights
+	 * - **API ID Path**: bento_features.default.primary.features[].subtitle
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	subtitle: prismic.KeyTextField;
+	
+	/**
+	 * Title field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Visual Activity Reports
+	 * - **API ID Path**: bento_features.default.primary.features[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Description field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Get detailed weekly insights into your child's digital habits...
+	 * - **API ID Path**: bento_features.default.primary.features[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	description: prismic.KeyTextField;
+	
+	/**
+	 * Tags (Comma-separated) field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Screen Time Charts, App Categories, Weekly Summary
+	 * - **API ID Path**: bento_features.default.primary.features[].tags
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	tags: prismic.KeyTextField;
+	
+	/**
+	 * Link field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bento_features.default.primary.features[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Link Text field in *BentoFeatures → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Learn more
+	 * - **API ID Path**: bento_features.default.primary.features[].link_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	link_text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *BentoFeatures → Default → Primary*
+ */
+export interface BentoFeaturesSliceDefaultPrimary {
+	/**
+	 * Heading field in *BentoFeatures → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Advanced Features
+	 * - **API ID Path**: bento_features.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *BentoFeatures → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bento_features.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Features field in *BentoFeatures → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bento_features.default.primary.features[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	features: prismic.GroupField<Simplify<BentoFeaturesSliceDefaultPrimaryFeaturesItem>>;
+}
+
+/**
+ * Default variation for BentoFeatures Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation showing bento-grid styled cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BentoFeaturesSliceDefault = prismic.SharedSliceVariation<"default", Simplify<BentoFeaturesSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *BentoFeatures*
+ */
+type BentoFeaturesSliceVariation = BentoFeaturesSliceDefault
+
+/**
+ * BentoFeatures Shared Slice
+ *
+ * - **API ID**: `bento_features`
+ * - **Description**: BentoFeatures slice displaying product features in an asymmetric Bento grid layout.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BentoFeaturesSlice = prismic.SharedSlice<"bento_features", BentoFeaturesSliceVariation>;
 
 /**
  * Primary content in *BlogShowcase → Default → Primary*
@@ -2323,6 +2468,11 @@ declare module "@prismicio/client" {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			BentoFeaturesSlice,
+			BentoFeaturesSliceDefaultPrimaryFeaturesItem,
+			BentoFeaturesSliceDefaultPrimary,
+			BentoFeaturesSliceVariation,
+			BentoFeaturesSliceDefault,
 			BlogShowcaseSlice,
 			BlogShowcaseSliceDefaultPrimary,
 			BlogShowcaseSliceVariation,
