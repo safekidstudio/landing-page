@@ -457,15 +457,17 @@ export default async function Hero({ slice, context }: HeroProps) {
           type="fade"
           duration={0.7}
           delay={0.65}
-          className="w-full flex justify-center mt-12"
+          className="w-full mt-12"
         >
-          <div className="flex flex-wrap items-center justify-center border-y border-border gap-x-8 gap-y-4 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase">
-            {primary.stats_list.map((item: any, index: number) => (
-              <div key={index} className="flex items-center gap-2 px-3 py-4">
-                {getBenefitIcon(item.icon || "shield")}
-                <span>{item.label}</span>
-              </div>
-            ))}
+          <div className="w-full overflow-x-auto border-y border-border">
+            <div className="flex flex-nowrap items-center md:flex-wrap md:justify-center gap-x-8 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase min-w-max md:min-w-0 px-4 md:px-0">
+              {primary.stats_list.map((item: any, index: number) => (
+                <div key={index} className="flex items-center gap-2 px-3 py-4 shrink-0">
+                  {getBenefitIcon(item.icon || "shield")}
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </AnimatedComponent>
       )}
