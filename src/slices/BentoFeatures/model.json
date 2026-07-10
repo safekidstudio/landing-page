@@ -51,12 +51,7 @@
                 "config": {
                   "label": "Icon",
                   "default_value": "activity",
-                  "options": [
-                    "activity",
-                    "bell",
-                    "shield",
-                    "map-pin"
-                  ]
+                  "options": ["activity", "bell", "shield", "map-pin"]
                 }
               },
               "subtitle": {

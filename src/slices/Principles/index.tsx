@@ -1,7 +1,17 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@/prismicio";
-import { Shield, Users, Globe, Heart, Star, Lock } from "lucide-react";
+import {
+  Shield,
+  Users,
+  Globe,
+  Heart,
+  Star,
+  Lock,
+  Clock,
+  Trees,
+  Brain,
+} from "lucide-react";
 import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
@@ -11,7 +21,6 @@ export type PrinciplesProps = {
 
 export default function Principles({ slice }: PrinciplesProps) {
   const { primary } = slice;
-  const principlesList = primary.principles_list;
 
   // Icon resolver for core principles
   const getPrincipleIcon = (iconName: string) => {
@@ -29,10 +38,96 @@ export default function Principles({ slice }: PrinciplesProps) {
         return <Star className={iconClass} />;
       case "lock":
         return <Lock className={iconClass} />;
+      case "clock":
+        return <Clock className={iconClass} />;
+      case "tree":
+        return <Trees className={iconClass} />;
+      case "brain":
+        return <Brain className={iconClass} />;
       default:
         return <Shield className={iconClass} />;
     }
   };
+
+  if (slice.variation === "expertTips") {
+    const tipsList = (slice.primary as any).principles_list || [];
+
+    return (
+      <section
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className="w-full bg-[#FAF8F5]/30 py-20 md:py-28"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Block: Left Aligned */}
+          <div className="max-w-3xl mb-16">
+            <ScrollAnimatedContainer
+              type="slide"
+              direction="up"
+              className="flex flex-col items-start text-left"
+            >
+              {isFilled.richText(primary.heading) && (
+                <PrismicRichText
+                  field={primary.heading}
+                  components={{
+                    heading2: ({ children }) => (
+                      <Heading className="text-left text-3xl sm:text-4xl font-serif font-medium italic tracking-tight mb-4 max-w-none">
+                        {children}
+                      </Heading>
+                    ),
+                  }}
+                />
+              )}
+
+              {isFilled.richText(primary.description) && (
+                <div className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed">
+                  <PrismicRichText field={primary.description} />
+                </div>
+              )}
+            </ScrollAnimatedContainer>
+          </div>
+
+          {/* Tips List: 2-column Grid of horizontal cards */}
+          {tipsList.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full">
+              {tipsList.map((card: any, idx: number) => (
+                <ScrollAnimatedContainer
+                  key={idx}
+                  type="slide"
+                  direction="up"
+                  delay={idx * 0.1}
+                  className="flex items-start gap-5 text-left"
+                >
+                  {/* Left Side: Light Green Rounded Box containing Icon */}
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    {getPrincipleIcon(card.icon || "shield")}
+                  </div>
+
+                  {/* Right Side: Text details */}
+                  <div className="flex-1 flex flex-col justify-start">
+                    {isFilled.keyText(card.title) && (
+                      <h3 className="text-xs sm:text-sm font-semibold tracking-wider text-foreground uppercase mb-2">
+                        {card.title}
+                      </h3>
+                    )}
+
+                    {isFilled.richText(card.description) && (
+                      <div className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed">
+                        <PrismicRichText field={card.description} />
+                      </div>
+                    )}
+                  </div>
+                </ScrollAnimatedContainer>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  }
+
+  const defaultPrimary = primary as any;
+  const principlesList = defaultPrimary.principles_list || [];
 
   return (
     <section
@@ -68,7 +163,7 @@ export default function Principles({ slice }: PrinciplesProps) {
         {/* Principles Card Grid - Animated sequentially */}
         {principlesList && principlesList.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-7xl mx-auto mb-16">
-            {principlesList.map((card, idx) => (
+            {principlesList.map((card: any, idx: number) => (
               <ScrollAnimatedContainer
                 key={idx}
                 type="slide"
@@ -110,22 +205,22 @@ export default function Principles({ slice }: PrinciplesProps) {
         >
           <div className="flex flex-wrap items-center justify-center gap-4 w-full mt-4">
             {/* Primary Button */}
-            {isFilled.keyText(primary.primary_button.text) && (
+            {isFilled.keyText(defaultPrimary.primary_button?.text) && (
               <PrismicNextLink
-                field={primary.primary_button}
+                field={defaultPrimary.primary_button}
                 className="bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 px-6 py-3.5 h-auto text-sm font-semibold rounded-xl transition-colors duration-200"
               >
-                {primary.primary_button.text}
+                {defaultPrimary.primary_button.text}
               </PrismicNextLink>
             )}
 
             {/* Secondary Button */}
-            {isFilled.keyText(primary.secondary_button.text) && (
+            {isFilled.keyText(defaultPrimary.secondary_button?.text) && (
               <PrismicNextLink
-                field={primary.secondary_button}
+                field={defaultPrimary.secondary_button}
                 className="border border-border bg-background hover:bg-neutral-50 dark:hover:bg-neutral-800 text-foreground px-6 py-3.5 h-auto text-sm font-semibold rounded-xl transition-colors duration-200"
               >
-                {primary.secondary_button.text}
+                {defaultPrimary.secondary_button.text}
               </PrismicNextLink>
             )}
           </div>

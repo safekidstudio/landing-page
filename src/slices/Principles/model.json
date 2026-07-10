@@ -64,7 +64,10 @@
                     "globe",
                     "heart",
                     "star",
-                    "lock"
+                    "lock",
+                    "clock",
+                    "tree",
+                    "brain"
                   ]
                 }
               },
@@ -80,6 +83,75 @@
                 "config": {
                   "label": "Description",
                   "placeholder": "We believe family data should remain strictly confidential...",
+                  "single": "paragraph"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "expertTips",
+      "name": "Expert Tips",
+      "description": "Expert Tips variation for parenting advice with left-aligned header and 2x2 horizontal tip cards.",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Expert Tips for Parents",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Build a healthy digital environment...",
+            "single": "paragraph"
+          }
+        },
+        "principles_list": {
+          "type": "Group",
+          "config": {
+            "label": "Tips List",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "shield",
+                    "users",
+                    "globe",
+                    "heart",
+                    "star",
+                    "lock",
+                    "clock",
+                    "tree",
+                    "brain"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "ESTABLISH GOLDEN HOURS"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Define clear study and play times...",
                   "single": "paragraph"
                 }
               }
