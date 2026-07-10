@@ -12,6 +12,7 @@ import {
   Shield,
   Smartphone,
 } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { MediaEmbed } from "./MediaEmbed";
 import { AnimatedComponent } from "@/components/animated";
 
@@ -43,7 +44,7 @@ export default function Hero({ slice }: HeroProps) {
   return (
     <section className="relative w-full py-16 md:py-24 bg-[#FAF8F5] overflow-hidden text-center px-4 md:px-6 flex flex-col items-center">
       {/* Subtle background warm radial glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-emerald-50/40 to-transparent rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-linear-to-b from-emerald-50/40 to-transparent rounded-full blur-3xl -z-10" />
 
       {/* 1. Pill Badge - Fade In */}
       {isFilled.keyText(primary.badge_text) && (
@@ -82,9 +83,12 @@ export default function Hero({ slice }: HeroProps) {
             field={primary.heading}
             components={{
               heading1: ({ children }) => (
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight text-[#1F2937] leading-[1.12]">
+                <Heading
+                  as="h1"
+                  className="text-4xl md:text-5xl lg:text-6xl text-[#1F2937] leading-[1.12] mb-0 max-w-4xl"
+                >
                   {children}
-                </h1>
+                </Heading>
               ),
             }}
           />
@@ -117,59 +121,59 @@ export default function Hero({ slice }: HeroProps) {
       {(isFilled.keyText(primary.primary_button.text) ||
         isFilled.keyText(primary.secondary_button.text) ||
         isFilled.keyText(primary.tertiary_button.text)) && (
-          <AnimatedComponent
-            type="slide"
-            direction="up"
-            duration={0.6}
-            delay={0.5}
-            className="w-full flex justify-center mt-9"
-          >
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              {/* Primary Button */}
-              {isFilled.keyText(primary.primary_button.text) && (
-                <PrismicNextLink
-                  field={primary.primary_button}
-                  className={cn(
-                    buttonVariants({
-                      variant: (primary.primary_button_variant as any) || "brand",
-                    }),
-                    "rounded-full px-8 py-3.5 h-auto text-base font-medium",
-                  )}
-                >
-                  {primary.primary_button.text}
-                </PrismicNextLink>
-              )}
+        <AnimatedComponent
+          type="slide"
+          direction="up"
+          duration={0.6}
+          delay={0.5}
+          className="w-full flex justify-center mt-9"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {/* Primary Button */}
+            {isFilled.keyText(primary.primary_button.text) && (
+              <PrismicNextLink
+                field={primary.primary_button}
+                className={cn(
+                  buttonVariants({
+                    variant: (primary.primary_button_variant as any) || "brand",
+                  }),
+                  "rounded-full px-8 py-3.5 h-auto text-base font-medium",
+                )}
+              >
+                {primary.primary_button.text}
+              </PrismicNextLink>
+            )}
 
-              {/* Secondary Button */}
-              {isFilled.keyText(primary.secondary_button.text) && (
-                <PrismicNextLink
-                  field={primary.secondary_button}
-                  className={cn(
-                    buttonVariants({
-                      variant:
-                        (primary.secondary_button_variant as any) || "secondary",
-                      size: "lg",
-                    }),
-                    "rounded-full px-8 py-3.5 h-auto text-base font-medium",
-                  )}
-                >
-                  {primary.secondary_button.text}
-                </PrismicNextLink>
-              )}
+            {/* Secondary Button */}
+            {isFilled.keyText(primary.secondary_button.text) && (
+              <PrismicNextLink
+                field={primary.secondary_button}
+                className={cn(
+                  buttonVariants({
+                    variant:
+                      (primary.secondary_button_variant as any) || "secondary",
+                    size: "lg",
+                  }),
+                  "rounded-full px-8 py-3.5 h-auto text-base font-medium",
+                )}
+              >
+                {primary.secondary_button.text}
+              </PrismicNextLink>
+            )}
 
-              {/* Tertiary Button */}
-              {isFilled.keyText(primary.tertiary_button.text) && (
-                <PrismicNextLink
-                  field={primary.tertiary_button}
-                  className="inline-flex items-center gap-2 text-[#374151] hover:text-brand font-semibold px-4 py-3.5 transition-colors duration-200"
-                >
-                  <MessageSquare className="h-4.5 w-4.5" />
-                  {primary.tertiary_button.text}
-                </PrismicNextLink>
-              )}
-            </div>
-          </AnimatedComponent>
-        )}
+            {/* Tertiary Button */}
+            {isFilled.keyText(primary.tertiary_button.text) && (
+              <PrismicNextLink
+                field={primary.tertiary_button}
+                className="inline-flex items-center gap-2 text-[#374151] hover:text-brand font-semibold px-4 py-3.5 transition-colors duration-200"
+              >
+                <MessageSquare className="h-4.5 w-4.5" />
+                {primary.tertiary_button.text}
+              </PrismicNextLink>
+            )}
+          </div>
+        </AnimatedComponent>
+      )}
 
       {/* 5. Key Benefits row - Fade In */}
       {isFilled.group(primary.stats_list) && (

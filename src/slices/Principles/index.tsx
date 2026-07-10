@@ -2,6 +2,7 @@ import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@/prismicio";
 import { Shield, Users, Globe, Heart, Star, Lock } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type PrinciplesProps = {
@@ -51,11 +52,7 @@ export default function Principles({ slice }: PrinciplesProps) {
             <PrismicRichText
               field={primary.heading}
               components={{
-                heading2: ({ children }) => (
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-foreground text-center max-w-3xl leading-tight mb-4">
-                    {children}
-                  </h2>
-                ),
+                heading2: ({ children }) => <Heading>{children}</Heading>,
               }}
             />
           )}

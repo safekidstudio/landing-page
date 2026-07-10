@@ -1,0 +1,75 @@
+{
+  "id": "data_flows",
+  "type": "SharedSlice",
+  "name": "DataFlows",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/data_flows/default/16aac8e51545d121155f81c6b14cf0467700550f.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Trial Journey & Website Data Flows",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Transparent disclosure of the three new data flows introduced with the Trial Journey Hub",
+            "single": "paragraph"
+          }
+        },
+        "flows": {
+          "type": "Group",
+          "config": {
+            "label": "Flows",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "default_value": "shield",
+                  "options": [
+                    "shield",
+                    "lock",
+                    "trending-up",
+                    "database",
+                    "key",
+                    "info",
+                    "mail"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "License status check (Trial Journey Hub)"
+                }
+              },
+              "content": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Content",
+                  "placeholder": "When you visit your trial dashboard...",
+                  "multi": "paragraph,em,strong,list-item,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "A vertical stack of details cards for displaying data flows and descriptions."
+}

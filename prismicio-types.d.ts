@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
+type HomePageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
+type PageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice
 
 /**
  * Content for Page documents
@@ -632,6 +632,100 @@ type CallToActionSliceVariation = CallToActionSliceDefault
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type CallToActionSlice = prismic.SharedSlice<"call_to_action", CallToActionSliceVariation>;
+
+/**
+ * Item in *DataFlows → Default → Primary → Flows*
+ */
+export interface DataFlowsSliceDefaultPrimaryFlowsItem {
+	/**
+	 * Icon field in *DataFlows → Default → Primary → Flows*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: shield
+	 * - **API ID Path**: data_flows.default.primary.flows[].icon
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	icon: prismic.SelectField<"shield" | "lock" | "trending-up" | "database" | "key" | "info" | "mail", "filled">;
+	
+	/**
+	 * Title field in *DataFlows → Default → Primary → Flows*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: License status check (Trial Journey Hub)
+	 * - **API ID Path**: data_flows.default.primary.flows[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Content field in *DataFlows → Default → Primary → Flows*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: When you visit your trial dashboard...
+	 * - **API ID Path**: data_flows.default.primary.flows[].content
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	content: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *DataFlows → Default → Primary*
+ */
+export interface DataFlowsSliceDefaultPrimary {
+	/**
+	 * Heading field in *DataFlows → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Trial Journey & Website Data Flows
+	 * - **API ID Path**: data_flows.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *DataFlows → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Transparent disclosure of the three new data flows introduced with the Trial Journey Hub
+	 * - **API ID Path**: data_flows.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Flows field in *DataFlows → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: data_flows.default.primary.flows[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	flows: prismic.GroupField<Simplify<DataFlowsSliceDefaultPrimaryFlowsItem>>;
+}
+
+/**
+ * Default variation for DataFlows Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DataFlowsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<DataFlowsSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *DataFlows*
+ */
+type DataFlowsSliceVariation = DataFlowsSliceDefault
+
+/**
+ * DataFlows Shared Slice
+ *
+ * - **API ID**: `data_flows`
+ * - **Description**: A vertical stack of details cards for displaying data flows and descriptions.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DataFlowsSlice = prismic.SharedSlice<"data_flows", DataFlowsSliceVariation>;
 
 /**
  * Item in *Faq → Default → Primary → FAQ List*
@@ -1419,6 +1513,89 @@ type PrivacyComparisonSliceVariation = PrivacyComparisonSliceDefault
 export type PrivacyComparisonSlice = prismic.SharedSlice<"privacy_comparison", PrivacyComparisonSliceVariation>;
 
 /**
+ * Item in *StatsShowcase → Default → Primary → Stats*
+ */
+export interface StatsShowcaseSliceDefaultPrimaryStatsItem {
+	/**
+	 * Value field in *StatsShowcase → Default → Primary → Stats*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 100%
+	 * - **API ID Path**: stats_showcase.default.primary.stats[].value
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	value: prismic.KeyTextField;
+	
+	/**
+	 * Label field in *StatsShowcase → Default → Primary → Stats*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Local Transcription
+	 * - **API ID Path**: stats_showcase.default.primary.stats[].label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	label: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *StatsShowcase → Default → Primary*
+ */
+export interface StatsShowcaseSliceDefaultPrimary {
+	/**
+	 * Heading field in *StatsShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Trusted by Privacy-Conscious Organizations
+	 * - **API ID Path**: stats_showcase.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *StatsShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Join thousands who prioritize data privacy and security
+	 * - **API ID Path**: stats_showcase.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Stats field in *StatsShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: stats_showcase.default.primary.stats[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	stats: prismic.GroupField<Simplify<StatsShowcaseSliceDefaultPrimaryStatsItem>>;
+}
+
+/**
+ * Default variation for StatsShowcase Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatsShowcaseSliceDefault = prismic.SharedSliceVariation<"default", Simplify<StatsShowcaseSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *StatsShowcase*
+ */
+type StatsShowcaseSliceVariation = StatsShowcaseSliceDefault
+
+/**
+ * StatsShowcase Shared Slice
+ *
+ * - **API ID**: `stats_showcase`
+ * - **Description**: A horizontal grid of statistics cards.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatsShowcaseSlice = prismic.SharedSlice<"stats_showcase", StatsShowcaseSliceVariation>;
+
+/**
  * Item in *Testimonials → Default → Primary → Stats List*
  */
 export interface TestimonialsSliceDefaultPrimaryStatsListItem {
@@ -1599,6 +1776,11 @@ declare module "@prismicio/client" {
 			CallToActionSliceDefaultPrimary,
 			CallToActionSliceVariation,
 			CallToActionSliceDefault,
+			DataFlowsSlice,
+			DataFlowsSliceDefaultPrimaryFlowsItem,
+			DataFlowsSliceDefaultPrimary,
+			DataFlowsSliceVariation,
+			DataFlowsSliceDefault,
 			FaqSlice,
 			FaqSliceDefaultPrimaryFaqListItem,
 			FaqSliceDefaultPrimary,
@@ -1631,6 +1813,11 @@ declare module "@prismicio/client" {
 			PrivacyComparisonSliceDefaultPrimary,
 			PrivacyComparisonSliceVariation,
 			PrivacyComparisonSliceDefault,
+			StatsShowcaseSlice,
+			StatsShowcaseSliceDefaultPrimaryStatsItem,
+			StatsShowcaseSliceDefaultPrimary,
+			StatsShowcaseSliceVariation,
+			StatsShowcaseSliceDefault,
 			TestimonialsSlice,
 			TestimonialsSliceDefaultPrimaryStatsListItem,
 			TestimonialsSliceDefaultPrimaryReviewsItem,

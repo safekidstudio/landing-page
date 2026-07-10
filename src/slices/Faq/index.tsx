@@ -6,6 +6,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type FaqProps = {
@@ -39,9 +40,7 @@ export default function Faq({ slice }: FaqProps) {
               field={primary.heading}
               components={{
                 heading2: ({ children }) => (
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-foreground text-center max-w-3xl leading-tight mb-16">
-                    {children}
-                  </h2>
+                  <Heading className="mb-16">{children}</Heading>
                 ),
               }}
             />

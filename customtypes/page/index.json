@@ -15,6 +15,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "stats_showcase": {
+              "type": "SharedSlice"
+            },
+            "data_flows": {
+              "type": "SharedSlice"
+            },
             "privacy_comparison": {
               "type": "SharedSlice"
             },

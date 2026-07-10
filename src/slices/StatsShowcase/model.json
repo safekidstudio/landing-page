@@ -1,0 +1,58 @@
+{
+  "id": "stats_showcase",
+  "type": "SharedSlice",
+  "name": "StatsShowcase",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/stats_showcase/default/fc4c41c6d716a2c3bd20a2638154f004c3093ecc.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Trusted by Privacy-Conscious Organizations",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Join thousands who prioritize data privacy and security",
+            "single": "paragraph"
+          }
+        },
+        "stats": {
+          "type": "Group",
+          "config": {
+            "label": "Stats",
+            "repeat": true,
+            "fields": {
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value",
+                  "placeholder": "100%"
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": "Local Transcription"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "A horizontal grid of statistics cards."
+}

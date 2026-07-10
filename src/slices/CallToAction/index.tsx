@@ -3,6 +3,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@/prismicio";
 import { ArrowRight, Check } from "lucide-react";
 
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type CallToActionProps = {
@@ -28,9 +29,9 @@ export default function CallToAction({ slice }: CallToActionProps) {
                 field={primary.heading}
                 components={{
                   heading2: ({ children }) => (
-                    <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-serif font-medium tracking-tight text-foreground leading-tight mb-4 max-w-2xl">
+                    <Heading className="text-left max-w-2xl lg:text-[44px]">
                       {children}
-                    </h2>
+                    </Heading>
                   ),
                 }}
               />

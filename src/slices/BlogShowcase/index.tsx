@@ -7,6 +7,7 @@ import {
   getBlogLink,
   PrismicNextLink,
 } from "@/prismicio";
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type BlogShowcaseProps = {
@@ -68,9 +69,9 @@ export default async function BlogShowcase({
                   field={primary.heading}
                   components={{
                     heading2: ({ children }) => (
-                      <h2 className="text-3xl sm:text-4xl font-serif font-medium tracking-tight text-foreground leading-tight">
+                      <Heading className="text-left max-w-none mb-0">
                         {children}
-                      </h2>
+                      </Heading>
                     ),
                   }}
                 />

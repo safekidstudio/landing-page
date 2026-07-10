@@ -1,6 +1,7 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { Database, Shield, Lock, Info, X, Check } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type PrivacyComparisonProps = {
@@ -12,7 +13,7 @@ export default function PrivacyComparison({ slice }: PrivacyComparisonProps) {
 
   // Icon resolver for card headers
   const getCardIcon = (iconName: string) => {
-    const iconClass = "h-5 w-5 text-neutral-600";
+    const iconClass = "h-6 w-6 text-neutral-600";
     switch (iconName) {
       case "database":
         return <Database className={iconClass} />;
@@ -40,14 +41,24 @@ export default function PrivacyComparison({ slice }: PrivacyComparisonProps) {
           className="w-full text-center max-w-3xl mx-auto space-y-4"
         >
           {isFilled.richText(primary.heading) && (
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium tracking-tight text-[#1F2937] leading-[1.15]">
-              <PrismicRichText field={primary.heading} />
-            </h2>
+            <PrismicRichText
+              field={primary.heading}
+              components={{
+                heading2: ({ children }) => <Heading>{children}</Heading>,
+              }}
+            />
           )}
           {isFilled.richText(primary.description) && (
-            <div className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed">
-              <PrismicRichText field={primary.description} />
-            </div>
+            <PrismicRichText
+              field={primary.description}
+              components={{
+                paragraph: ({ children }) => (
+                  <p className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed text-center max-w-2xl mx-auto">
+                    {children}
+                  </p>
+                ),
+              }}
+            />
           )}
         </ScrollAnimatedContainer>
 
@@ -63,7 +74,7 @@ export default function PrivacyComparison({ slice }: PrivacyComparisonProps) {
             <div className="bg-white border border-neutral-100 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 w-full flex flex-col">
               {/* Header */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-3.5 bg-neutral-100 rounded-xl flex items-center justify-center">
+                <div className="p-3.5 bg-neutral-200 rounded-xl flex items-center justify-center">
                   {getCardIcon(primary.left_card_icon || "database")}
                 </div>
                 <h3 className="text-lg font-serif italic font-medium text-foreground">
@@ -109,7 +120,7 @@ export default function PrivacyComparison({ slice }: PrivacyComparisonProps) {
             <div className="bg-white border border-neutral-100 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 w-full flex flex-col">
               {/* Header */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-3.5 bg-neutral-100 rounded-xl flex items-center justify-center">
+                <div className="p-3.5 bg-neutral-200 rounded-xl flex items-center justify-center">
                   {getCardIcon(primary.right_card_icon || "shield")}
                 </div>
                 <h3 className="text-lg font-serif italic font-medium text-foreground">

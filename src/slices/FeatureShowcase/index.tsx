@@ -15,6 +15,7 @@ import {
   Smartphone,
   Check,
 } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type FeatureShowcaseProps = {
@@ -95,11 +96,7 @@ export default function FeatureShowcase({ slice }: FeatureShowcaseProps) {
             <PrismicRichText
               field={primary.heading}
               components={{
-                heading2: ({ children }) => (
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-foreground text-center max-w-3xl leading-tight mb-4">
-                    {children}
-                  </h2>
-                ),
+                heading2: ({ children }) => <Heading>{children}</Heading>,
               }}
             />
           )}

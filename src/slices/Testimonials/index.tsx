@@ -2,6 +2,7 @@ import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@/prismicio";
 import { Pencil, FileText, User, Globe, Quote } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type TestimonialsProps = {
@@ -57,9 +58,7 @@ export default function Testimonials({ slice }: TestimonialsProps) {
               field={primary.heading}
               components={{
                 heading2: ({ children }) => (
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight text-foreground text-center max-w-3xl leading-tight mb-12">
-                    {children}
-                  </h2>
+                  <Heading className="mb-12">{children}</Heading>
                 ),
               }}
             />
