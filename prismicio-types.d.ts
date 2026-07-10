@@ -1383,6 +1383,36 @@ export interface PrivacyComparisonSliceDefaultPrimaryRightCardItemsItem {
 }
 
 /**
+ * Item in *PrivacyComparison → With Links → Primary → Left Card Links*
+ */
+export interface PrivacyComparisonSliceWithLinksPrimaryLeftCardLinksItem {
+	/**
+	 * Link Target field in *PrivacyComparison → With Links → Primary → Left Card Links*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.left_card_links[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *PrivacyComparison → With Links → Primary → Right Card Links*
+ */
+export interface PrivacyComparisonSliceWithLinksPrimaryRightCardLinksItem {
+	/**
+	 * Link Target field in *PrivacyComparison → With Links → Primary → Right Card Links*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.right_card_links[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Primary content in *PrivacyComparison → Default → Primary*
  */
 export interface PrivacyComparisonSliceDefaultPrimary {
@@ -1499,9 +1529,123 @@ export interface PrivacyComparisonSliceDefaultPrimary {
 export type PrivacyComparisonSliceDefault = prismic.SharedSliceVariation<"default", Simplify<PrivacyComparisonSliceDefaultPrimary>, never>;
 
 /**
+ * Primary content in *PrivacyComparison → With Links → Primary*
+ */
+export interface PrivacyComparisonSliceWithLinksPrimary {
+	/**
+	 * Heading field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Data Collection & Usage
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Complete transparency about what we do and don't collect
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Left Card Title field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Open Source (Community Edition)
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.left_card_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	left_card_title: prismic.KeyTextField;
+	
+	/**
+	 * Left Card Description field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Meetily Community Edition is open source...
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.left_card_description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	left_card_description: prismic.RichTextField;
+	
+	/**
+	 * Left Card Links field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.left_card_links[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	left_card_links: prismic.GroupField<Simplify<PrivacyComparisonSliceWithLinksPrimaryLeftCardLinksItem>>;
+	
+	/**
+	 * Left Card Footer field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.left_card_footer
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	left_card_footer: prismic.RichTextField;
+	
+	/**
+	 * Right Card Title field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Pro Edition (Self-Hosted)
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.right_card_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	right_card_title: prismic.KeyTextField;
+	
+	/**
+	 * Right Card Description field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Meetily Pro includes...
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.right_card_description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	right_card_description: prismic.RichTextField;
+	
+	/**
+	 * Right Card Links field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.right_card_links[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	right_card_links: prismic.GroupField<Simplify<PrivacyComparisonSliceWithLinksPrimaryRightCardLinksItem>>;
+	
+	/**
+	 * Right Card Footer field in *PrivacyComparison → With Links → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: privacy_comparison.withLinks.primary.right_card_footer
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	right_card_footer: prismic.RichTextField;
+}
+
+/**
+ * With Links variation for PrivacyComparison Slice
+ *
+ * - **API ID**: `withLinks`
+ * - **Description**: Variation containing text descriptions and redirect links inside side-by-side cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrivacyComparisonSliceWithLinks = prismic.SharedSliceVariation<"withLinks", Simplify<PrivacyComparisonSliceWithLinksPrimary>, never>;
+
+/**
  * Slice variation for *PrivacyComparison*
  */
-type PrivacyComparisonSliceVariation = PrivacyComparisonSliceDefault
+type PrivacyComparisonSliceVariation = PrivacyComparisonSliceDefault | PrivacyComparisonSliceWithLinks
 
 /**
  * PrivacyComparison Shared Slice
@@ -1811,8 +1955,12 @@ declare module "@prismicio/client" {
 			PrivacyComparisonSliceDefaultPrimaryLeftCardItemsItem,
 			PrivacyComparisonSliceDefaultPrimaryRightCardItemsItem,
 			PrivacyComparisonSliceDefaultPrimary,
+			PrivacyComparisonSliceWithLinksPrimaryLeftCardLinksItem,
+			PrivacyComparisonSliceWithLinksPrimaryRightCardLinksItem,
+			PrivacyComparisonSliceWithLinksPrimary,
 			PrivacyComparisonSliceVariation,
 			PrivacyComparisonSliceDefault,
+			PrivacyComparisonSliceWithLinks,
 			StatsShowcaseSlice,
 			StatsShowcaseSliceDefaultPrimaryStatsItem,
 			StatsShowcaseSliceDefaultPrimary,

@@ -32,7 +32,12 @@
           "config": {
             "label": "Left Card Icon",
             "default_value": "database",
-            "options": ["database", "shield", "lock", "info"]
+            "options": [
+              "database",
+              "shield",
+              "lock",
+              "info"
+            ]
           }
         },
         "left_card_title": {
@@ -68,7 +73,10 @@
                 "config": {
                   "label": "Status",
                   "default_value": "cross",
-                  "options": ["cross", "check"]
+                  "options": [
+                    "cross",
+                    "check"
+                  ]
                 }
               }
             }
@@ -79,7 +87,12 @@
           "config": {
             "label": "Right Card Icon",
             "default_value": "shield",
-            "options": ["database", "shield", "lock", "info"]
+            "options": [
+              "database",
+              "shield",
+              "lock",
+              "info"
+            ]
           }
         },
         "right_card_title": {
@@ -115,10 +128,122 @@
                 "config": {
                   "label": "Status",
                   "default_value": "check",
-                  "options": ["cross", "check"]
+                  "options": [
+                    "cross",
+                    "check"
+                  ]
                 }
               }
             }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withLinks",
+      "name": "With Links",
+      "description": "Variation containing text descriptions and redirect links inside side-by-side cards",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/privacy_comparison/withLinks/97d8a91f2d468e2bd7b9b86ca118e94990bbb99b.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Data Collection & Usage",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Complete transparency about what we do and don't collect",
+            "single": "paragraph,strong,em",
+            "allowTargetBlank": true
+          }
+        },
+        "left_card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Left Card Title",
+            "placeholder": "Open Source (Community Edition)"
+          }
+        },
+        "left_card_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Left Card Description",
+            "placeholder": "Meetily Community Edition is open source...",
+            "multi": "paragraph,em,strong"
+          }
+        },
+        "left_card_links": {
+          "type": "Group",
+          "config": {
+            "label": "Left Card Links",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link Target",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        },
+        "left_card_footer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Left Card Footer",
+            "placeholder": "",
+            "multi": "paragraph,em,strong,hyperlink"
+          }
+        },
+        "right_card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Right Card Title",
+            "placeholder": "Pro Edition (Self-Hosted)"
+          }
+        },
+        "right_card_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Right Card Description",
+            "placeholder": "Meetily Pro includes...",
+            "multi": "paragraph,em,strong"
+          }
+        },
+        "right_card_links": {
+          "type": "Group",
+          "config": {
+            "label": "Right Card Links",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link Target",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
+        },
+        "right_card_footer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Right Card Footer",
+            "placeholder": "",
+            "multi": "paragraph,em,strong,hyperlink"
           }
         }
       },
