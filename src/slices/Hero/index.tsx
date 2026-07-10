@@ -53,8 +53,17 @@ export default function Hero({ slice }: HeroProps) {
           delay={0.1}
           className="inline-flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-semibold uppercase tracking-wider mb-6">
-            <CheckCircle className="h-3.5 w-3.5 fill-brand text-brand/10" />
+          <div
+            className={cn(
+              "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6",
+              (primary.badge_style as any) === "gray"
+                ? "bg-zinc-100 border border-zinc-300 text-muted-foreground"
+                : "bg-brand/10 border border-brand/20 text-brand",
+            )}
+          >
+            {(primary.badge_style as any) !== "gray" && (
+              <CheckCircle className="h-3.5 w-3.5 fill-brand text-brand/10" />
+            )}
             <span>{primary.badge_text}</span>
           </div>
         </AnimatedComponent>
@@ -105,9 +114,9 @@ export default function Hero({ slice }: HeroProps) {
       </AnimatedComponent>
 
       {/* 4. Action Buttons Row - Slide Up */}
-      {(isFilled.link(primary.primary_button) ||
-        isFilled.link(primary.secondary_button) ||
-        isFilled.link(primary.tertiary_button)) && (
+      {(isFilled.keyText(primary.primary_button.text) ||
+        isFilled.keyText(primary.secondary_button.text) ||
+        isFilled.keyText(primary.tertiary_button.text)) && (
           <AnimatedComponent
             type="slide"
             direction="up"
@@ -121,7 +130,9 @@ export default function Hero({ slice }: HeroProps) {
                 <PrismicNextLink
                   field={primary.primary_button}
                   className={cn(
-                    buttonVariants({ variant: "brand" }),
+                    buttonVariants({
+                      variant: (primary.primary_button_variant as any) || "brand",
+                    }),
                     "rounded-full px-8 py-3.5 h-auto text-base font-medium",
                   )}
                 >
@@ -135,7 +146,8 @@ export default function Hero({ slice }: HeroProps) {
                   field={primary.secondary_button}
                   className={cn(
                     buttonVariants({
-                      variant: "secondary",
+                      variant:
+                        (primary.secondary_button_variant as any) || "secondary",
                       size: "lg",
                     }),
                     "rounded-full px-8 py-3.5 h-auto text-base font-medium",
@@ -156,7 +168,8 @@ export default function Hero({ slice }: HeroProps) {
                 </PrismicNextLink>
               )}
             </div>
-          </AnimatedComponent>)}
+          </AnimatedComponent>
+        )}
 
       {/* 5. Key Benefits row - Fade In */}
       {isFilled.group(primary.stats_list) && (

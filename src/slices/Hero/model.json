@@ -18,6 +18,14 @@
             "placeholder": "LAUNCHING SOON ON ANDROID"
           }
         },
+        "badge_style": {
+          "type": "Select",
+          "config": {
+            "label": "Badge Style",
+            "default_value": "brand-dot",
+            "options": ["brand-dot", "gray"]
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {
@@ -45,6 +53,14 @@
             "repeat": false
           }
         },
+        "primary_button_variant": {
+          "type": "Select",
+          "config": {
+            "label": "Primary Button Variant",
+            "default_value": "brand",
+            "options": ["default", "brand", "secondary", "outline"]
+          }
+        },
         "secondary_button": {
           "type": "Link",
           "config": {
@@ -54,6 +70,14 @@
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": false
+          }
+        },
+        "secondary_button_variant": {
+          "type": "Select",
+          "config": {
+            "label": "Secondary Button Variant",
+            "default_value": "secondary",
+            "options": ["default", "brand", "secondary", "outline"]
           }
         },
         "tertiary_button": {

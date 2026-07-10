@@ -9,6 +9,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "privacy_comparison": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             },

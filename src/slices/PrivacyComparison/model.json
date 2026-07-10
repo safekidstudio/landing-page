@@ -1,0 +1,145 @@
+{
+  "id": "privacy_comparison",
+  "type": "SharedSlice",
+  "name": "PrivacyComparison",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/privacy_comparison/default/0ba8559ed3a08bddc368dd887112670b0694e2ab.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Data Collection & Usage",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Complete transparency about what we do and don't collect",
+            "single": "paragraph"
+          }
+        },
+        "left_card_icon": {
+          "type": "Select",
+          "config": {
+            "label": "Left Card Icon",
+            "default_value": "database",
+            "options": [
+              "database",
+              "shield",
+              "lock",
+              "info"
+            ]
+          }
+        },
+        "left_card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Left Card Title",
+            "placeholder": "What We DON'T Collect"
+          }
+        },
+        "left_card_footer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Left Card Footer",
+            "placeholder": "",
+            "multi": "paragraph,em,strong,hyperlink"
+          }
+        },
+        "left_card_items": {
+          "type": "Group",
+          "config": {
+            "label": "Left Card Items",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "Meeting audio or video content (always stays local)"
+                }
+              },
+              "status": {
+                "type": "Select",
+                "config": {
+                  "label": "Status",
+                  "default_value": "cross",
+                  "options": [
+                    "cross",
+                    "check"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "right_card_icon": {
+          "type": "Select",
+          "config": {
+            "label": "Right Card Icon",
+            "default_value": "shield",
+            "options": [
+              "database",
+              "shield",
+              "lock",
+              "info"
+            ]
+          }
+        },
+        "right_card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Right Card Title",
+            "placeholder": "What We DO Collect (Optional)"
+          }
+        },
+        "right_card_footer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Right Card Footer",
+            "placeholder": "",
+            "multi": "paragraph,em,strong,hyperlink"
+          }
+        },
+        "right_card_items": {
+          "type": "Group",
+          "config": {
+            "label": "Right Card Items",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "Meeting audio or video content (always stays local)"
+                }
+              },
+              "status": {
+                "type": "Select",
+                "config": {
+                  "label": "Status",
+                  "default_value": "check",
+                  "options": [
+                    "cross",
+                    "check"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "A side-by-side card grid showing data collection comparisons, with custom list statuses."
+}
