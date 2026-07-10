@@ -1,0 +1,80 @@
+{
+  "id": "blog_departments",
+  "type": "SharedSlice",
+  "name": "BlogDepartments",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation displaying category/department cards in a 3-column layout",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/blog_departments/default/d9aae5a820d523b67ff61ac8a1d6cf90819f42b1.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "tagline": {
+          "type": "Text",
+          "config": {
+            "label": "Tagline",
+            "placeholder": "THE STANDING SECTIONS"
+          }
+        },
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": "DEPARTMENTS"
+          }
+        },
+        "departments": {
+          "type": "Group",
+          "config": {
+            "label": "Departments",
+            "repeat": true,
+            "fields": {
+              "prefix": {
+                "type": "Text",
+                "config": {
+                  "label": "Prefix Number",
+                  "placeholder": "I."
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Department Name",
+                  "placeholder": "Digital Health"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "The science of screen time, blue light, and brain development..."
+                }
+              },
+              "article_count": {
+                "type": "Text",
+                "config": {
+                  "label": "Article Count",
+                  "placeholder": "12 ARTICLES"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "Link to department posts...",
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Departments section displaying editorial categories and categories descriptions."
+}

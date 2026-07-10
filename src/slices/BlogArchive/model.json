@@ -1,0 +1,34 @@
+{
+  "id": "blog_archive",
+  "type": "SharedSlice",
+  "name": "BlogArchive",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation displaying all blog posts with category dropdown filter and load more pagination",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/blog_archive/default/96ee26c9a7c5ac843460833604bd394fde80ce41.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "tagline": {
+          "type": "Text",
+          "config": {
+            "label": "Tagline",
+            "placeholder": "THE ARCHIVE"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Every dispatch, in order.",
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Dynamic blog archive section listing all posts with dropdown category filter."
+}

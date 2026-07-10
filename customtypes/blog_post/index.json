@@ -10,6 +10,27 @@
           "label": "UID"
         }
       },
+      "category": {
+        "type": "Text",
+        "config": {
+          "label": "Category / Tag",
+          "placeholder": "DIGITAL HABITS"
+        }
+      },
+      "read_time": {
+        "type": "Text",
+        "config": {
+          "label": "Read Time",
+          "placeholder": "12 MIN READ"
+        }
+      },
+      "post_number": {
+        "type": "Text",
+        "config": {
+          "label": "Post Number",
+          "placeholder": "01"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

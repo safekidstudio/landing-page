@@ -14,6 +14,15 @@
             },
             "hero": {
               "type": "SharedSlice"
+            },
+            "blog_featured": {
+              "type": "SharedSlice"
+            },
+            "blog_archive": {
+              "type": "SharedSlice"
+            },
+            "blog_departments": {
+              "type": "SharedSlice"
             }
           }
         }

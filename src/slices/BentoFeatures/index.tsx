@@ -31,26 +31,26 @@ export default function BentoFeatures({ slice }: BentoFeaturesProps) {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full bg-[#FAF8F5]/30 py-16 md:py-24 overflow-hidden"
+      className="w-full bg-[#EFEEEA] py-16 md:py-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with decorative horizontal line wings */}
         {isFilled.richText(primary.heading) && (
           <div className="flex items-center gap-4 md:gap-8 w-full mb-16">
-            <div className="h-[1px] bg-neutral-200 dark:bg-neutral-800 flex-grow" />
+            <div className="h-px bg-neutral-200 dark:bg-neutral-800 grow" />
             <ScrollAnimatedContainer type="slide" direction="up">
               <PrismicRichText
                 field={primary.heading}
                 components={{
                   heading2: ({ children }) => (
-                    <Heading className="italic font-serif font-medium text-3xl sm:text-4xl text-foreground text-center shrink-0 max-w-none">
+                    <Heading className="italic font-medium text-3xl sm:text-4xl text-foreground text-center shrink-0 max-w-none">
                       {children}
                     </Heading>
                   ),
                 }}
               />
             </ScrollAnimatedContainer>
-            <div className="h-[1px] bg-neutral-200 dark:bg-neutral-800 flex-grow" />
+            <div className="h-px bg-neutral-200 dark:bg-neutral-800 grow" />
           </div>
         )}
 
@@ -81,7 +81,7 @@ export default function BentoFeatures({ slice }: BentoFeaturesProps) {
 
                       {/* Title */}
                       {isFilled.keyText(item.title) && (
-                        <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-foreground mb-4 max-w-md">
+                        <h3 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4 max-w-md">
                           {item.title}
                         </h3>
                       )}
@@ -140,7 +140,7 @@ export default function BentoFeatures({ slice }: BentoFeaturesProps) {
 
                       {/* Title */}
                       {isFilled.keyText(item.title) && (
-                        <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white mb-4">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">
                           {item.title}
                         </h3>
                       )}
@@ -177,7 +177,7 @@ export default function BentoFeatures({ slice }: BentoFeaturesProps) {
 
                       {/* Title */}
                       {isFilled.keyText(item.title) && (
-                        <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white mb-3">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">
                           {item.title}
                         </h3>
                       )}
@@ -213,7 +213,7 @@ export default function BentoFeatures({ slice }: BentoFeaturesProps) {
 
                       {/* Title */}
                       {isFilled.keyText(item.title) && (
-                        <h3 className="text-xl sm:text-2xl font-serif font-semibold text-foreground mb-3">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3">
                           {item.title}
                         </h3>
                       )}

@@ -1,0 +1,66 @@
+{
+  "id": "blog_featured",
+  "type": "SharedSlice",
+  "name": "BlogFeatured",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation displaying a 2/3 featured post column and a 1/3 sidebar stack of two posts",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/blog_featured/default/4b10ba76ae22c2d47e35378857e63fba5d7855a8.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "tagline": {
+          "type": "Text",
+          "config": {
+            "label": "Tagline",
+            "placeholder": "THE COVER STORY"
+          }
+        },
+        "featured_label": {
+          "type": "Text",
+          "config": {
+            "label": "Featured Label",
+            "placeholder": "FEATURED"
+          }
+        },
+        "main_post": {
+          "type": "Link",
+          "config": {
+            "label": "Main Featured Post",
+            "placeholder": "Select main featured post...",
+            "select": "document",
+            "customtypes": [
+              "blog_post"
+            ]
+          }
+        },
+        "side_post_1": {
+          "type": "Link",
+          "config": {
+            "label": "Side Post 1",
+            "placeholder": "Select side post 1...",
+            "select": "document",
+            "customtypes": [
+              "blog_post"
+            ]
+          }
+        },
+        "side_post_2": {
+          "type": "Link",
+          "config": {
+            "label": "Side Post 2",
+            "placeholder": "Select side post 2...",
+            "select": "document",
+            "customtypes": [
+              "blog_post"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Featured blog posts section displaying one large post and two stacked smaller posts."
+}
