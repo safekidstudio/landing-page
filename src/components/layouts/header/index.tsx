@@ -21,6 +21,9 @@ interface SiteHeaderProps {
 export default function SiteHeader({ settings }: SiteHeaderProps) {
   const pathname = usePathname();
 
+  // Strip locale prefix (e.g. /en-us, /vi-vn) from Prismic URLs for comparison
+  const stripLocale = (url: string) =>
+    url.replace(/^\/[a-z]{2}(-[a-z]{2})?(?=\/|$)/, "") || "/";
   if (!settings) {
     return (
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/50 backdrop-blur-md">
@@ -60,7 +63,14 @@ export default function SiteHeader({ settings }: SiteHeaderProps) {
               <PrismicNextLink
                 key={idx}
                 field={item.link}
-                className="font-medium text-muted-foreground hover:text-foreground transition-colors relative py-1"
+                className={cn(
+                  "font-medium text-muted-foreground hover:text-foreground transition-colors relative py-1",
+                  {
+                    "text-brand":
+                      isFilled.link(item.link) &&
+                      stripLocale(item.link.url ?? "") === pathname,
+                  },
+                )}
               >
                 {item.label === "*" ? (
                   <span className="text-fuchsia-500 font-extrabold text-base scale-125 inline-block -mt-1">
@@ -116,11 +126,11 @@ export default function SiteHeader({ settings }: SiteHeaderProps) {
                       <PrismicNextLink
                         field={item.link}
                         className={cn(
-                          "text-base font-medium text-muted-foreground hover:text-foreground transition-colors",
+                          "text-base font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md py-2 px-3",
                           {
-                            "text-brand":
+                            "text-brand bg-brand/10":
                               isFilled.link(item.link) &&
-                              item.link.url === pathname,
+                              stripLocale(item.link.url ?? "") === pathname,
                           },
                         )}
                       >

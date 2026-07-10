@@ -54,29 +54,29 @@ export default function CallToAction({ slice }: CallToActionProps) {
               {/* Action Buttons Row */}
               {(isFilled.keyText(primaryButton?.text) ||
                 isFilled.keyText(secondaryButton?.text)) && (
-                  <div className="flex flex-wrap items-center justify-center gap-4">
-                    {/* Primary Button */}
-                    {isFilled.keyText(primaryButton?.text) && (
-                      <PrismicNextLink
-                        field={primaryButton}
-                        className="bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full px-8 py-4 h-auto text-sm md:text-base font-semibold inline-flex items-center gap-2 transition-colors duration-200"
-                      >
-                        <span>{primaryButton.text}</span>
-                        <ArrowRight className="h-4.5 w-4.5" />
-                      </PrismicNextLink>
-                    )}
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                  {/* Primary Button */}
+                  {isFilled.keyText(primaryButton?.text) && (
+                    <PrismicNextLink
+                      field={primaryButton}
+                      className="bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full px-8 py-4 h-auto text-sm md:text-base font-semibold inline-flex items-center gap-2 transition-colors duration-200"
+                    >
+                      <span>{primaryButton.text}</span>
+                      <ArrowRight className="h-4.5 w-4.5" />
+                    </PrismicNextLink>
+                  )}
 
-                    {/* Secondary Button */}
-                    {isFilled.keyText(secondaryButton?.text) && (
-                      <PrismicNextLink
-                        field={secondaryButton}
-                        className="bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground rounded-full px-8 py-4 h-auto text-sm md:text-base font-semibold inline-flex items-center transition-colors duration-200"
-                      >
-                        <span>{secondaryButton.text}</span>
-                      </PrismicNextLink>
-                    )}
-                  </div>
-                )}
+                  {/* Secondary Button */}
+                  {isFilled.keyText(secondaryButton?.text) && (
+                    <PrismicNextLink
+                      field={secondaryButton}
+                      className="bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground rounded-full px-8 py-4 h-auto text-sm md:text-base font-semibold inline-flex items-center transition-colors duration-200"
+                    >
+                      <span>{secondaryButton.text}</span>
+                    </PrismicNextLink>
+                  )}
+                </div>
+              )}
             </div>
           </ScrollAnimatedContainer>
         </div>

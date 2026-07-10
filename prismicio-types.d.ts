@@ -250,7 +250,7 @@ interface AppSettingsDocumentData {
  */
 export type AppSettingsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<AppSettingsDocumentData>, "app_settings", Lang>;
 
-type BlogPageDocumentDataSlicesSlice = never
+type BlogPageDocumentDataSlicesSlice = BlogShowcaseSlice | HeroSlice
 
 /**
  * Content for Blog Page documents
@@ -1258,9 +1258,63 @@ export interface HeroSliceDefaultPrimary {
 export type HeroSliceDefault = prismic.SharedSliceVariation<"default", Simplify<HeroSliceDefaultPrimary>, never>;
 
 /**
+ * Primary content in *Hero → Blog Hero → Primary*
+ */
+export interface HeroSliceBlogPrimary {
+	/**
+	 * Heading field in *Hero → Blog Hero → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Kibal Blogs
+	 * - **API ID Path**: hero.blog.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *Hero → Blog Hero → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Nurturing digital well-being...
+	 * - **API ID Path**: hero.blog.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Breadcrumb Label field in *Hero → Blog Hero → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Blogs
+	 * - **API ID Path**: hero.blog.primary.breadcrumb_label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	breadcrumb_label: prismic.KeyTextField;
+	
+	/**
+	 * Metadata Suffix field in *Hero → Blog Hero → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Curated Weekly
+	 * - **API ID Path**: hero.blog.primary.meta_suffix
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_suffix: prismic.KeyTextField;
+}
+
+/**
+ * Blog Hero variation for Hero Slice
+ *
+ * - **API ID**: `blog`
+ * - **Description**: Hero section designed for blog page with breadcrumbs and post count metadata.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroSliceBlog = prismic.SharedSliceVariation<"blog", Simplify<HeroSliceBlogPrimary>, never>;
+
+/**
  * Slice variation for *Hero*
  */
-type HeroSliceVariation = HeroSliceDefault
+type HeroSliceVariation = HeroSliceDefault | HeroSliceBlog
 
 /**
  * Hero Shared Slice
@@ -2000,8 +2054,10 @@ declare module "@prismicio/client" {
 			HeroSlice,
 			HeroSliceDefaultPrimaryStatsListItem,
 			HeroSliceDefaultPrimary,
+			HeroSliceBlogPrimary,
 			HeroSliceVariation,
 			HeroSliceDefault,
+			HeroSliceBlog,
 			PrinciplesSlice,
 			PrinciplesSliceDefaultPrimaryPrinciplesListItem,
 			PrinciplesSliceDefaultPrimary,
