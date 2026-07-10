@@ -55,7 +55,7 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full bg-background py-16 md:py-24"
+      className="w-full bg-[#F4F4F0] py-16 md:py-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16 items-start">
@@ -79,7 +79,7 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
             )}
 
             {isFilled.richText(primary.description) && (
-              <div className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed max-w-sm">
+              <div className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed max-w-sm">
                 <PrismicRichText field={primary.description} />
               </div>
             )}
@@ -111,11 +111,10 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
                       </div>
                       {isFilled.keyText(item.badge_text) && (
                         <span
-                          className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider ${
-                            isBrand
-                              ? "text-brand"
-                              : "text-neutral-400 dark:text-neutral-500"
-                          }`}
+                          className={`text-[10px] px-[10px] py-[5px] rounded-full sm:text-xs font-semibold uppercase tracking-wider ${isBrand
+                            ? "text-brand bg-brand/10"
+                            : "text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800"
+                            }`}
                         >
                           {item.badge_text}
                         </span>
@@ -131,7 +130,7 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
 
                     {/* Card Description */}
                     {isFilled.keyText(item.card_description) && (
-                      <p className="text-sm text-muted-foreground/70 leading-relaxed mb-5">
+                      <p className="text-sm lg:text-base text-muted-foreground/70 leading-relaxed mb-5">
                         {item.card_description}
                       </p>
                     )}
@@ -167,11 +166,10 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
                       {isFilled.keyText(item.button?.text) && (
                         <PrismicNextLink
                           field={item.button}
-                          className={`w-full inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-sm font-semibold transition-colors duration-200 ${
-                            isDark
-                              ? "bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900"
-                              : "bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground"
-                          }`}
+                          className={`w-full inline-flex items-center justify-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold transition-colors duration-200 ${isDark
+                            ? "bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900"
+                            : "bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground"
+                            }`}
                         >
                           {isDark ? (
                             <Download className="h-4 w-4" />
