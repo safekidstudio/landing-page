@@ -1,4 +1,4 @@
-import { type Content, isFilled } from "@prismicio/client";
+import { type Content, isFilled, filter } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import {
@@ -12,7 +12,7 @@ import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type BlogShowcaseProps = {
   slice: Content.BlogShowcaseSlice;
-  context?: { locale?: string };
+  context?: { locale?: string; excludeUid?: string };
 };
 
 export default async function BlogShowcase({
@@ -21,22 +21,27 @@ export default async function BlogShowcase({
 }: BlogShowcaseProps) {
   const { primary } = slice;
   const locale = context?.locale || "en";
+  const excludeUid = context?.excludeUid;
 
   const client = createClient();
   const prismicLocale = LOCALE_MAP[locale] || "en-us";
 
-  // Query the latest 3 blog posts for the current locale
+  // Query the latest 3 blog posts for the current locale, excluding current post
   const posts = await client
     .getAllByType("blog_post", {
       lang: prismicLocale,
-      limit: 3,
+      limit: excludeUid ? 4 : 3,
       orderings: [
         {
           field: "document.first_publication_date",
           direction: "desc",
         },
       ],
+      filters: excludeUid
+        ? [filter.not("my.blog_post.uid", excludeUid)]
+        : undefined,
     })
+    .then((results) => results.slice(0, 3))
     .catch(() => []);
 
   // Format date helper based on current locale
@@ -101,7 +106,8 @@ export default async function BlogShowcase({
               const dateStr = post.first_publication_date;
               const title = post.data.meta_title;
               const description = post.data.meta_description;
-              const thumbnail = post.data.meta_image;
+              const thumbnail =
+                (post.data as any).featured_image || post.data.meta_image;
               const detailLink = getBlogLink(locale, post.uid);
 
               return (

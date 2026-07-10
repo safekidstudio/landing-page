@@ -2,6 +2,7 @@
 
 import BentoFeatures from "./BentoFeatures";
 import BlogArchive from "./BlogArchive";
+import BlogContent from "./BlogContent";
 import BlogDepartments from "./BlogDepartments";
 import BlogFeatured from "./BlogFeatured";
 import BlogShowcase from "./BlogShowcase";
@@ -21,6 +22,7 @@ import Testimonials from "./Testimonials";
 export const components = {
   bento_features: BentoFeatures,
   blog_archive: BlogArchive,
+  blog_content: BlogContent,
   blog_departments: BlogDepartments,
   blog_featured: BlogFeatured,
   blog_showcase: BlogShowcase,

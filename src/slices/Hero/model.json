@@ -212,6 +212,50 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "post",
+      "name": "Post Hero",
+      "description": "Hero variation for any post detail pages showing breadcrumb links list and post title.",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/hero/post/f96cca0b2061dcf4030b4aaa0a932ea7d90f90a2.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading Override",
+            "placeholder": "Heading (defaults to page title)",
+            "single": "heading1"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description Override",
+            "placeholder": "Description (defaults to page description)",
+            "single": "paragraph"
+          }
+        },
+        "breadcrumbs": {
+          "type": "Group",
+          "config": {
+            "label": "Breadcrumbs list",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "Link to page...",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ],
   "description": "Hero section with top badge, title, subtitle, CTA actions, feature benefits, and media player mockup."

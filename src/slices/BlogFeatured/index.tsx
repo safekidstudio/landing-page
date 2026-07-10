@@ -93,7 +93,8 @@ export default async function BlogFeatured({
   const mainLink = mainPost ? getBlogLink(locale, mainPost.uid) : "#";
   const mainTitle = mainPost?.data?.meta_title || "Untitled Dispatch";
   const mainDescription = mainPost?.data?.meta_description || "";
-  const mainThumbnail = mainPost?.data?.meta_image;
+  const mainThumbnail =
+    mainPost?.data?.featured_image || mainPost?.data?.meta_image;
   const mainDate = mainPost?.first_publication_date
     ? formatDate(mainPost.first_publication_date)
     : "";
@@ -105,7 +106,7 @@ export default async function BlogFeatured({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full bg-[#FAF8F5]/30 py-12 md:py-16 border-b border-border/40"
+      className="w-full py-8 border-b border-border/40"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -125,6 +126,7 @@ export default async function BlogFeatured({
             <ScrollAnimatedContainer
               type="slide"
               direction="up"
+              margin="0px 0px 0px 0px"
               className="flex flex-col items-start w-full"
             >
               {/* Image Banner */}
@@ -215,7 +217,8 @@ export default async function BlogFeatured({
 
               const link = getBlogLink(locale, post.uid);
               const title = post.data?.meta_title || "Untitled Dispatch";
-              const thumbnail = post.data?.meta_image;
+              const thumbnail =
+                post.data?.featured_image || post.data?.meta_image;
               const date = post.first_publication_date
                 ? formatDate(post.first_publication_date)
                 : "";

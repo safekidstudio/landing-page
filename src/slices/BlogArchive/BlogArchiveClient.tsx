@@ -165,7 +165,8 @@ export default function BlogArchiveClient({
               const link = getBlogLink(locale, post.uid);
               const title = post.data?.meta_title || "Untitled Dispatch";
               const description = post.data?.meta_description || "";
-              const thumbnail = post.data?.meta_image;
+              const thumbnail =
+                post.data?.featured_image || post.data?.meta_image;
               const date = post.first_publication_date
                 ? formatDate(post.first_publication_date)
                 : "";

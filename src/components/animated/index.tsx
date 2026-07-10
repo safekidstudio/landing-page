@@ -12,6 +12,7 @@ type AnimatedProps = {
   delay?: number;
   className?: string;
   direction?: "left" | "right" | "up" | "down";
+  margin?: string;
 };
 
 const animationVariants: Record<AnimationType, Variants> = {
@@ -86,11 +87,12 @@ export const ScrollAnimatedContainer = ({
   delay = 0,
   direction = "up",
   className,
+  margin = "0px 0px -50px 0px",
 }: AnimatedProps) => {
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
-    margin: "0px 0px -50px 0px",
+    margin: margin as any,
     amount: 0.1,
   });
 

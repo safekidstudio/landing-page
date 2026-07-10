@@ -20,10 +20,145 @@ import { AnimatedComponent } from "@/components/animated";
 
 export type HeroProps = {
   slice: Content.HeroSlice;
-  context?: { locale?: string };
+  context?: {
+    locale?: string;
+    post?: any;
+  };
 };
 
 export default async function Hero({ slice, context }: HeroProps) {
+  if (slice.variation === "post") {
+    const post = context?.post;
+    const locale = context?.locale || "en";
+    const primary = slice.primary as any;
+    const breadcrumbs = primary.breadcrumbs || [];
+
+    // Home route prefix
+    const homePath = `/${locale}`;
+    const blogHomePath = `/${locale}/blog`;
+
+    // Truncate title helper for breadcrumb
+    const truncateTitle = (titleStr: string, limit = 40) => {
+      if (titleStr.length <= limit) return titleStr;
+      return `${titleStr.substring(0, limit)}...`;
+    };
+
+    return (
+      <section
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className="w-full bg-[#FAF8F5] pt-24 pb-12 md:pt-32 md:pb-16 border-b border-border/40 text-left animate-in fade-in duration-500"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedComponent
+            type="slide"
+            direction="up"
+            className="w-full flex flex-col items-start"
+          >
+            {/* 1. Breadcrumbs */}
+            <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-neutral-500 font-medium mb-8">
+              {breadcrumbs.length > 0 ? (
+                breadcrumbs.map((item: any, idx: number) => {
+                  const hasLink = isFilled.link(item.link);
+                  const label = item.link?.text || "";
+                  const hasUrl =
+                    hasLink &&
+                    item.link.url &&
+                    item.link.url !== "" &&
+                    item.link.url !== "#";
+                  const isLast = idx === breadcrumbs.length - 1;
+
+                  return (
+                    <div key={idx} className="flex items-center gap-2">
+                      {idx > 0 && (
+                        <ChevronRight className="h-3.5 w-3.5 text-neutral-400 shrink-0" />
+                      )}
+                      {hasUrl ? (
+                        <PrismicNextLink
+                          field={item.link}
+                          className="hover:text-foreground transition-colors"
+                        >
+                          {label}
+                        </PrismicNextLink>
+                      ) : (
+                        <span
+                          className={
+                            isLast
+                              ? "text-foreground font-semibold truncate max-w-[150px] sm:max-w-xs"
+                              : "text-neutral-500"
+                          }
+                        >
+                          {label}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })
+              ) : (
+                <>
+                  <PrismicNextLink
+                    href={homePath}
+                    className="hover:text-foreground transition-colors flex items-center justify-center"
+                  >
+                    <Home className="h-4 w-4" />
+                  </PrismicNextLink>
+                  <ChevronRight className="h-3.5 w-3.5 text-neutral-400" />
+                  <PrismicNextLink
+                    href={blogHomePath}
+                    className="hover:text-foreground transition-colors"
+                  >
+                    {locale === "vi" ? "Tin tức" : "Blogs"}
+                  </PrismicNextLink>
+                  <ChevronRight className="h-3.5 w-3.5 text-neutral-400" />
+                  <span className="text-foreground font-semibold truncate max-w-[200px] sm:max-w-xs md:max-w-sm">
+                    {post
+                      ? truncateTitle(post.data?.meta_title || "Untitled")
+                      : "Post"}
+                  </span>
+                </>
+              )}
+            </div>
+
+            {/* 2. Heading */}
+            {isFilled.richText(slice.primary.heading) ? (
+              <PrismicRichText
+                field={slice.primary.heading}
+                components={{
+                  heading1: ({ children }) => (
+                    <Heading
+                      as="h1"
+                      className="text-left text-4xl sm:text-5xl lg:text-[56px] text-foreground font-serif font-medium tracking-tight mb-5 leading-tight max-w-none"
+                    >
+                      {children}
+                    </Heading>
+                  ),
+                }}
+              />
+            ) : (
+              <Heading
+                as="h1"
+                className="text-left text-4xl sm:text-5xl lg:text-[56px] text-foreground font-serif font-medium tracking-tight mb-5 leading-tight max-w-none"
+              >
+                {post?.data?.meta_title || "Untitled Dispatch"}
+              </Heading>
+            )}
+
+            {/* 3. Description */}
+            {isFilled.richText(slice.primary.description) ? (
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-3xl">
+                <PrismicRichText field={slice.primary.description} />
+              </div>
+            ) : post?.data?.meta_description ? (
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-3xl">
+                {post.data.meta_description}
+              </p>
+            ) : null}
+          </AnimatedComponent>
+        </div>
+      </section>
+    );
+  }
+
   if (slice.variation === "blog") {
     const locale = context?.locale || "en";
     const prismicLocale = LOCALE_MAP[locale] || "en-us";
@@ -45,7 +180,7 @@ export default async function Hero({ slice, context }: HeroProps) {
       <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="w-full bg-[#FAF8F5]/30 pt-24 pb-8 md:pt-32 border-b border-border/40 text-left animate-in fade-in duration-500"
+        className="w-full bg-[#FAF8F5]/30 pt-24 pb-8 md:pt-32 text-left animate-in fade-in duration-500"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedComponent
@@ -93,13 +228,13 @@ export default async function Hero({ slice, context }: HeroProps) {
 
             {/* 3. Description */}
             {isFilled.richText(slice.primary.description) && (
-              <div className="text-sm sm:text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-3xl mb-12">
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-3xl mb-10">
                 <PrismicRichText field={slice.primary.description} />
               </div>
             )}
 
             {/* 4. Bottom Metadata Row */}
-            <div className="w-full pt-6 border-t border-border/40 flex items-center text-xs sm:text-sm text-neutral-500 font-medium gap-1.5">
+            <div className="w-full pt-6 border-t border-border flex items-center text-xs sm:text-sm text-neutral-500 font-medium gap-1.5">
               <span>{postCount}</span>
               <span>{dispatchLabel}</span>
               <span className="mx-2 text-neutral-300">•</span>

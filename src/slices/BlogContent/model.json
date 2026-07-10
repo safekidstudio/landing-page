@@ -1,0 +1,27 @@
+{
+  "id": "blog_content",
+  "type": "SharedSlice",
+  "name": "BlogContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation rendering the rich text blog post body in a readable column",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/blog_content/default/718e44b7f915b3cfe83cb195c79143f0797405ae.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "Write blog post content here...",
+            "multi": "paragraph,em,strong,heading2,heading3,list-item,o-list-item,hyperlink,image,embed"
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Rich text slice for blog post body contents."
+}

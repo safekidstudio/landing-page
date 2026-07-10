@@ -31,9 +31,7 @@
             "label": "Main Featured Post",
             "placeholder": "Select main featured post...",
             "select": "document",
-            "customtypes": [
-              "blog_post"
-            ]
+            "customtypes": ["blog_post"]
           }
         },
         "side_post_1": {
@@ -42,9 +40,7 @@
             "label": "Side Post 1",
             "placeholder": "Select side post 1...",
             "select": "document",
-            "customtypes": [
-              "blog_post"
-            ]
+            "customtypes": ["blog_post"]
           }
         },
         "side_post_2": {
@@ -53,9 +49,7 @@
             "label": "Side Post 2",
             "placeholder": "Select side post 2...",
             "select": "document",
-            "customtypes": [
-              "blog_post"
-            ]
+            "customtypes": ["blog_post"]
           }
         }
       },
