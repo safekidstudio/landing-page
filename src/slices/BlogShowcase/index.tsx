@@ -26,11 +26,13 @@ export default async function BlogShowcase({
   const client = createClient();
   const prismicLocale = LOCALE_MAP[locale] || "en-us";
 
-  // Query the latest 3 blog posts for the current locale, excluding current post
+  // Query the latest 3 blog posts for the current locale
+  // - On detail page: excludeUid filters out the current post server-side
+  // - On CMS page: no filter, just latest 3
   const posts = await client
-    .getAllByType("blog_post", {
+    .getByType("blog_post", {
       lang: prismicLocale,
-      limit: excludeUid ? 4 : 3,
+      pageSize: 3,
       orderings: [
         {
           field: "document.first_publication_date",
@@ -39,9 +41,9 @@ export default async function BlogShowcase({
       ],
       filters: excludeUid
         ? [filter.not("my.blog_post.uid", excludeUid)]
-        : undefined,
+        : [],
     })
-    .then((results) => results.slice(0, 3))
+    .then((res) => res.results)
     .catch(() => []);
 
   // Format date helper based on current locale
