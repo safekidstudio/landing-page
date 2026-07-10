@@ -370,7 +370,7 @@ interface BlogPostDocumentData {
  */
 export type BlogPostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<BlogPostDocumentData>, "blog_post", Lang>;
 
-type HomePageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice
+type HomePageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice
 
 /**
  * Content for Home Page documents
@@ -430,7 +430,7 @@ interface HomePageDocumentData {
  */
 export type HomePageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
 
-type PageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice
+type PageDocumentDataSlicesSlice = StatsShowcaseSlice | DataFlowsSlice | PrivacyComparisonSlice | HeroSlice | FeaturesGridSlice | TestimonialsSlice | FeatureShowcaseSlice | CallToActionSlice | BlogShowcaseSlice | FaqSlice | PrinciplesSlice | PlatformDownloadSlice | SetupStepsSlice
 
 /**
  * Content for Page documents
@@ -1966,6 +1966,109 @@ type PrivacyComparisonSliceVariation = PrivacyComparisonSliceDefault | PrivacyCo
 export type PrivacyComparisonSlice = prismic.SharedSlice<"privacy_comparison", PrivacyComparisonSliceVariation>;
 
 /**
+ * Item in *SetupSteps → Default → Primary → Steps*
+ */
+export interface SetupStepsSliceDefaultPrimaryStepsItem {
+	/**
+	 * Step Number field in *SetupSteps → Default → Primary → Steps*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 01
+	 * - **API ID Path**: setup_steps.default.primary.steps[].step_number
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	step_number: prismic.KeyTextField;
+	
+	/**
+	 * Title field in *SetupSteps → Default → Primary → Steps*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Install the App
+	 * - **API ID Path**: setup_steps.default.primary.steps[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * Description field in *SetupSteps → Default → Primary → Steps*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Install Kibal on both the parent's and child's devices.
+	 * - **API ID Path**: setup_steps.default.primary.steps[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	description: prismic.KeyTextField;
+	
+	/**
+	 * Mockup Image field in *SetupSteps → Default → Primary → Steps*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: setup_steps.default.primary.steps[].image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *SetupSteps → Default → Primary*
+ */
+export interface SetupStepsSliceDefaultPrimary {
+	/**
+	 * Heading field in *SetupSteps → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Start protecting in 3 simple steps
+	 * - **API ID Path**: setup_steps.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *SetupSteps → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: A simple setup process to connect your child's device instantly.
+	 * - **API ID Path**: setup_steps.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Steps field in *SetupSteps → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: setup_steps.default.primary.steps[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	steps: prismic.GroupField<Simplify<SetupStepsSliceDefaultPrimaryStepsItem>>;
+}
+
+/**
+ * Default variation for SetupSteps Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation showing step-by-step setup setup instructions with connecting lines
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SetupStepsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<SetupStepsSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *SetupSteps*
+ */
+type SetupStepsSliceVariation = SetupStepsSliceDefault
+
+/**
+ * SetupSteps Shared Slice
+ *
+ * - **API ID**: `setup_steps`
+ * - **Description**: SetupSteps slice displaying a sequential workflow with mockup previews.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SetupStepsSlice = prismic.SharedSlice<"setup_steps", SetupStepsSliceVariation>;
+
+/**
  * Item in *StatsShowcase → Default → Primary → Stats*
  */
 export interface StatsShowcaseSliceDefaultPrimaryStatsItem {
@@ -2281,6 +2384,11 @@ declare module "@prismicio/client" {
 			PrivacyComparisonSliceVariation,
 			PrivacyComparisonSliceDefault,
 			PrivacyComparisonSliceWithLinks,
+			SetupStepsSlice,
+			SetupStepsSliceDefaultPrimaryStepsItem,
+			SetupStepsSliceDefaultPrimary,
+			SetupStepsSliceVariation,
+			SetupStepsSliceDefault,
 			StatsShowcaseSlice,
 			StatsShowcaseSliceDefaultPrimaryStatsItem,
 			StatsShowcaseSliceDefaultPrimary,

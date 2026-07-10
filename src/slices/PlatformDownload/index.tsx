@@ -111,10 +111,11 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
                       </div>
                       {isFilled.keyText(item.badge_text) && (
                         <span
-                          className={`text-[10px] px-[10px] py-[5px] rounded-full sm:text-xs font-semibold uppercase tracking-wider ${isBrand
-                            ? "text-brand bg-brand/10"
-                            : "text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800"
-                            }`}
+                          className={`text-[10px] px-[10px] py-[5px] rounded-full sm:text-xs font-semibold uppercase tracking-wider ${
+                            isBrand
+                              ? "text-brand bg-brand/10"
+                              : "text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800"
+                          }`}
                         >
                           {item.badge_text}
                         </span>
@@ -166,10 +167,11 @@ export default function PlatformDownload({ slice }: PlatformDownloadProps) {
                       {isFilled.keyText(item.button?.text) && (
                         <PrismicNextLink
                           field={item.button}
-                          className={`w-full inline-flex items-center justify-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold transition-colors duration-200 ${isDark
-                            ? "bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900"
-                            : "bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground"
-                            }`}
+                          className={`w-full inline-flex items-center justify-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold transition-colors duration-200 ${
+                            isDark
+                              ? "bg-[#18181B] hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900"
+                              : "bg-transparent hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 border border-neutral-300 dark:border-neutral-700 text-foreground"
+                          }`}
                         >
                           {isDark ? (
                             <Download className="h-4 w-4" />

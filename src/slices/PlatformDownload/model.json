@@ -38,10 +38,7 @@
                 "config": {
                   "label": "Platform Icon",
                   "default_value": "android",
-                  "options": [
-                    "android",
-                    "ios"
-                  ]
+                  "options": ["android", "ios"]
                 }
               },
               "badge_text": {
@@ -56,10 +53,7 @@
                 "config": {
                   "label": "Badge Style",
                   "default_value": "brand",
-                  "options": [
-                    "brand",
-                    "muted"
-                  ]
+                  "options": ["brand", "muted"]
                 }
               },
               "title": {
@@ -81,13 +75,7 @@
                 "config": {
                   "label": "Feature Icon",
                   "default_value": "check-circle",
-                  "options": [
-                    "check-circle",
-                    "clock",
-                    "mail",
-                    "bell",
-                    "shield"
-                  ]
+                  "options": ["check-circle", "clock", "mail", "bell", "shield"]
                 }
               },
               "features": {
@@ -114,10 +102,7 @@
                 "config": {
                   "label": "Button Style",
                   "default_value": "dark",
-                  "options": [
-                    "dark",
-                    "outline"
-                  ]
+                  "options": ["dark", "outline"]
                 }
               }
             }

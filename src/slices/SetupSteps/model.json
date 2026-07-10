@@ -1,0 +1,73 @@
+{
+  "id": "setup_steps",
+  "type": "SharedSlice",
+  "name": "SetupSteps",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation showing step-by-step setup setup instructions with connecting lines",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/setup_steps/default/ecd76e776d3f7d39224ae89febec0e7c693f0f5a.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Start protecting in 3 simple steps",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "A simple setup process to connect your child's device instantly.",
+            "single": "paragraph"
+          }
+        },
+        "steps": {
+          "type": "Group",
+          "config": {
+            "label": "Steps",
+            "repeat": true,
+            "fields": {
+              "step_number": {
+                "type": "Text",
+                "config": {
+                  "label": "Step Number",
+                  "placeholder": "01"
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Install the App"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Install Kibal on both the parent's and child's devices."
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Mockup Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "SetupSteps slice displaying a sequential workflow with mockup previews."
+}

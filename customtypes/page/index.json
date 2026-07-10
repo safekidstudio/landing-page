@@ -50,6 +50,9 @@
             },
             "platform_download": {
               "type": "SharedSlice"
+            },
+            "setup_steps": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -11,6 +11,7 @@ export const components = {
   platform_download: dynamic(() => import("./PlatformDownload")),
   principles: dynamic(() => import("./Principles")),
   privacy_comparison: dynamic(() => import("./PrivacyComparison")),
+  setup_steps: dynamic(() => import("./SetupSteps")),
   stats_showcase: dynamic(() => import("./StatsShowcase")),
   testimonials: dynamic(() => import("./Testimonials")),
 };
