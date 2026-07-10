@@ -459,7 +459,7 @@ export default async function Hero({ slice, context }: HeroProps) {
           delay={0.65}
           className="w-full mt-12"
         >
-          <div className="w-full overflow-x-auto border-y border-border">
+          <div className="w-full overflow-x-auto border-y border-border scrollbar-hide">
             <div className="flex flex-nowrap items-center md:flex-wrap md:justify-center gap-x-8 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase min-w-max md:min-w-0 px-4 md:px-0">
               {primary.stats_list.map((item: any, index: number) => (
                 <div key={index} className="flex items-center gap-2 px-3 py-4 shrink-0">
