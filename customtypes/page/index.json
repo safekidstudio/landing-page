@@ -47,6 +47,9 @@
             },
             "principles": {
               "type": "SharedSlice"
+            },
+            "platform_download": {
+              "type": "SharedSlice"
             }
           }
         }

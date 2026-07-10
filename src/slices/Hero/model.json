@@ -183,7 +183,7 @@
       "id": "simple",
       "name": "Simple Hero",
       "description": "Left-aligned hero with badge pill, heading, and description for guide or resource pages.",
-      "imageUrl": "",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/hero/simple/a9a1908078941f064ea3154b208afdfcf7048303.png?auto=compress%2Cformat",
       "docURL": "",
       "version": "initial",
       "primary": {

@@ -1,0 +1,131 @@
+{
+  "id": "platform_download",
+  "type": "SharedSlice",
+  "name": "PlatformDownload",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Mobile platforms download section with heading, description, and platform cards.",
+      "imageUrl": "https://images.prismic.io/kibal/shared-slices/platform_download/default/de842a76cef781ed7b7fe609306ecf164c5defe1.png?auto=compress%2Cformat",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Mobile Platforms",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Install Kibal on both your phone and your child's device to start managing safety.",
+            "single": "paragraph"
+          }
+        },
+        "platform": {
+          "type": "Group",
+          "config": {
+            "label": "Platform",
+            "repeat": true,
+            "fields": {
+              "platform_icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Platform Icon",
+                  "default_value": "android",
+                  "options": [
+                    "android",
+                    "ios"
+                  ]
+                }
+              },
+              "badge_text": {
+                "type": "Text",
+                "config": {
+                  "label": "Badge Text",
+                  "placeholder": "AVAILABLE ON CH PLAY"
+                }
+              },
+              "badge_style": {
+                "type": "Select",
+                "config": {
+                  "label": "Badge Style",
+                  "default_value": "brand",
+                  "options": [
+                    "brand",
+                    "muted"
+                  ]
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Title",
+                  "placeholder": "Download for Android"
+                }
+              },
+              "card_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Description",
+                  "placeholder": "Compatible with devices running Android 8.0 or later."
+                }
+              },
+              "feature_icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Feature Icon",
+                  "default_value": "check-circle",
+                  "options": [
+                    "check-circle",
+                    "clock",
+                    "mail",
+                    "bell",
+                    "shield"
+                  ]
+                }
+              },
+              "features": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Features",
+                  "placeholder": "App Management",
+                  "multi": "list-item",
+                  "allowTargetBlank": true
+                }
+              },
+              "button": {
+                "type": "Link",
+                "config": {
+                  "label": "Button",
+                  "placeholder": "Get on Google Play",
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "button_style": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Style",
+                  "default_value": "dark",
+                  "options": [
+                    "dark",
+                    "outline"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Mobile platforms download section with platform cards, badges, features, and CTA buttons."
+}

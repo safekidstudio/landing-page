@@ -8,6 +8,7 @@ export const components = {
   feature_showcase: dynamic(() => import("./FeatureShowcase")),
   features_grid: dynamic(() => import("./FeaturesGrid")),
   hero: dynamic(() => import("./Hero")),
+  platform_download: dynamic(() => import("./PlatformDownload")),
   principles: dynamic(() => import("./Principles")),
   privacy_comparison: dynamic(() => import("./PrivacyComparison")),
   stats_showcase: dynamic(() => import("./StatsShowcase")),
