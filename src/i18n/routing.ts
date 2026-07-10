@@ -10,6 +10,7 @@ export const routing = defineRouting({
 
   // Do not use prefix for the default locale
   localePrefix: "as-needed",
+  localeDetection: false,
 });
 
 // Lightweight wrappers around Next.js' navigation APIs
