@@ -86,8 +86,11 @@ export default function SiteHeader({ settings }: SiteHeaderProps) {
 
         {/* Right Side: Auth Buttons (Desktop) & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          {/* Desktop Auth */}
-          <div className="hidden md:flex items-center gap-5">
+          {/* Desktop Auth + Switchers */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* <LocaleSwitcher />
+            <ThemeSwitcher /> */}
+            <div className="w-px h-4 bg-border/60" />
             {isFilled.keyText(login_button.text) && (
               <PrismicNextLink
                 field={login_button}
@@ -147,7 +150,13 @@ export default function SiteHeader({ settings }: SiteHeaderProps) {
                 </nav>
               </div>
 
+              {/* Bottom: Switchers + Auth Buttons */}
               <div className="border-t border-border pt-6 flex flex-col gap-4">
+                {/* Locale + Theme Row */}
+                {/* <div className="flex items-center justify-between px-3 pb-1">
+                  <LocaleSwitcher />
+                  <ThemeSwitcher />
+                </div> */}
                 {isFilled.keyText(login_button.text) && (
                   <SheetClose asChild>
                     <PrismicNextLink
