@@ -32,12 +32,7 @@
           "config": {
             "label": "Left Card Icon",
             "default_value": "database",
-            "options": [
-              "database",
-              "shield",
-              "lock",
-              "info"
-            ]
+            "options": ["database", "shield", "lock", "info"]
           }
         },
         "left_card_title": {
@@ -73,10 +68,7 @@
                 "config": {
                   "label": "Status",
                   "default_value": "cross",
-                  "options": [
-                    "cross",
-                    "check"
-                  ]
+                  "options": ["cross", "check"]
                 }
               }
             }
@@ -87,12 +79,7 @@
           "config": {
             "label": "Right Card Icon",
             "default_value": "shield",
-            "options": [
-              "database",
-              "shield",
-              "lock",
-              "info"
-            ]
+            "options": ["database", "shield", "lock", "info"]
           }
         },
         "right_card_title": {
@@ -128,10 +115,7 @@
                 "config": {
                   "label": "Status",
                   "default_value": "check",
-                  "options": [
-                    "cross",
-                    "check"
-                  ]
+                  "options": ["cross", "check"]
                 }
               }
             }

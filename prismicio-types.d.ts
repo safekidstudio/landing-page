@@ -620,9 +620,63 @@ export interface CallToActionSliceDefaultPrimary {
 export type CallToActionSliceDefault = prismic.SharedSliceVariation<"default", Simplify<CallToActionSliceDefaultPrimary>, never>;
 
 /**
+ * Primary content in *CallToAction → Centered → Primary*
+ */
+export interface CallToActionSliceCenteredPrimary {
+	/**
+	 * Heading field in *CallToAction → Centered → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Experience True Privacy Today
+	 * - **API ID Path**: call_to_action.centered.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	heading: prismic.RichTextField;
+	
+	/**
+	 * Description field in *CallToAction → Centered → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Download Meetily and experience meeting AI...
+	 * - **API ID Path**: call_to_action.centered.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Primary Button field in *CallToAction → Centered → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.centered.primary.primary_button
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	primary_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Secondary Button field in *CallToAction → Centered → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.centered.primary.secondary_button
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	secondary_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Centered variation for CallToAction Slice
+ *
+ * - **API ID**: `centered`
+ * - **Description**: Centered call to action section with heading, description, and two side-by-side action buttons.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CallToActionSliceCentered = prismic.SharedSliceVariation<"centered", Simplify<CallToActionSliceCenteredPrimary>, never>;
+
+/**
  * Slice variation for *CallToAction*
  */
-type CallToActionSliceVariation = CallToActionSliceDefault
+type CallToActionSliceVariation = CallToActionSliceDefault | CallToActionSliceCentered
 
 /**
  * CallToAction Shared Slice
@@ -1918,8 +1972,10 @@ declare module "@prismicio/client" {
 			CallToActionSlice,
 			CallToActionSliceDefaultPrimaryBenefitsItem,
 			CallToActionSliceDefaultPrimary,
+			CallToActionSliceCenteredPrimary,
 			CallToActionSliceVariation,
 			CallToActionSliceDefault,
+			CallToActionSliceCentered,
 			DataFlowsSlice,
 			DataFlowsSliceDefaultPrimaryFlowsItem,
 			DataFlowsSliceDefaultPrimary,
