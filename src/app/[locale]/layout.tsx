@@ -61,8 +61,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
-      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }
