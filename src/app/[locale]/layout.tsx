@@ -61,6 +61,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
+      <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=kibal"></script>
     </html>
   );
 }
