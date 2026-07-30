@@ -1,0 +1,50 @@
+{
+  "id": "delete_account",
+  "type": "SharedSlice",
+  "name": "DeleteAccount",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation showing the account deletion request form",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Request Account Deletion",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Please provide your details below. We will process your deletion request within 30 days.",
+            "single": "paragraph"
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": "Submit Deletion Request"
+          }
+        },
+        "success_message": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Success Message",
+            "placeholder": "Your request has been successfully submitted. We've sent a confirmation email.",
+            "single": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ],
+  "description": "Form section for submitting account deletion requests."
+}

@@ -106,5 +106,21 @@
     "author_name": "Đội ngũ Kibal",
     "seo_title": "Blog - Cân bằng cuộc sống số & bảo vệ trẻ em",
     "seo_desc": "Cập nhật các bài viết hướng dẫn, mẹo hay về quản lý thời gian dùng thiết bị, an toàn internet và bảo vệ mắt cho trẻ từ Kibal."
+  },
+  "delete_account": {
+    "name_label": "Họ và Tên",
+    "name_placeholder": "Nhập họ và tên của bạn",
+    "email_label": "Địa chỉ Email",
+    "email_placeholder": "Nhập địa chỉ email của bạn",
+    "reason_label": "Lý do xóa tài khoản",
+    "reason_placeholder": "Vui lòng cho biết lý do bạn muốn xóa tài khoản (không bắt buộc)",
+    "confirm_label": "Tôi xác nhận muốn xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan.",
+    "submitting": "Đang gửi yêu cầu...",
+    "success_title": "Gửi yêu cầu thành công",
+    "error_title": "Gặp sự cố khi gửi",
+    "error_default": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+    "validation_name": "Vui lòng nhập họ và tên.",
+    "validation_email": "Vui lòng nhập email hợp lệ.",
+    "validation_confirm": "Bạn phải tích chọn xác nhận yêu cầu xóa."
   }
 }

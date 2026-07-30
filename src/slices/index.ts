@@ -8,6 +8,7 @@ import BlogFeatured from "./BlogFeatured";
 import BlogShowcase from "./BlogShowcase";
 import CallToAction from "./CallToAction";
 import DataFlows from "./DataFlows";
+import DeleteAccount from "./DeleteAccount";
 import Faq from "./Faq";
 import FeatureShowcase from "./FeatureShowcase";
 import FeaturesGrid from "./FeaturesGrid";
@@ -28,6 +29,7 @@ export const components = {
   blog_showcase: BlogShowcase,
   call_to_action: CallToAction,
   data_flows: DataFlows,
+  delete_account: DeleteAccount,
   faq: Faq,
   feature_showcase: FeatureShowcase,
   features_grid: FeaturesGrid,

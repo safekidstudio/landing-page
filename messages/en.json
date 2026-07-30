@@ -106,5 +106,21 @@
     "author_name": "Kibal Team",
     "seo_title": "Blog - Screen Time Control & Child Safety",
     "seo_desc": "Read the latest guides and tips on managing child's screen time, internet safety, and eye protection from Kibal team."
+  },
+  "delete_account": {
+    "name_label": "Full Name",
+    "name_placeholder": "Enter your full name",
+    "email_label": "Email Address",
+    "email_placeholder": "Enter your email address",
+    "reason_label": "Reason for deletion",
+    "reason_placeholder": "Please tell us why you want to delete your account (optional)",
+    "confirm_label": "I confirm that I want to delete my account and all associated data permanently.",
+    "submitting": "Submitting...",
+    "success_title": "Request Submitted",
+    "error_title": "Submission Error",
+    "error_default": "Something went wrong. Please try again later.",
+    "validation_name": "Please enter your full name.",
+    "validation_email": "Please enter a valid email address.",
+    "validation_confirm": "You must confirm the deletion request."
   }
 }

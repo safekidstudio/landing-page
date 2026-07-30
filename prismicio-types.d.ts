@@ -521,7 +521,8 @@ type HomePageDocumentDataSlicesSlice =
   | PrinciplesSlice
   | PlatformDownloadSlice
   | SetupStepsSlice
-  | BentoFeaturesSlice;
+  | BentoFeaturesSlice
+  | DeleteAccountSlice;
 
 /**
  * Content for Home Page documents
@@ -600,7 +601,8 @@ type PageDocumentDataSlicesSlice =
   | PrinciplesSlice
   | PlatformDownloadSlice
   | SetupStepsSlice
-  | BentoFeaturesSlice;
+  | BentoFeaturesSlice
+  | DeleteAccountSlice;
 
 /**
  * Content for Page documents
@@ -826,6 +828,81 @@ type BentoFeaturesSliceVariation = BentoFeaturesSliceDefault;
 export type BentoFeaturesSlice = prismic.SharedSlice<
   "bento_features",
   BentoFeaturesSliceVariation
+>;
+
+/**
+ * Primary content in *DeleteAccount → Default → Primary*
+ */
+export interface DeleteAccountSliceDefaultPrimary {
+  /**
+   * Heading field in *DeleteAccount → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Request Account Deletion
+   * - **API ID Path**: delete_account.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *DeleteAccount → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Please provide your details below. We will process your deletion request within 30 days.
+   * - **API ID Path**: delete_account.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button Text field in *DeleteAccount → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Submit Deletion Request
+   * - **API ID Path**: delete_account.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Success Message field in *DeleteAccount → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Your request has been successfully submitted. We've sent a confirmation email.
+   * - **API ID Path**: delete_account.default.primary.success_message
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  success_message: prismic.RichTextField;
+}
+
+/**
+ * Default variation for DeleteAccount Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation showing the account deletion request form
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DeleteAccountSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<DeleteAccountSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *DeleteAccount*
+ */
+type DeleteAccountSliceVariation = DeleteAccountSliceDefault;
+
+/**
+ * DeleteAccount Shared Slice
+ *
+ * - **API ID**: `delete_account`
+ * - **Description**: Form section for submitting account deletion requests.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DeleteAccountSlice = prismic.SharedSlice<
+  "delete_account",
+  DeleteAccountSliceVariation
 >;
 
 /**
@@ -3476,6 +3553,10 @@ declare module "@prismicio/client" {
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceVariation,
       TestimonialsSliceDefault,
+      DeleteAccountSlice,
+      DeleteAccountSliceDefaultPrimary,
+      DeleteAccountSliceVariation,
+      DeleteAccountSliceDefault,
     };
   }
 }
