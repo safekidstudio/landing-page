@@ -1,12 +1,12 @@
 import { SliceZone } from "@prismicio/react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { defaultMetadata } from "@/config/metadata";
 import { createClient, LOCALE_MAP } from "@/prismicio";
 import { components } from "@/slices";
-import Hero from "@/slices/Hero";
 import BlogShowcase from "@/slices/BlogShowcase";
-import { setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import { defaultMetadata } from "@/config/metadata";
+import Hero from "@/slices/Hero";
 
 type Props = {
   params: Promise<{ locale: string; uid: string }>;

@@ -1,17 +1,17 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@/prismicio";
 import {
+  Bell,
   CheckCircle2,
   Clock,
-  Mail,
-  Bell,
-  Shield,
   Download,
+  Mail,
+  Shield,
   Smartphone,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
+import { PrismicNextLink } from "@/prismicio";
 
 // Simple Android robot SVG icon
 function AndroidIcon({ className }: { className?: string }) {

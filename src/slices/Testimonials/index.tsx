@@ -1,9 +1,9 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@/prismicio";
-import { Pencil, FileText, User, Globe, Quote } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
+import { FileText, Globe, Pencil, Quote, User } from "lucide-react";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
+import { PrismicNextLink } from "@/prismicio";
 
 export type TestimonialsProps = {
   slice: Content.TestimonialsSlice;

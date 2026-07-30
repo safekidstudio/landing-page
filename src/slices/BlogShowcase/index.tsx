@@ -1,14 +1,14 @@
-import { type Content, isFilled, filter } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
+import { type Content, filter, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
+import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 import {
   createClient,
-  LOCALE_MAP,
   getBlogLink,
+  LOCALE_MAP,
   PrismicNextLink,
 } from "@/prismicio";
-import { Heading } from "@/components/ui/typography";
-import { ScrollAnimatedContainer } from "@/components/animated";
 
 export type BlogShowcaseProps = {
   slice: Content.BlogShowcaseSlice;
@@ -39,9 +39,7 @@ export default async function BlogShowcase({
           direction: "desc",
         },
       ],
-      filters: excludeUid
-        ? [filter.not("my.blog_post.uid", excludeUid)]
-        : [],
+      filters: excludeUid ? [filter.not("my.blog_post.uid", excludeUid)] : [],
     })
     .then((res) => res.results)
     .catch(() => []);

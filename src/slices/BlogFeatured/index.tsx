@@ -1,9 +1,9 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { createClient, LOCALE_MAP, getBlogLink } from "@/prismicio";
-import { Heading } from "@/components/ui/typography";
-import { ScrollAnimatedContainer } from "@/components/animated";
 import { ArrowRight } from "lucide-react";
+import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
+import { createClient, getBlogLink, LOCALE_MAP } from "@/prismicio";
 
 export type BlogFeaturedProps = {
   slice: Content.BlogFeaturedSlice;

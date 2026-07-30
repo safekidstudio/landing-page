@@ -1,18 +1,18 @@
 "use client";
 
+import { type Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicNextLink } from "@/prismicio";
-import { Content, isFilled } from "@prismicio/client";
 import { Menu } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTrigger,
-  SheetClose,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { PrismicNextLink } from "@/prismicio";
 
 interface SiteHeaderProps {
   settings: Content.AppSettingsDocument | null;

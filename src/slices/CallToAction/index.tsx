@@ -1,10 +1,10 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@/prismicio";
 import { ArrowRight, Check } from "lucide-react";
+import { ScrollAnimatedContainer } from "@/components/animated";
 
 import { Heading } from "@/components/ui/typography";
-import { ScrollAnimatedContainer } from "@/components/animated";
+import { PrismicNextLink } from "@/prismicio";
 
 export type CallToActionProps = {
   slice: Content.CallToActionSlice;

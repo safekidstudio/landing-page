@@ -1,22 +1,22 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import {
-  Star,
-  Shield,
-  Share2,
-  Lock,
   Activity,
-  Clock,
-  Key,
-  Grid,
-  Zap,
-  User,
-  FileText,
-  Smartphone,
   Check,
+  Clock,
+  FileText,
+  Grid,
+  Key,
+  Lock,
+  Share2,
+  Shield,
+  Smartphone,
+  Star,
+  User,
+  Zap,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 
 export type FeatureShowcaseProps = {
   slice: Content.FeatureShowcaseSlice;

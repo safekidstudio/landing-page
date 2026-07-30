@@ -1,9 +1,9 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@/prismicio";
-import { Heading } from "@/components/ui/typography";
+import { ArrowRight, BarChart3, Bell, MapPin, Shield } from "lucide-react";
 import { ScrollAnimatedContainer } from "@/components/animated";
-import { BarChart3, Bell, Shield, MapPin, ArrowRight } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
+import { PrismicNextLink } from "@/prismicio";
 
 export type BentoFeaturesProps = {
   slice: Content.BentoFeaturesSlice;

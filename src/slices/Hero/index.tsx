@@ -1,22 +1,22 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { type Content, isFilled } from "@prismicio/client";
-import { createClient, LOCALE_MAP, PrismicNextLink } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import {
   CheckCircle,
+  ChevronRight,
   Clock,
+  Home,
   Lock,
   MapPin,
   MessageSquare,
   Shield,
   Smartphone,
-  Home,
-  ChevronRight,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
-import { MediaEmbed } from "./MediaEmbed";
 import { AnimatedComponent } from "@/components/animated";
+import { buttonVariants } from "@/components/ui/button";
+import { Heading } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
+import { createClient, LOCALE_MAP, PrismicNextLink } from "@/prismicio";
+import { MediaEmbed } from "./MediaEmbed";
 
 export type HeroProps = {
   slice: Content.HeroSlice;
@@ -462,7 +462,10 @@ export default async function Hero({ slice, context }: HeroProps) {
           <div className="w-full overflow-x-auto border-y border-border scrollbar-hide">
             <div className="flex flex-nowrap items-center md:flex-wrap md:justify-center gap-x-8 text-xs md:text-[13px] font-medium tracking-wider text-muted-foreground/80 uppercase min-w-max md:min-w-0 px-4 md:px-0">
               {primary.stats_list.map((item: any, index: number) => (
-                <div key={index} className="flex items-center gap-2 px-3 py-4 shrink-0">
+                <div
+                  key={index}
+                  className="flex items-center gap-2 px-3 py-4 shrink-0"
+                >
                   {getBenefitIcon(item.icon || "shield")}
                   <span>{item.label}</span>
                 </div>

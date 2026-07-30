@@ -4,8 +4,8 @@ import {
   type LinkResolverFunction,
 } from "@prismicio/client";
 import {
-  enableAutoPreviews,
   PrismicNextLink as BasePrismicNextLink,
+  enableAutoPreviews,
   type PrismicNextLinkProps,
 } from "@prismicio/next";
 import React from "react";

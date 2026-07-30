@@ -1,11 +1,12 @@
+import { PrismicPreview } from "@prismicio/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { ThemeProvider } from "@/providers/theme_provider";
-import { createClient, LOCALE_MAP } from "@/prismicio";
-import SiteHeader from "@/components/layouts/header";
 import SiteFooter from "@/components/layouts/footer";
+import SiteHeader from "@/components/layouts/header";
+import { createClient, LOCALE_MAP, repositoryName } from "@/prismicio";
+import { ThemeProvider } from "@/providers/theme_provider";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -61,7 +62,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
-      <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=kibal"></script>
+      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }

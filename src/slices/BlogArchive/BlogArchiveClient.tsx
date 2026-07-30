@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import { type Content, isFilled } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { Heading } from "@/components/ui/typography";
+import { PrismicRichText } from "@prismicio/react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollAnimatedContainer } from "@/components/animated";
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import { Heading } from "@/components/ui/typography";
 import { getBlogLink } from "@/prismicio";
 
 export type BlogArchiveClientProps = {

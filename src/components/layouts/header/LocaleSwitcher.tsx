@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useRouter } from "@/i18n/routing";
 import { useParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const LOCALES = [

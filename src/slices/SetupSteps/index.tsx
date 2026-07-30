@@ -1,8 +1,8 @@
 import { type Content, isFilled } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import { Heading } from "@/components/ui/typography";
+import { PrismicRichText } from "@prismicio/react";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 
 export type SetupStepsProps = {
   slice: Content.SetupStepsSlice;

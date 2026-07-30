@@ -1,19 +1,19 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@/prismicio";
 import {
-  Shield,
-  Users,
+  Brain,
+  Clock,
   Globe,
   Heart,
-  Star,
   Lock,
-  Clock,
+  Shield,
+  Star,
   Trees,
-  Brain,
+  Users,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
+import { PrismicNextLink } from "@/prismicio";
 
 export type PrinciplesProps = {
   slice: Content.PrinciplesSlice;

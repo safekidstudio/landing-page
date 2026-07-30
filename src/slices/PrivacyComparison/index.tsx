@@ -1,17 +1,17 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import {
-  Database,
-  Shield,
-  Lock,
-  Info,
-  X,
-  Check,
   ArrowRight,
+  Check,
+  Database,
+  Info,
+  Lock,
+  Shield,
+  X,
 } from "lucide-react";
-import { PrismicNextLink } from "@/prismicio";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
+import { PrismicNextLink } from "@/prismicio";
 
 export type PrivacyComparisonProps = {
   slice: Content.PrivacyComparisonSlice;

@@ -1,16 +1,16 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import {
-  Shield,
-  Lock,
-  TrendingUp,
   Database,
-  Key,
   Info,
+  Key,
+  Lock,
   Mail,
+  Shield,
+  TrendingUp,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 
 export type DataFlowsProps = {
   slice: Content.DataFlowsSlice;

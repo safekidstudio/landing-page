@@ -1,19 +1,19 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import {
+  Activity,
   Box,
-  Zap,
-  Cpu,
   Clock,
+  Cpu,
   Key,
+  Lock,
+  Share2,
   Shield,
   Smartphone,
-  Lock,
-  Activity,
-  Share2,
+  Zap,
 } from "lucide-react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 
 export type FeaturesGridProps = {
   slice: Content.FeaturesGridSlice;

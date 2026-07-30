@@ -1,4 +1,4 @@
-import { type Content } from "@prismicio/client";
+import type { Content } from "@prismicio/client";
 import { createClient, LOCALE_MAP } from "@/prismicio";
 import BlogArchiveClient from "./BlogArchiveClient";
 

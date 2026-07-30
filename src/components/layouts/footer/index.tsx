@@ -1,11 +1,10 @@
 "use client";
 
+import { type Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicNextLink } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
-import { isFilled } from "@prismicio/client";
 import { Briefcase, Globe } from "lucide-react";
-import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@/prismicio";
 
 interface SiteFooterProps {
   settings: Content.AppSettingsDocument | null;

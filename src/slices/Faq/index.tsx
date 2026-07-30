@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { ScrollAnimatedContainer } from "@/components/animated";
 
 import { Heading } from "@/components/ui/typography";
-import { ScrollAnimatedContainer } from "@/components/animated";
+import { cn } from "@/lib/utils";
 
 export type FaqProps = {
   slice: Content.FaqSlice;

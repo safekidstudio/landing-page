@@ -1,7 +1,7 @@
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { Heading } from "@/components/ui/typography";
 import { ScrollAnimatedContainer } from "@/components/animated";
+import { Heading } from "@/components/ui/typography";
 
 export type StatsShowcaseProps = {
   slice: Content.StatsShowcaseSlice;

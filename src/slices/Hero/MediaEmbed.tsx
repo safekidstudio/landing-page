@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { Play } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface MediaEmbedProps {
@@ -16,8 +16,7 @@ interface MediaEmbedProps {
 // Helper to extract YouTube video ID
 function getYouTubeId(url: string | null): string | null {
   if (!url) return null;
-  const regExp =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 }
